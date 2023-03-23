@@ -4,6 +4,9 @@
 
 ## Task diagram
 
+![Task diagram](/screenshot/report/ECEN-3753-Project-Wolfenstein-Assault.png)
+
+
 ## Test Plan and results
 
 - One desirable cutting point for testing would be to test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
