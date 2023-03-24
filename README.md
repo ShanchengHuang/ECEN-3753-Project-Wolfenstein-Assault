@@ -1,6 +1,6 @@
 # ECEN-3753-Project-Wolfenstein-Assault
 
-## This weeek : *Project: Planning*
+## This weeek : **Project: Planning**
 
 ## Task diagram
 
@@ -21,11 +21,11 @@
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
 - Summary effort & estimate numbers
-  - (Week 1)I have completed % of my currently-scoped, estimated work (18.75 estimated for work completed thus far /36hr total estimate) in 70% of the budgeted total-project time. (25.25 time spent, of 36hr total estimate).  For the work that has been completed, I took 1.34x  (25.25/18.75) as much time as I estimated.
+  - (Week 1)I have completed 10% of my currently-scoped which in 5 hr (Which would take from 75 to 150 hr), estimated work 15% of the budgeted total-project time next week.  For the work that has been completed, I took 1.5x as much time as I estimated.
 
 ## List of in-scope work items
 
-Next Task to work on
+### Next Task to work on:
 
 Implement Task Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 
@@ -35,8 +35,6 @@ Implement ISR Button - This task was not and need to be done. The implementation
 
 Implement ISR CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Design data structures - This task was not and need to be done. The data structures were designed based on the project requirements, and the implementation was straightforward.
-
 Implement Queue Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 
 Implement Queue CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
@@ -45,9 +43,9 @@ Implement Semaphore Button - This task was not and need to be done. The implemen
 
 Implement Semaphore CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Physics model. [Platform] - This task was completed last week. The implementation of the physics model for the platform was more challenging than anticipated, and it took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
+Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
 
-Ongoing work items:
+### Ongoing work items:
 
 Implement Task Physics - This task is currently in progress. The implementation of this task involves updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. The implementation of the physics calculations is taking longer than expected, and additional testing and debugging will be required.
 
@@ -65,17 +63,24 @@ Implement satchel charge throwing logic - This task is not yet complete. The imp
 
 Test and debug entire system - This task is not yet complete
 
-Note: Completed work items are highlighted in bold.
+### Works that is done: 
 
-## risk register
+Design data structures - This task was done. The data structures were designed based on the project requirements, and the implementation was straightforward.
+
+
+
+<!-- Note: Completed work items are highlighted in bold. -->
+
+## Risk Register
 
 | Risk Description | Category | Likelihood | Impact | Mitigation | Status |
 | --- | --- | --- | --- | --- | --- |
 | Implementation delays due to lack of experience with certain technologies | Technical | Medium | High | Perform thorough research on technologies before beginning implementation. Consult with instructors and peers for guidance. | Ongoing |
-| Unexpected changes to project requirements | Project | Low | High | Maintain open communication with stakeholders to ensure project requirements are clearly defined and documented. Allow for flexibility in project plan to accommodate changes. | Ongoing |
+| Having dead lock with in the physics queue| Technical | High | High | Carefully follow the design of the flow chart, confirm the design and rationality of the flow chart to TA, and the professor | Ongoing |
+| Unexpected changes to project requirements | Project | Low | High | Ensure project requirements are clearly defined and documented. Allow for flexibility in project plan to accommodate changes. | Ongoing |
 | Inadequate testing leading to undetected bugs | Technical | Medium | High | Develop a comprehensive testing plan to ensure all features are thoroughly tested. Utilize automated testing tools where possible. | Resolved |
 | Difficulties integrating different software components | Technical | Medium | High | Use well-documented interfaces between components. Perform integration testing early and frequently. | Ongoing |
-| Hardware malfunctions or failures | Technical | Low | High | Test hardware components thoroughly before use. Have backup hardware available in case of failures. | Ongoing |
+<!-- | Hardware malfunctions or failures | Technical | Low | High | Test hardware components thoroughly before use. Have backup hardware available in case of failures. | Ongoing | -->
 | Inaccurate estimates of required time and effort | Project | Medium | Medium | Break down tasks into smaller, more manageable pieces. Consult with team members for second opinions on estimates. Track progress regularly to identify areas where more time is needed. | Ongoing |
 
 
