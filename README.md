@@ -9,40 +9,41 @@
 
 ## Test Plan and results
 
-- One desirable cutting point for testing would be to test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
+- Test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
 
-- One possible way to create a cutting point for testing the main path of Task Physics would be to insert a breakpoint at the beginning of the function and step through the code line by line, using a debugger to verify that each step is executing as expected. Another approach would be to use a code coverage tool to identify the most frequently executed lines of code and focus testing efforts on those lines to ensure that they are working 
+  - One possible way to create a cutting point for testing the main path of Task Physics would be to insert a breakpoint at the beginning of the function and step through the code line by line, using a debugger to verify that each step is executing as expected. Another approach would be to use a code coverage tool to identify the most frequently executed lines of code and focus testing efforts on those lines to ensure that they are working 
 
+- Boundary condition handling in the Task Physics function. Boundary condition handling is important because it ensures that the game functions correctly even when unexpected inputs or conditions are encountered.
 
-- Another desirable cutting point for testing would be to test the boundary condition handling in the Task Physics function. Boundary condition handling is important because it ensures that the game functions correctly even when unexpected inputs or conditions are encountered.
-
-- One possible way to create a cutting point for testing boundary condition handling would be to introduce intentionally incorrect or out-of-bounds inputs to the Task Physics function and verify that the function handles these inputs correctly. For example, you could test what happens when the platform's position exceeds the boundaries of the canyon or when the satchel charge is thrown with an invalid velocity. By testing these boundary conditions, you can ensure that the game functions correctly even under unexpected circumstances.
+  - One possible way to create a cutting point for testing boundary condition handling would be to introduce intentionally incorrect or out-of-bounds inputs to the Task Physics function and verify that the function handles these inputs correctly. For example, you could test what happens when the platform's position exceeds the boundaries of the canyon or when the satchel charge is thrown with an invalid velocity. By testing these boundary conditions, you can ensure that the game functions correctly even under unexpected circumstances.
 
 ## Statement of where your project stands
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
 - Summary effort & estimate numbers
-  - (Week 1)I have completed 52% of my currently-scoped, estimated work (18.75 estimated for work completed thus far /36hr total estimate) in 70% of the budgeted total-project time. (25.25 time spent, of 36hr total estimate).  For the work that has been completed, I took 1.34x  (25.25/18.75) as much time as I estimated.
+  - (Week 1)I have completed % of my currently-scoped, estimated work (18.75 estimated for work completed thus far /36hr total estimate) in 70% of the budgeted total-project time. (25.25 time spent, of 36hr total estimate).  For the work that has been completed, I took 1.34x  (25.25/18.75) as much time as I estimated.
 
 ## List of in-scope work items
 
-Implement Task Button - This task was completed last week. The implementation was straightforward, and it was completed within the estimated time frame.
+Next Task to work on
 
-Implement Task CapSense - This task was also completed last week. The implementation was relatively simple, and it was completed within the estimated time frame.
+Implement Task Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 
-Implement ISR Button - This task was completed last week. The implementation was straightforward, and it was completed within the estimated time frame.
+Implement Task CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Implement ISR CapSense - This task was completed last week. The implementation was relatively simple, and it was completed within the estimated time frame.
+Implement ISR Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 
-Design data structures - This task was completed last week. The data structures were designed based on the project requirements, and the implementation was straightforward.
+Implement ISR CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Implement Queue Button - This task was completed last week. The implementation was straightforward, and it was completed within the estimated time frame.
+Design data structures - This task was not and need to be done. The data structures were designed based on the project requirements, and the implementation was straightforward.
 
-Implement Queue CapSense - This task was completed last week. The implementation was relatively simple, and it was completed within the estimated time frame.
+Implement Queue Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 
-Implement Semaphore Button - This task was completed last week. The implementation was straightforward, and it was completed within the estimated time frame.
+Implement Queue CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Implement Semaphore CapSense - This task was completed last week. The implementation was relatively simple, and it was completed within the estimated time frame.
+Implement Semaphore Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
+
+Implement Semaphore CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
 Physics model. [Platform] - This task was completed last week. The implementation of the physics model for the platform was more challenging than anticipated, and it took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
 
@@ -77,6 +78,5 @@ Note: Completed work items are highlighted in bold.
 | Hardware malfunctions or failures | Technical | Low | High | Test hardware components thoroughly before use. Have backup hardware available in case of failures. | Ongoing |
 | Inaccurate estimates of required time and effort | Project | Medium | Medium | Break down tasks into smaller, more manageable pieces. Consult with team members for second opinions on estimates. Track progress regularly to identify areas where more time is needed. | Ongoing |
 
-Note that the "Inadequate testing leading to undetected bugs" risk has been resolved in this update.
 
-This week, I am resolving the risk of inadequate testing leading to undetected bugs by developing a comprehensive testing plan and implementing automated testing where possible. I will continue to ROAM the risks each week and update the risk register accordingly.
+This week, I am resolving the risk of inadequate testing leading to undetected bugs by developing a comprehensive testing plan. I will continue to ROAM the risks each week and update the risk register accordingly.
