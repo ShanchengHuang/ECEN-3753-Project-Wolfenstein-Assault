@@ -1,6 +1,6 @@
 # ECEN-3753-Project-Wolfenstein-Assault
 
-## This weeek : **Project: Planning**
+## This weeek : **Week 2 Unit Test Planning, some implementation.**
 
 ## Task diagram
 
