@@ -23,8 +23,7 @@
  ******************************************************************************/
 void app_init(void);
 
-#include <stdlib.h>
-#include <stdio.h>
+// For OS
 #include <os.h>
 #include "em_emu.h"
 #include "gpio.h"
@@ -32,9 +31,10 @@ void app_init(void);
 
 // For memcpy()
 #include <string.h>
-
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 
 
@@ -61,6 +61,17 @@ static volatile bool btn1 = 0;
 
 #define BUTTON_FIFO_SIZE 10
 
+// Semaphore, Flag, Mutex
+static OS_SEM BTNsemaphore;
+
+// Define the event flag group object
+static OS_FLAG_GRP UpdateFlag;
+static OS_FLAG_GRP AlertFlag;
+
+// Define the Mutex
+static OS_MUTEX SpeedMutex;
+static OS_MUTEX DirectMutex;
+
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
@@ -85,9 +96,6 @@ typedef struct {
 	int decrements;
 } SpeedSetpointData;
 
-//typedef enum {
-//	HARD_LEFT, SLIGHT_LEFT, HARD_RIGHT, SLIGHT_RIGHT
-//} Direction;
 
 typedef struct {
 	int current_direction;

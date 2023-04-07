@@ -19,12 +19,12 @@
  * Initialize application.
  ******************************************************************************/
 
+// For display
 #include "glib.h"
-//#include "display.h"
+
 
 #include "sl_board_control.h"
 #include "em_assert.h"
-#include "glib.h"
 #include "dmd.h"
 #include "os.h"
 
@@ -70,16 +70,6 @@ CPU_STK Vehicle_MonitorStk[Vehicle_Monitor_SIZE]; /*   Stack.                */
 OS_TCB IdleTaskTCB; /*   Task Control Block.   */
 CPU_STK IdleTaskStk[IdleTask_SIZE]; /*   Stack.                */
 
-// Semaphore, Flag, Mutex
-static OS_SEM BTNsemaphore;
-
-// Define the event flag group object
-static OS_FLAG_GRP UpdateFlag;
-static OS_FLAG_GRP AlertFlag;
-
-// Define the Mutex
-static OS_MUTEX SpeedMutex;
-static OS_MUTEX DirectMutex;
 
 // Define the timer possibly
 
