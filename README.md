@@ -72,6 +72,8 @@ Test and debug entire system - This task is not yet complete
 
 Design data structures - This task was done. The data structures were designed based on the project requirements, and the implementation was straightforward.
 
+Finishing the base function framework - and should have the all the post pend in place, however, the function is not complet, there still have work need to do, but we have great start
+
 
 
 
@@ -84,11 +86,11 @@ Design data structures - This task was done. The data structures were designed b
 | --- | --- | --- | --- | --- | --- |
 | Implementation delays due to lack of experience with certain technologies | Technical | Medium | High | Perform thorough research on technologies before beginning implementation. Consult with instructors and peers for guidance. | Ongoing |
 | Having dead lock with in the physics queue| Technical | High | High | Carefully follow the design of the flow chart, confirm the design and rationality of the flow chart to TA, and the professor | Ongoing |
-| Unexpected changes to project requirements | Project | Low | High | Ensure project requirements are clearly defined and documented. Allow for flexibility in project plan to accommodate changes. | Ongoing |
-| Inadequate testing leading to undetected bugs | Technical | Medium | High | Develop a comprehensive testing plan to ensure all features are thoroughly tested. Utilize automated testing tools where possible. | Resolved |
-| Difficulties integrating different software components | Technical | Medium | High | Use well-documented interfaces between components. Perform integration testing early and frequently. | Ongoing |
-<!-- | Hardware malfunctions or failures | Technical | Low | High | Test hardware components thoroughly before use. Have backup hardware available in case of failures. | Ongoing | -->
+| Inadequate testing leading to undetected bugs | Technical | Medium | High | Develop a comprehensive testing plan to ensure all features are thoroughly tested. Utilize automated testing tools where possible. | Ongoing |
 | Inaccurate estimates of required time and effort | Project | Medium | Medium | Break down tasks into smaller, more manageable pieces. Consult with team members for second opinions on estimates. Track progress regularly to identify areas where more time is needed. | Ongoing |
+| Failed to implement physics simulation formula in game | Technical | Medium | High | The first step is to identify where the problem lies. Is the formula not working at all? Is it producing unexpected results? Are there errors in the code? | Ongoing |
+| Difficulties integrating different software components | Technical | Medium | High | Use well-documented interfaces between components. Perform integration testing early and frequently. | Ongoing |
+| Unexpected changes to project requirements | Project | Low | High | Ensure project requirements are clearly defined and documented. Allow for flexibility in project plan to accommodate changes. | Resolved |
 
 
 This week, I am resolving the risk of inadequate testing leading to undetected bugs by developing a comprehensive testing plan. I will continue to ROAM the risks each week and update the risk register accordingly.
