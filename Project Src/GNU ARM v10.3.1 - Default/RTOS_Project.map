@@ -375,6 +375,23 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x72c ./capsense.o
  .debug_macro   0x0000000000000000       0x10 ./capsense.o
  .debug_macro   0x0000000000000000      0x2f8 ./capsense.o
+ .group         0x0000000000000000        0xc ./display.o
+ .group         0x0000000000000000        0xc ./display.o
+ .text          0x0000000000000000        0x0 ./display.o
+ .data          0x0000000000000000        0x0 ./display.o
+ .bss           0x0000000000000000        0x0 ./display.o
+ .debug_info    0x0000000000000000       0x21 ./display.o
+ .debug_abbrev  0x0000000000000000       0x13 ./display.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./display.o
+ .debug_macro   0x0000000000000000       0x1a ./display.o
+ .debug_macro   0x0000000000000000      0xa84 ./display.o
+ .debug_macro   0x0000000000000000       0x10 ./display.o
+ .debug_line    0x0000000000000000       0xbc ./display.o
+ .debug_str     0x0000000000000000     0x2d8d ./display.o
+ .comment       0x0000000000000000       0x4a ./display.o
+ .ARM.attributes
+                0x0000000000000000       0x32 ./display.o
  .group         0x0000000000000000        0xc ./gpio.o
  .group         0x0000000000000000        0xc ./gpio.o
  .group         0x0000000000000000        0xc ./gpio.o
@@ -494,6 +511,23 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xf6 ./gpio.o
  .debug_macro   0x0000000000000000       0xe4 ./gpio.o
  .debug_macro   0x0000000000000000       0x4c ./gpio.o
+ .group         0x0000000000000000        0xc ./input.o
+ .group         0x0000000000000000        0xc ./input.o
+ .text          0x0000000000000000        0x0 ./input.o
+ .data          0x0000000000000000        0x0 ./input.o
+ .bss           0x0000000000000000        0x0 ./input.o
+ .debug_info    0x0000000000000000       0x21 ./input.o
+ .debug_abbrev  0x0000000000000000       0x13 ./input.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./input.o
+ .debug_macro   0x0000000000000000       0x1a ./input.o
+ .debug_macro   0x0000000000000000      0xa84 ./input.o
+ .debug_macro   0x0000000000000000       0x10 ./input.o
+ .debug_line    0x0000000000000000       0xba ./input.o
+ .debug_str     0x0000000000000000     0x2d8b ./input.o
+ .comment       0x0000000000000000       0x4a ./input.o
+ .ARM.attributes
+                0x0000000000000000       0x32 ./input.o
  .group         0x0000000000000000        0xc ./main.o
  .group         0x0000000000000000        0xc ./main.o
  .group         0x0000000000000000        0xc ./main.o
@@ -714,6 +748,246 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x40 ./main.o
  .debug_macro   0x0000000000000000       0x16 ./main.o
  .debug_macro   0x0000000000000000       0x34 ./main.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .group         0x0000000000000000        0xc ./physics.o
+ .text          0x0000000000000000        0x0 ./physics.o
+ .data          0x0000000000000000        0x0 ./physics.o
+ .bss           0x0000000000000000        0x0 ./physics.o
+ .debug_info    0x0000000000000000       0x84 ./physics.o
+ .debug_abbrev  0x0000000000000000       0x29 ./physics.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./physics.o
+ .debug_macro   0x0000000000000000      0x552 ./physics.o
+ .debug_macro   0x0000000000000000      0xa84 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x46 ./physics.o
+ .debug_macro   0x0000000000000000      0x124 ./physics.o
+ .debug_macro   0x0000000000000000       0x16 ./physics.o
+ .debug_macro   0x0000000000000000      0x4b1 ./physics.o
+ .debug_macro   0x0000000000000000       0x22 ./physics.o
+ .debug_macro   0x0000000000000000       0x56 ./physics.o
+ .debug_macro   0x0000000000000000       0x51 ./physics.o
+ .debug_macro   0x0000000000000000      0x103 ./physics.o
+ .debug_macro   0x0000000000000000       0x6a ./physics.o
+ .debug_macro   0x0000000000000000      0x1df ./physics.o
+ .debug_macro   0x0000000000000000       0x1c ./physics.o
+ .debug_macro   0x0000000000000000       0x22 ./physics.o
+ .debug_macro   0x0000000000000000       0xd9 ./physics.o
+ .debug_macro   0x0000000000000000      0xff5 ./physics.o
+ .debug_macro   0x0000000000000000       0xe2 ./physics.o
+ .debug_macro   0x0000000000000000      0xe1c ./physics.o
+ .debug_macro   0x0000000000000000     0x2275 ./physics.o
+ .debug_macro   0x0000000000000000      0x329 ./physics.o
+ .debug_macro   0x0000000000000000     0x3119 ./physics.o
+ .debug_macro   0x0000000000000000     0x1bba ./physics.o
+ .debug_macro   0x0000000000000000     0x2674 ./physics.o
+ .debug_macro   0x0000000000000000     0x1b19 ./physics.o
+ .debug_macro   0x0000000000000000      0xe2b ./physics.o
+ .debug_macro   0x0000000000000000      0x344 ./physics.o
+ .debug_macro   0x0000000000000000      0x29d ./physics.o
+ .debug_macro   0x0000000000000000     0x2763 ./physics.o
+ .debug_macro   0x0000000000000000     0x31cc ./physics.o
+ .debug_macro   0x0000000000000000     0x136b ./physics.o
+ .debug_macro   0x0000000000000000      0xde2 ./physics.o
+ .debug_macro   0x0000000000000000      0x249 ./physics.o
+ .debug_macro   0x0000000000000000     0x1042 ./physics.o
+ .debug_macro   0x0000000000000000     0x1605 ./physics.o
+ .debug_macro   0x0000000000000000     0x3cb7 ./physics.o
+ .debug_macro   0x0000000000000000     0x23fc ./physics.o
+ .debug_macro   0x0000000000000000      0x70c ./physics.o
+ .debug_macro   0x0000000000000000     0x26ef ./physics.o
+ .debug_macro   0x0000000000000000     0x1700 ./physics.o
+ .debug_macro   0x0000000000000000     0x2efb ./physics.o
+ .debug_macro   0x0000000000000000      0xfaf ./physics.o
+ .debug_macro   0x0000000000000000      0x6c3 ./physics.o
+ .debug_macro   0x0000000000000000     0x1021 ./physics.o
+ .debug_macro   0x0000000000000000      0x888 ./physics.o
+ .debug_macro   0x0000000000000000      0x4ff ./physics.o
+ .debug_macro   0x0000000000000000     0x1be1 ./physics.o
+ .debug_macro   0x0000000000000000       0x40 ./physics.o
+ .debug_macro   0x0000000000000000      0x2ce ./physics.o
+ .debug_macro   0x0000000000000000      0x381 ./physics.o
+ .debug_macro   0x0000000000000000      0x190 ./physics.o
+ .debug_macro   0x0000000000000000     0x27bf ./physics.o
+ .debug_macro   0x0000000000000000      0x303 ./physics.o
+ .debug_macro   0x0000000000000000      0x303 ./physics.o
+ .debug_macro   0x0000000000000000       0x3b ./physics.o
+ .debug_macro   0x0000000000000000       0x28 ./physics.o
+ .debug_macro   0x0000000000000000       0x22 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x71 ./physics.o
+ .debug_macro   0x0000000000000000       0x46 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0xf6 ./physics.o
+ .debug_macro   0x0000000000000000      0x43d ./physics.o
+ .debug_macro   0x0000000000000000      0x49b ./physics.o
+ .debug_macro   0x0000000000000000       0x69 ./physics.o
+ .debug_macro   0x0000000000000000       0x16 ./physics.o
+ .debug_macro   0x0000000000000000       0x3f ./physics.o
+ .debug_macro   0x0000000000000000       0x6e ./physics.o
+ .debug_macro   0x0000000000000000       0x34 ./physics.o
+ .debug_macro   0x0000000000000000      0x1e9 ./physics.o
+ .debug_macro   0x0000000000000000       0x36 ./physics.o
+ .debug_macro   0x0000000000000000       0xf9 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x74 ./physics.o
+ .debug_macro   0x0000000000000000       0x38 ./physics.o
+ .debug_macro   0x0000000000000000       0xc3 ./physics.o
+ .debug_macro   0x0000000000000000       0x2e ./physics.o
+ .debug_macro   0x0000000000000000      0x16d ./physics.o
+ .debug_macro   0x0000000000000000       0x4c ./physics.o
+ .debug_macro   0x0000000000000000      0x72c ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000      0x2f8 ./physics.o
+ .debug_macro   0x0000000000000000       0x81 ./physics.o
+ .debug_macro   0x0000000000000000       0xea ./physics.o
+ .debug_macro   0x0000000000000000       0x4c ./physics.o
+ .debug_macro   0x0000000000000000       0x64 ./physics.o
+ .debug_macro   0x0000000000000000       0x1e ./physics.o
+ .debug_macro   0x0000000000000000       0x35 ./physics.o
+ .debug_macro   0x0000000000000000       0x34 ./physics.o
+ .debug_macro   0x0000000000000000       0x16 ./physics.o
+ .debug_macro   0x0000000000000000       0x43 ./physics.o
+ .debug_macro   0x0000000000000000       0x34 ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x58 ./physics.o
+ .debug_macro   0x0000000000000000      0x182 ./physics.o
+ .debug_macro   0x0000000000000000      0x35d ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0x35 ./physics.o
+ .debug_macro   0x0000000000000000       0x16 ./physics.o
+ .debug_macro   0x0000000000000000       0x22 ./physics.o
+ .debug_macro   0x0000000000000000       0x1c ./physics.o
+ .debug_macro   0x0000000000000000       0x10 ./physics.o
+ .debug_macro   0x0000000000000000       0xbe ./physics.o
+ .debug_macro   0x0000000000000000       0x16 ./physics.o
+ .debug_macro   0x0000000000000000      0x129 ./physics.o
+ .debug_line    0x0000000000000000     0x100b ./physics.o
+ .debug_str     0x0000000000000000   0x161f7d ./physics.o
+ .comment       0x0000000000000000       0x4a ./physics.o
+ .ARM.attributes
+                0x0000000000000000       0x32 ./physics.o
+ .group         0x0000000000000000        0xc ./timer.o
+ .group         0x0000000000000000        0xc ./timer.o
+ .text          0x0000000000000000        0x0 ./timer.o
+ .data          0x0000000000000000        0x0 ./timer.o
+ .bss           0x0000000000000000        0x0 ./timer.o
+ .debug_info    0x0000000000000000       0x21 ./timer.o
+ .debug_abbrev  0x0000000000000000       0x13 ./timer.o
+ .debug_aranges
+                0x0000000000000000       0x18 ./timer.o
+ .debug_macro   0x0000000000000000       0x1a ./timer.o
+ .debug_macro   0x0000000000000000      0xa84 ./timer.o
+ .debug_macro   0x0000000000000000       0x10 ./timer.o
+ .debug_line    0x0000000000000000       0xba ./timer.o
+ .debug_str     0x0000000000000000     0x2d8b ./timer.o
+ .comment       0x0000000000000000       0x4a ./timer.o
+ .ARM.attributes
+                0x0000000000000000       0x32 ./timer.o
  .group         0x0000000000000000        0xc ./autogen/sl_board_default_init.o
  .group         0x0000000000000000        0xc ./autogen/sl_board_default_init.o
  .group         0x0000000000000000        0xc ./autogen/sl_board_default_init.o
@@ -1694,6 +1968,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x58 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .debug_macro   0x0000000000000000      0x182 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .debug_macro   0x0000000000000000      0x35d ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
+ .debug_macro   0x0000000000000000       0x10 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .debug_macro   0x0000000000000000       0x35 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .group         0x0000000000000000        0xc ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
  .group         0x0000000000000000        0xc ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
@@ -12462,8 +12737,12 @@ LOAD /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/g
 START GROUP
 LOAD ./app.o
 LOAD ./capsense.o
+LOAD ./display.o
 LOAD ./gpio.o
+LOAD ./input.o
 LOAD ./main.o
+LOAD ./physics.o
+LOAD ./timer.o
 LOAD ./autogen/sl_board_default_init.o
 LOAD ./autogen/sl_device_init_clocks.o
 LOAD ./autogen/sl_event_handler.o
@@ -15229,7 +15508,7 @@ LOAD linker stubs
  .debug_ranges  0x0000000000003548       0x18 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
  .debug_ranges  0x0000000000003560       0xb0 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
 
-.debug_macro    0x0000000000000000    0x42703
+.debug_macro    0x0000000000000000    0x426f3
  .debug_macro   0x0000000000000000      0x619 ./app.o
  .debug_macro   0x0000000000000619      0xa84 ./app.o
  .debug_macro   0x000000000000109d       0x10 ./app.o
@@ -15387,89 +15666,88 @@ LOAD linker stubs
  .debug_macro   0x0000000000036c87       0x52 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .debug_macro   0x0000000000036cd9       0x10 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
  .debug_macro   0x0000000000036ce9       0x40 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
- .debug_macro   0x0000000000036d29       0x10 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
- .debug_macro   0x0000000000036d39      0x31d ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
- .debug_macro   0x0000000000037056      0x277 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
- .debug_macro   0x00000000000372cd      0x28b ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
- .debug_macro   0x0000000000037558       0x92 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
- .debug_macro   0x00000000000375ea       0x16 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
- .debug_macro   0x0000000000037600       0x84 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
- .debug_macro   0x0000000000037684      0x300 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
- .debug_macro   0x0000000000037984      0x2e9 ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
- .debug_macro   0x0000000000037c6d       0x2c ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
- .debug_macro   0x0000000000037c99      0x3e6 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_macro   0x000000000003807f       0x7c ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_macro   0x00000000000380fb       0x17 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_macro   0x0000000000038112       0xee ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_macro   0x0000000000038200      0x2bb ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
- .debug_macro   0x00000000000384bb      0x3fb ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
- .debug_macro   0x00000000000388b6       0x34 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
- .debug_macro   0x00000000000388ea      0x2c8 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
- .debug_macro   0x0000000000038bb2      0x2bc ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
- .debug_macro   0x0000000000038e6e       0x87 ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
- .debug_macro   0x0000000000038ef5      0x310 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
- .debug_macro   0x0000000000039205      0x4b2 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
- .debug_macro   0x00000000000396b7      0x443 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
- .debug_macro   0x0000000000039afa      0x4ba ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
- .debug_macro   0x0000000000039fb4       0x10 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
- .debug_macro   0x0000000000039fc4      0x597 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
- .debug_macro   0x000000000003a55b       0x35 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
- .debug_macro   0x000000000003a590      0x3f9 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
- .debug_macro   0x000000000003a989      0x51b ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
- .debug_macro   0x000000000003aea4       0x22 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
- .debug_macro   0x000000000003aec6       0x82 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
- .debug_macro   0x000000000003af48      0x3ff ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
- .debug_macro   0x000000000003b347      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_flag.o
- .debug_macro   0x000000000003b84d      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
- .debug_macro   0x000000000003bd53      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
- .debug_macro   0x000000000003c259      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
- .debug_macro   0x000000000003c75f      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
- .debug_macro   0x000000000003cc65      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
- .debug_macro   0x000000000003d16b      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
- .debug_macro   0x000000000003d671      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
- .debug_macro   0x000000000003db77      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
- .debug_macro   0x000000000003e07d      0x3ff ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
- .debug_macro   0x000000000003e47c      0x2f8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
- .debug_macro   0x000000000003e774      0x368 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
- .debug_macro   0x000000000003eadc      0x514 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
- .debug_macro   0x000000000003eff0       0x2e ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
- .debug_macro   0x000000000003f01e      0x412 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
- .debug_macro   0x000000000003f430      0x35e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
- .debug_macro   0x000000000003f78e       0x82 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
- .debug_macro   0x000000000003f810      0x163 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
- .debug_macro   0x000000000003f973      0x15c ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
- .debug_macro   0x000000000003facf      0x15d ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
- .debug_macro   0x000000000003fc2c      0x179 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
- .debug_macro   0x000000000003fda5      0x2de ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
- .debug_macro   0x0000000000040083       0x16 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
- .debug_macro   0x0000000000040099      0x2e4 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
- .debug_macro   0x000000000004037d       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
- .debug_macro   0x00000000000403a5      0x2fd ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
- .debug_macro   0x00000000000406a2       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
- .debug_macro   0x00000000000406ca      0x2f1 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
- .debug_macro   0x00000000000409bb       0x22 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
- .debug_macro   0x00000000000409dd      0x2b8 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
- .debug_macro   0x0000000000040c95      0x472 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x0000000000036d29      0x31d ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
+ .debug_macro   0x0000000000037046      0x277 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
+ .debug_macro   0x00000000000372bd      0x28b ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
+ .debug_macro   0x0000000000037548       0x92 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
+ .debug_macro   0x00000000000375da       0x16 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
+ .debug_macro   0x00000000000375f0       0x84 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
+ .debug_macro   0x0000000000037674      0x300 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
+ .debug_macro   0x0000000000037974      0x2e9 ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
+ .debug_macro   0x0000000000037c5d       0x2c ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
+ .debug_macro   0x0000000000037c89      0x3e6 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_macro   0x000000000003806f       0x7c ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_macro   0x00000000000380eb       0x17 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_macro   0x0000000000038102       0xee ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_macro   0x00000000000381f0      0x2bb ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
+ .debug_macro   0x00000000000384ab      0x3fb ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
+ .debug_macro   0x00000000000388a6       0x34 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
+ .debug_macro   0x00000000000388da      0x2c8 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
+ .debug_macro   0x0000000000038ba2      0x2bc ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
+ .debug_macro   0x0000000000038e5e       0x87 ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
+ .debug_macro   0x0000000000038ee5      0x310 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
+ .debug_macro   0x00000000000391f5      0x4b2 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
+ .debug_macro   0x00000000000396a7      0x443 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
+ .debug_macro   0x0000000000039aea      0x4ba ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
+ .debug_macro   0x0000000000039fa4       0x10 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
+ .debug_macro   0x0000000000039fb4      0x597 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
+ .debug_macro   0x000000000003a54b       0x35 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
+ .debug_macro   0x000000000003a580      0x3f9 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
+ .debug_macro   0x000000000003a979      0x51b ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_macro   0x000000000003ae94       0x22 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_macro   0x000000000003aeb6       0x82 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_macro   0x000000000003af38      0x3ff ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
+ .debug_macro   0x000000000003b337      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_flag.o
+ .debug_macro   0x000000000003b83d      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
+ .debug_macro   0x000000000003bd43      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
+ .debug_macro   0x000000000003c249      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
+ .debug_macro   0x000000000003c74f      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
+ .debug_macro   0x000000000003cc55      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
+ .debug_macro   0x000000000003d15b      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
+ .debug_macro   0x000000000003d661      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
+ .debug_macro   0x000000000003db67      0x506 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
+ .debug_macro   0x000000000003e06d      0x3ff ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
+ .debug_macro   0x000000000003e46c      0x2f8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
+ .debug_macro   0x000000000003e764      0x368 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
+ .debug_macro   0x000000000003eacc      0x514 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
+ .debug_macro   0x000000000003efe0       0x2e ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
+ .debug_macro   0x000000000003f00e      0x412 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
+ .debug_macro   0x000000000003f420      0x35e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
+ .debug_macro   0x000000000003f77e       0x82 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
+ .debug_macro   0x000000000003f800      0x163 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
+ .debug_macro   0x000000000003f963      0x15c ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
+ .debug_macro   0x000000000003fabf      0x15d ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
+ .debug_macro   0x000000000003fc1c      0x179 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
+ .debug_macro   0x000000000003fd95      0x2de ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
+ .debug_macro   0x0000000000040073       0x16 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
+ .debug_macro   0x0000000000040089      0x2e4 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
+ .debug_macro   0x000000000004036d       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
+ .debug_macro   0x0000000000040395      0x2fd ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
+ .debug_macro   0x0000000000040692       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
+ .debug_macro   0x00000000000406ba      0x2f1 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
+ .debug_macro   0x00000000000409ab       0x22 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
+ .debug_macro   0x00000000000409cd      0x2b8 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
+ .debug_macro   0x0000000000040c85      0x472 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x00000000000410f7       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
  .debug_macro   0x0000000000041107       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
  .debug_macro   0x0000000000041117       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x0000000000041127       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x0000000000041137       0x2e ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x0000000000041165       0x16 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x000000000004117b       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x000000000004118b       0x16 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_macro   0x00000000000411a1      0x33e ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
- .debug_macro   0x00000000000414df       0x24 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
- .debug_macro   0x0000000000041503       0x24 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
- .debug_macro   0x0000000000041527      0x277 ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
- .debug_macro   0x000000000004179e      0x18c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
- .debug_macro   0x000000000004192a       0x50 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
- .debug_macro   0x000000000004197a      0x11c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
- .debug_macro   0x0000000000041a96      0x218 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_macro   0x0000000000041cae       0x3a ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_macro   0x0000000000041ce8       0x73 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_macro   0x0000000000041d5b       0x3a ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_macro   0x0000000000041d95      0x487 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
- .debug_macro   0x000000000004221c      0x4e7 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
+ .debug_macro   0x0000000000041127       0x2e ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x0000000000041155       0x16 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x000000000004116b       0x10 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x000000000004117b       0x16 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_macro   0x0000000000041191      0x33e ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
+ .debug_macro   0x00000000000414cf       0x24 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
+ .debug_macro   0x00000000000414f3       0x24 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
+ .debug_macro   0x0000000000041517      0x277 ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
+ .debug_macro   0x000000000004178e      0x18c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_macro   0x000000000004191a       0x50 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_macro   0x000000000004196a      0x11c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_macro   0x0000000000041a86      0x218 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_macro   0x0000000000041c9e       0x3a ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_macro   0x0000000000041cd8       0x73 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_macro   0x0000000000041d4b       0x3a ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_macro   0x0000000000041d85      0x487 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
+ .debug_macro   0x000000000004220c      0x4e7 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
 
 .debug_line     0x0000000000000000    0x4ec8e
  .debug_line    0x0000000000000000     0x1e13 ./app.o

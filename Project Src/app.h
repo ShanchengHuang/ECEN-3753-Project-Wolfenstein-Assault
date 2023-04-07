@@ -139,9 +139,13 @@ void LED_Output_Task_Init(void);
 
 bool TwoButtonsPressed(ButtonEventFifo *fifo);
 
+
+// Function for the Prject task
+
+
+
 //void TimerCallback(OS_TMR *p_tmr, void *p_arg);
 //void TimerCallback(void *p_tmr, void *p_arg);
-//
 //void EventFlagsCallback(uint8_t buttons);
 
 #endif  // APP_H

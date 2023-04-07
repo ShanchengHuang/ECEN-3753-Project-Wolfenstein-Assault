@@ -7,7 +7,7 @@
 ![Task diagram](/screenshot/report/ECEN-3753-Project-Wolfenstein-Assault.png)
 
 
-## Test Plan and results
+## Test Plan and results (Week2 updated)
 
 - Test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
 
@@ -20,7 +20,7 @@
 - Test all flags, interrupts and mutexes in all tasks to ensure all resources are available to all functions and prevent any deadlocks from occurring
   - Based on the current framework I have built, I can have some simple unit test for all the flag, mutex, and interrupt, I can change the values of a variables and use debug to check.
 
-## Statement of where your project stands
+## Statement of where your project stands (Week2 updated)
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
   - (Week 2) This week I have started coding the project, and useing the Lab7 workspace as the template and start working base on it, this week what I have mostly done is set up the function framework in the header file, start implementing some important files like physics, and set up the create date base of the queue. And doing some unit tests for the mutex.
@@ -50,7 +50,7 @@ Implement Semaphore CapSense - This task was not and need to be done. The implem
 
 Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
 
-### Ongoing work items:
+### Ongoing work items (Week2 updated):
 
 Implement Task Physics - This task is currently in progress. The implementation of this task involves updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. The implementation of the physics calculations is taking longer than expected, and additional testing and debugging will be required.
 
@@ -72,7 +72,7 @@ Test and debug entire system - This task is not yet complete
 
 Design data structures - This task was done. The data structures were designed based on the project requirements, and the implementation was straightforward.
 
-Finishing the base function framework - and should have the all the post pend in place, however, the function is not complet, there still have work need to do, but we have great start
+(Week 2)Finishing the base function framework - and should have the all the post pend in place, however, the function is not complet, there still have work need to do, but we have great start
 
 
 
@@ -80,7 +80,7 @@ Finishing the base function framework - and should have the all the post pend in
 
 <!-- Note: Completed work items are highlighted in bold. -->
 
-## Risk Register
+## Risk Register (Week2 updated)
 
 | Risk Description | Category | Likelihood | Impact | Mitigation | Status |
 | --- | --- | --- | --- | --- | --- |
