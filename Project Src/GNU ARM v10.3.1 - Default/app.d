@@ -13,7 +13,7 @@ app.o: ../app.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_def.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_path.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/autogen/rtos_description.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/autogen/rtos_description.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_opt_def.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/em_device.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b500f1024gl125.h \
@@ -69,33 +69,33 @@ app.o: ../app.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_dmareq.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_af_ports.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_af_pins.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/cpu_cfg.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/cpu_cfg.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_def.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_port_sel.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/ports/source/gnu/armv7m_cpu_port.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_core.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_common.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_assert.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/autogen/sl_component_catalog.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/emlib_core_debug_config.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/autogen/sl_component_catalog.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/emlib_core_debug_config.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_err.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_port_sel.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_def.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/toolchains.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/rtos_err_cfg.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/rtos_err_cfg.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_mem.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/common_cfg.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/common_cfg.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_math.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_utils.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_version.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_utils.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/rtos_cfg.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/os_cfg.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/rtos_cfg.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/os_cfg.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/kernel/include/os_type.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/kernel/include/os_port_sel.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/ports/source/gnu/armv7m_os_cpu.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/service/sleeptimer/inc/sl_sleeptimer.h \
- /Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/sl_sleeptimer_config.h \
+ /Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/sl_sleeptimer_config.h \
  ../app.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_emu.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_bus.h \
@@ -118,7 +118,7 @@ app.o: ../app.c \
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_def.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_path.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/autogen/rtos_description.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/autogen/rtos_description.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_opt_def.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/em_device.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b500f1024gl125.h:
@@ -174,33 +174,33 @@ app.o: ../app.c \
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_dmareq.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_af_ports.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/Device/SiliconLabs/EFM32PG12B/Include/efm32pg12b_af_pins.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/cpu_cfg.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/cpu_cfg.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_def.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_port_sel.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/ports/source/gnu/armv7m_cpu_port.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_core.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_common.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_assert.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/autogen/sl_component_catalog.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/emlib_core_debug_config.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/autogen/sl_component_catalog.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/emlib_core_debug_config.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_err.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/cpu/include/cpu_port_sel.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_def.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/toolchains.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/rtos_err_cfg.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/rtos_err_cfg.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_mem.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/common_cfg.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/common_cfg.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_math.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/lib_utils.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_version.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/common/include/rtos_utils.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/rtos_cfg.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/os_cfg.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/rtos_cfg.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/os_cfg.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/kernel/include/os_type.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/kernel/include/os_port_sel.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/ports/source/gnu/armv7m_os_cpu.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/service/sleeptimer/inc/sl_sleeptimer.h:
-/Users/shancheng/SimplicityStudio/v5_workspace/Lab7_RTOS/config/sl_sleeptimer_config.h:
+/Users/shancheng/Desktop/School\ Works/ECEN-3753-Project-Wolfenstein-Assault/Project\ Src/config/sl_sleeptimer_config.h:
 ../app.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_emu.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_bus.h:
