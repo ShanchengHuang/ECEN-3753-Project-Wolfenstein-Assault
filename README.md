@@ -16,12 +16,17 @@
 - Boundary condition handling in the Task Physics function. Boundary condition handling is important because it ensures that the game functions correctly even when unexpected inputs or conditions are encountered.
 
   - One possible way to create a cutting point for testing boundary condition handling would be to introduce intentionally incorrect or out-of-bounds inputs to the Task Physics function and verify that the function handles these inputs correctly. For example, you could test what happens when the platform's position exceeds the boundaries of the canyon or when the satchel charge is thrown with an invalid velocity. By testing these boundary conditions, you can ensure that the game functions correctly even under unexpected circumstances.
+  
+- Test all flags, interrupts and mutexes in all tasks to ensure all resources are available to all functions and prevent any deadlocks from occurring
+  - Based on the current framework I have built, I can have some simple unit test for all the flag, mutex, and interrupt, I can change the values of a variables and use debug to check.
 
 ## Statement of where your project stands
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
+  - (Week 2) This week I have started coding the project, and useing the Lab7 workspace as the template and start working base on it, this week what I have mostly done is set up the function framework in the header file, start implementing some important files like physics, and set up the create date base of the queue. And doing some unit tests for the mutex.
 - Summary effort & estimate numbers
   - (Week 1)I have completed 10% of my currently-scoped which in 5 hr (Which would take from 75 to 150 hr), estimated work 15% of the budgeted total-project time next week.  For the work that has been completed, I took 1.5x as much time as I estimated.
+  - (Week 2) For this week I have completed 20ish% of the currently scoped, in about 5-5hr, in estimated 20% of the total work hours. Which is slightly faster than the initial estimate
 
 ## List of in-scope work items
 
@@ -49,13 +54,13 @@ Physics model. [Platform] - This task was not completed . The implementation of 
 
 Implement Task Physics - This task is currently in progress. The implementation of this task involves updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. The implementation of the physics calculations is taking longer than expected, and additional testing and debugging will be required.
 
-Implement Task Display - This task is not yet complete. The implementation of this task involves processing information necessary to update the LCD and updating the LED controls. The implementation is expected to take approximately 4 hours.
+Implement Task Display - This task is currently in progress. The implementation of this task involves processing information necessary to update the LCD and updating the LED controls. The implementation is expected to take approximately 4 hours.
 
 Implement Queue Physics - This task is currently in progress. The implementation of this task involves queuing up updates to the platform's position and velocity, the satchel charge's path, and other game parameters. The implementation is expected to take approximately 2 hours.
 
-Implement LCD display update in Task Display - This task is not yet complete. The implementation of this task involves updating the LCD with the current game state. The implementation is expected to take approximately 3 hours.
+Implement LCD display update in Task Display - This task is currently in progress. The implementation of this task involves updating the LCD with the current game state. The implementation is expected to take approximately 3 hours.
 
-Implement LED brightness update in Task Display - This task is not yet complete. The implementation of this task involves updating the brightness of the LED to show the current force magnitude. The implementation is expected to take approximately 1 hour.
+Implement LED brightness update in Task Display - This task is currently in progress. The implementation of this task involves updating the brightness of the LED to show the current force magnitude. The implementation is expected to take approximately 1 hour.
 
 Implement boundary condition handling in Task Physics - This task is not yet complete. The implementation of this task involves handling boundary conditions such as the platform going out of bounds or the satchel charge being thrown with an invalid velocity. The implementation is expected to take approximately 6 hours.
 
@@ -66,6 +71,8 @@ Test and debug entire system - This task is not yet complete
 ### Works that is done: 
 
 Design data structures - This task was done. The data structures were designed based on the project requirements, and the implementation was straightforward.
+
+
 
 
 
