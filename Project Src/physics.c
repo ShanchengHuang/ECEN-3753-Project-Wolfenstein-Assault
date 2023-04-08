@@ -5,11 +5,16 @@
  *      Author: shancheng
  */
 
-
 #include "physics.h"
 
-
 void Physics_Task(void *p_arg) {
+	/* Use argument. */
+	(void) &p_arg;
+	RTOS_ERR err;
+
+	while (DEF_TRUE) {
+		// TODO
+	}
 
 }
 void Physics_Task_Create() {
