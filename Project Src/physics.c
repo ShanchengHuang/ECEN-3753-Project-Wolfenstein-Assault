@@ -20,14 +20,14 @@ void Physics_Task(void *p_arg) {
 void Physics_Task_Create() {
 	RTOS_ERR err;
 
-	OSTaskCreate(&Speed_SetpointTCB, /* Pointer to the task's TCB.  */
-	"Speed_Setpoint_Task.", /* Name to help debugging.     */
-	&Speed_Setpoint_Task, /* Pointer to the task's code. */
+	OSTaskCreate(&Physics_TaskTCB, /* Pointer to the task's TCB.  */
+	"Physics_Task.", /* Name to help debugging.     */
+	&Physics_Task, /* Pointer to the task's code. */
 	DEF_NULL, /* Pointer to task's argument. */
-	Speed_Setpoint_PRIO, /* Task's priority.            */
-	&Speed_SetpointStk[0], /* Pointer to base of stack.   */
-	(Speed_Setpoint_SIZE / 10u), /* Stack limit, from base.     */
-	Speed_Setpoint_SIZE, /* Stack size, in CPU_STK.     */
+	Physics_Task_PRIO, /* Task's priority.            */
+	&Physics_TaskStk[0], /* Pointer to base of stack.   */
+	(Physics_Task_STK_SIZE / 10u), /* Stack limit, from base.     */
+	Physics_Task_STK_SIZE, /* Stack size, in CPU_STK.     */
 	10u, /* Messages in task queue.     */
 	0u, /* Round-Robin time quanta.    */
 	DEF_NULL, /* External TCB data.          */

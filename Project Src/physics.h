@@ -28,8 +28,8 @@
 // global variables
 //***********************************************************************************
 // Task stack size and priority
-#define Physics_Task_STK_SIZE 128
-#define Physics_Task_PRIO 1
+#define Physics_Task_STK_SIZE 256u
+#define Physics_Task_PRIO 21u
 
 // Task stack
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
