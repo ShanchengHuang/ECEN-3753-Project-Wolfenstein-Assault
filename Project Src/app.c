@@ -29,6 +29,11 @@
 #include "os.h"
 
 #include "app.h"
+
+#include "input.h"
+#include "timer.h"
+#include "display.h"
+#include "physics.h"
 //
 //#define Speed_Setpoint_PRIO 21u
 //#define Speed_Setpoint_SIZE 256u /*   Stack size in CPU_STK.         */
@@ -95,78 +100,7 @@ void app_init(void) {
 
 }
 
-//***********************************************************************************
 
-// LCD GLIB INIT
-
-//***********************************************************************************
-
-static GLIB_Context_t glibContext;
-
-void drawThickLine(GLIB_Context_t *glibContext, int x1, int y1, int x2, int y2,
-		int thickness) {
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-//	int d;
-	int i;
-
-	if (abs(dx) > abs(dy)) {
-//		d = dx >= 0 ? 1 : -1;
-		for (i = -thickness / 2; i < thickness / 2 + thickness % 2; i++) {
-			GLIB_drawLine(glibContext, x1, y1 + i, x2, y2 + i);
-		}
-	} else {
-//		d = dy >= 0 ? 1 : -1;
-		for (i = -thickness / 2; i < thickness / 2 + thickness % 2; i++) {
-			GLIB_drawLine(glibContext, x1 + i, y1, x2 + i, y2);
-		}
-	}
-}
-
-void HardRightTurnArrow(GLIB_Context_t *glibContext) {
-	int thickness = 10;
-	// Arrowhead
-	drawThickLine(glibContext, 60, 65, 90, 60, thickness);
-
-	// Arrow body
-	drawThickLine(glibContext, 60, 60, 60, 120, thickness);
-}
-
-void SlightRightTurnArrow(GLIB_Context_t *glibContext) {
-	int thickness = 10;
-	// Arrowhead
-	drawThickLine(glibContext, 60, 65, 90, 40, thickness + 2);
-
-	// Arrow body
-	drawThickLine(glibContext, 60, 60, 60, 120, thickness);
-}
-
-void HardLeftTurnArrow(GLIB_Context_t *glibContext) {
-	int thickness = 10;
-	// Arrowhead
-	drawThickLine(glibContext, 60, 65, 30, 60, thickness);
-
-	// Arrow body
-	drawThickLine(glibContext, 60, 60, 60, 120, thickness);
-}
-
-void SlightLeftTurnArrow(GLIB_Context_t *glibContext) {
-	int thickness = 10;
-	// Arrowhead
-	drawThickLine(glibContext, 60, 65, 30, 40, thickness + 2);
-
-	// Arrow body
-	drawThickLine(glibContext, 60, 60, 60, 120, thickness);
-}
-
-void Straight(GLIB_Context_t *glibContext) {
-
-	int thickness = 10;
-
-	// Arrow body
-	drawThickLine(glibContext, 60, 40, 60, 120, thickness);
-
-}
 
 void LCD_init() {
 	uint32_t status;

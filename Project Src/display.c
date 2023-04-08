@@ -77,3 +77,40 @@ void LCDOutput_Create() {
 		/* Handle error on task creation. */
 	}
 }
+//***********************************************************************************
+
+// LCD GLIB INIT
+
+//***********************************************************************************
+
+
+
+void drawThickLine(GLIB_Context_t *glibContext, int x1, int y1, int x2, int y2,
+		int thickness) {
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+//	int d;
+	int i;
+
+	if (abs(dx) > abs(dy)) {
+//		d = dx >= 0 ? 1 : -1;
+		for (i = -thickness / 2; i < thickness / 2 + thickness % 2; i++) {
+			GLIB_drawLine(glibContext, x1, y1 + i, x2, y2 + i);
+		}
+	} else {
+//		d = dy >= 0 ? 1 : -1;
+		for (i = -thickness / 2; i < thickness / 2 + thickness % 2; i++) {
+			GLIB_drawLine(glibContext, x1 + i, y1, x2 + i, y2);
+		}
+	}
+}
+
+
+void Straight(GLIB_Context_t *glibContext) {
+
+	int thickness = 10;
+
+	// Arrow body
+	drawThickLine(glibContext, 60, 40, 60, 120, thickness);
+
+}
