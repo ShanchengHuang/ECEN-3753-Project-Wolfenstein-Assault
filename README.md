@@ -7,7 +7,7 @@
 ![Task diagram](/screenshot/report/ECEN-3753-Project-Wolfenstein-Assault.png)
 
 
-## Test Plan and results (Week2 updated)
+## Test Plan and results (Week3 updated)
 
 - Test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
 
@@ -27,6 +27,7 @@
 - Summary effort & estimate numbers
   - (Week 1)I have completed 10% of my currently-scoped which in 5 hr (Which would take from 75 to 150 hr), estimated work 15% of the budgeted total-project time next week.  For the work that has been completed, I took 1.5x as much time as I estimated.
   - (Week 2) For this week I have completed 20ish% of the currently scoped, in about 5-5hr, in estimated 20% of the total work hours. Which is slightly faster than the initial estimate
+  - (Week 3) For this week, the plan is update all the flags and the Mutex, also finish some input function as `Button_Task` and `CapSensense_Task`, and start doing the `Physics_Task` and it's queue. 
 
 ## List of in-scope work items
 

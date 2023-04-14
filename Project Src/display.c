@@ -84,7 +84,6 @@ void LCDOutput_Create() {
 //***********************************************************************************
 
 
-
 void drawThickLine(GLIB_Context_t *glibContext, int x1, int y1, int x2, int y2,
 		int thickness) {
 	int dx = x2 - x1;
