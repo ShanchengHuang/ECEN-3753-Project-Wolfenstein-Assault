@@ -38,6 +38,25 @@
 
 ### Next Task to work on: (Week 3 updated)
 
+
+
+Implement Queue Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
+
+Implement Semaphore Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
+
+Implement Semaphore CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
+
+Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
+
+Implement boundary condition handling in Task Physics - This task is not yet complete. The implementation of this task involves handling boundary conditions such as the platform going out of bounds or the satchel charge being thrown with an invalid velocity. The implementation is expected to take approximately 6 hours.
+
+Implement satchel charge throwing logic - This task is not yet complete. The implementation of this task involves generating a random position for the satchel charge to land and calculating the velocity required to reach that position. The implementation is expected to take approximately 5 hours.
+
+
+Test and debug entire system - This task is not yet complete
+
+### Ongoing work items (Week3 updated):
+
 Implement Task Button - This task was almost done, just need integrate with other functions. The implementation was straightforward, and it should completed within the estimated time frame.
 
 Implement Task CapSense - This task was almost done, just need integrate with other functions. The implementation was relatively simple, and it should completed within the estimated time frame.
@@ -48,39 +67,18 @@ Implement LED Task - This task was almost done, just need integrate with other f
 
 Implement LCD Task - This task was just started. The implementation would have problem, I should 
 
-Implement Queue Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
-
-Implement Semaphore Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
-
-Implement Semaphore CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
-
-Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
-
-### Ongoing work items (Week2 updated):
-
 Implement Task Physics - This task is currently in progress. The implementation of this task involves updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. The implementation of the physics calculations is taking longer than expected, and additional testing and debugging will be required.
 
 Implement Task Display - This task is currently in progress. The implementation of this task involves processing information necessary to update the LCD and updating the LED controls. The implementation is expected to take approximately 4 hours.
 
 Implement Queue Physics - This task is currently in progress. The implementation of this task involves queuing up updates to the platform's position and velocity, the satchel charge's path, and other game parameters. The implementation is expected to take approximately 2 hours.
 
-Implement LCD display update in Task Display - This task is currently in progress. The implementation of this task involves updating the LCD with the current game state. The implementation is expected to take approximately 3 hours.
-
-Implement LED brightness update in Task Display - This task is currently in progress. The implementation of this task involves updating the brightness of the LED to show the current force magnitude. The implementation is expected to take approximately 1 hour.
-
-Implement boundary condition handling in Task Physics - This task is not yet complete. The implementation of this task involves handling boundary conditions such as the platform going out of bounds or the satchel charge being thrown with an invalid velocity. The implementation is expected to take approximately 6 hours.
-
-Implement satchel charge throwing logic - This task is not yet complete. The implementation of this task involves generating a random position for the satchel charge to land and calculating the velocity required to reach that position. The implementation is expected to take approximately 5 hours.
-
-Test and debug entire system - This task is not yet complete
 
 ### Works that is done: 
 
 Design data structures - This task was done. The data structures were designed based on the project requirements, and the implementation was straightforward.
 
-(Week 2)Finishing the base function framework - and should have the all the post pend in place, however, the function is not complet, there still have work need to do, but we have great start
-
-
+Finishing the base function framework - and should have the all the post pend in place, however, the function is not complet, there still have work need to do, but we have great start
 
 
 
@@ -99,6 +97,7 @@ Design data structures - This task was done. The data structures were designed b
 | Failed to implement physics simulation formula in game | Technical | Medium | High | The first step is to identify where the problem lies. Is the formula not working at all? Is it producing unexpected results? Are there errors in the code? | Ongoing |
 | Difficulties integrating different software components | Technical | Medium | High | Use well-documented interfaces between components. Perform integration testing early and frequently. | Ongoing |
 | Unexpected changes to project requirements | Project | Low | High | Ensure project requirements are clearly defined and documented. Allow for flexibility in project plan to accommodate changes. | Resolved |
+| Include necessary files in all task files | Project | Low | Medium | Ensure that all task files include the necessary files to avoid unexpected errors or issues. Communicate the importance of this to the project team. | In progress |
 
 
 This week, I am resolving the risk of inadequate testing leading to undetected bugs by developing a comprehensive testing plan. I will continue to ROAM the risks each week and update the risk register accordingly.
