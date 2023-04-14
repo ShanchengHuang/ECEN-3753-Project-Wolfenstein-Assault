@@ -17,33 +17,38 @@
 
   - One possible way to create a cutting point for testing boundary condition handling would be to introduce intentionally incorrect or out-of-bounds inputs to the Task Physics function and verify that the function handles these inputs correctly. For example, you could test what happens when the platform's position exceeds the boundaries of the canyon or when the satchel charge is thrown with an invalid velocity. By testing these boundary conditions, you can ensure that the game functions correctly even under unexpected circumstances.
   
-- Test all flags, interrupts and mutexes in all tasks to ensure all resources are available to all functions and prevent any deadlocks from occurring
+- Test all flags, interrupts and mutexes in all tasks to ensure all resources are available to all functions and prevent any deadlocks from occurring (Week 3 updated)
   - Based on the current framework I have built, I can have some simple unit test for all the flag, mutex, and interrupt, I can change the values of a variables and use debug to check.
+  - Unit test and pass all the flag
+  - Unit test and all the metux are working
+  - Unit test all the timer functions
+  - Unit test 
 
 ## Statement of where your project stands (Week2 updated)
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
   - (Week 2) This week I have started coding the project, and useing the Lab7 workspace as the template and start working base on it, this week what I have mostly done is set up the function framework in the header file, start implementing some important files like physics, and set up the create date base of the queue. And doing some unit tests for the mutex.
+  - (Week 3) For this week, the plan is update all the flags and the Mutex, also finish some input function as `Button_Task` and `CapSensense_Task`, and start doing the `Physics_Task` and it's queue. 
 - Summary effort & estimate numbers
   - (Week 1)I have completed 10% of my currently-scoped which in 5 hr (Which would take from 75 to 150 hr), estimated work 15% of the budgeted total-project time next week.  For the work that has been completed, I took 1.5x as much time as I estimated.
   - (Week 2) For this week I have completed 20ish% of the currently scoped, in about 5-5hr, in estimated 20% of the total work hours. Which is slightly faster than the initial estimate
-  - (Week 3) For this week, the plan is update all the flags and the Mutex, also finish some input function as `Button_Task` and `CapSensense_Task`, and start doing the `Physics_Task` and it's queue. 
+  - (Week 3) For this week I have completed 40ish% of the currently scoped, in about 6hr, in estimated 35-40% of the total work hours. Which is slightly slower than the initial estimate
 
 ## List of in-scope work items
 
-### Next Task to work on:
+### Next Task to work on: (Week 3 updated)
 
-Implement Task Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
+Implement Task Button - This task was almost done, just need integrate with other functions. The implementation was straightforward, and it should completed within the estimated time frame.
 
-Implement Task CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
+Implement Task CapSense - This task was almost done, just need integrate with other functions. The implementation was relatively simple, and it should completed within the estimated time frame.
 
-Implement ISR Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
+Implement ISR Button - This task was almost done, just need integrate with other functions. The implementation was straightforward, and it should completed within the estimated time frame.
 
-Implement ISR CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
+Implement LED Task - This task was almost done, just need integrate with other functions. The implementation was straightforward, and it should completed within the estimated time frame.
+
+Implement LCD Task - This task was just started. The implementation would have problem, I should 
 
 Implement Queue Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
-
-Implement Queue CapSense - This task was not and need to be done. The implementation was relatively simple, and it should completed within the estimated time frame.
 
 Implement Semaphore Button - This task was not and need to be done. The implementation was straightforward, and it should completed within the estimated time frame.
 

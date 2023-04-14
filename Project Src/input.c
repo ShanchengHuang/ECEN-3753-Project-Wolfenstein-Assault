@@ -100,15 +100,14 @@ void Button_Task(void *p_arg)
 		OSSemPend(&BTNsemaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 		// TODO
 		//  Unit test here, do a print
-		//  Button Mutex here
+
 		OSMutexPend(&BTNMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
 		//  Get date from cap
 		OSMutexPost(&BTNMutex, OS_OPT_POST_NONE, &err);
-		//  Get date from button queue
-		// 	Button Mutex post
-		// Physics Mutext Pen here
-		//  Update the button stats to the physics queue
-		// Physics Mutext Post here
+
+		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+		// Push date to the physics queue
+		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
 	}
 }
 
@@ -145,11 +144,12 @@ void CapSensense_Task(void *p_arg)
 	while (DEF_TRUE)
 	{
 		// OS timer
-		OSTimeDlyHMSM(0u, 0u, 15u, 0u, OS_OPT_TIME_HMSM_STRICT, &err); /* Delay for 15 second */
+		OSTimeDlyHMSM(0u, 0u, 0u, 50u, OS_OPT_TIME_HMSM_STRICT, &err); /* Delay for 50 ms */
 		// TODO
 		//  Get date from cap
 		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
 		// update in to the physics queue
+		
 		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err); /* Release the shared resource */
 															//  Physics Mutex post here
 															//  Update the capsence stats to the physics queue

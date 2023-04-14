@@ -36,6 +36,8 @@ static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 
 // Timer
 static OS_TCB Physics_TaskTCB;
+
+// TODO: create queue for all the physics var
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************

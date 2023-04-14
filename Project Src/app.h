@@ -50,10 +50,14 @@ static volatile bool btn1 = 0;
 
 #define Dly_tick 2
 
-#define SPEEDEDFLAG 0b0001
-#define RSET_SPEEDEDFLAG 0b0010
-#define DIRECTIONFLAG 0b0100
-#define RSET_DIRECTIONFLAG 0b1000
+// #define SPEEDEDFLAG 0b0001
+// #define RSET_SPEEDEDFLAG 0b0010
+// #define DIRECTIONFLAG 0b0100
+// #define RSET_DIRECTIONFLAG 0b1000
+
+/* Define flag bits */
+#define LED0  (1 << 0)
+#define LED1  (1 << 1)
 
 #define UPDATEFLAG1 1
 #define UPDATEFLAG2 2
@@ -65,7 +69,7 @@ static OS_SEM BTNsemaphore;
 static OS_SEM BTNsemaphore;
 
 // Define the event flag group object
-static OS_FLAG_GRP UpdateFlag;
+// static OS_FLAG_GRP UpdateFlag;
 static OS_FLAG_GRP AlertFlag;
 
 // Define the Mutex
