@@ -1,4 +1,4 @@
-/***************************************************************************//**
+/*******************************************************************************
  * @file
  * @brief Top level application functions
  *******************************************************************************
@@ -18,7 +18,7 @@
 #ifndef APP_H
 #define APP_H
 
-/***************************************************************************//**
+/******************************************************************************
  * Initialize application.
  ******************************************************************************/
 void app_init(void);
@@ -28,6 +28,7 @@ void app_init(void);
 #include "em_emu.h"
 #include "gpio.h"
 #include "capsense.h"
+// #include "efm32gg11b.h" //For EFM_ASSERT
 
 // For memcpy()
 #include <string.h>
@@ -35,8 +36,6 @@ void app_init(void);
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-
 
 //***********************************************************************************
 
@@ -63,41 +62,45 @@ static volatile bool btn1 = 0;
 
 // Semaphore, Flag, Mutex
 static OS_SEM BTNsemaphore;
+static OS_SEM BTNsemaphore;
 
 // Define the event flag group object
 static OS_FLAG_GRP UpdateFlag;
 static OS_FLAG_GRP AlertFlag;
 
 // Define the Mutex
-static OS_MUTEX SpeedMutex;
-static OS_MUTEX DirectMutex;
+static OS_MUTEX BTNMutex;
+static OS_MUTEX PhysicsMutex;
 
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
 
-//OS_TMR CapSenseTimer;
+// OS_TMR CapSenseTimer;
 
-typedef struct {
-	int button_id; // Button 0 or Button 1
+typedef struct
+{
+	int button_id;	  // Button 0 or Button 1
 	int button_state; // 0 for released, 1 for pressed
 } ButtonEvent;
 
-typedef struct {
+typedef struct
+{
 	ButtonEvent buffer[BUTTON_FIFO_SIZE];
 	int head;
 	int tail;
 	int count;
 } ButtonEventFifo;
 
-typedef struct {
+typedef struct
+{
 	int speed;
 	int increments;
 	int decrements;
 } SpeedSetpointData;
 
-
-typedef struct {
+typedef struct
+{
 	int current_direction;
 	int time_constant;
 	int left_turns;
@@ -109,7 +112,7 @@ void app_init(void);
 void LCD_init();
 
 void button_event_fifo_write(ButtonEventFifo *fifo, int button_id,
-		int button_state);
+							 int button_state);
 
 ButtonEvent button_event_fifo_read(ButtonEventFifo *fifo);
 
@@ -139,7 +142,7 @@ void read_capsense(void);
 int read_capsense2(void);
 void write_led(void);
 
-//Added Idle task();
+// Added Idle task();
 void IdleTask_Create();
 void IdleTask(void *p_arg);
 
@@ -147,13 +150,10 @@ void LED_Output_Task_Init(void);
 
 bool TwoButtonsPressed(ButtonEventFifo *fifo);
 
-
 // Function for the Prject task
 
+// void TimerCallback(OS_TMR *p_tmr, void *p_arg);
+// void TimerCallback(void *p_tmr, void *p_arg);
+// void EventFlagsCallback(uint8_t buttons);
 
-
-//void TimerCallback(OS_TMR *p_tmr, void *p_arg);
-//void TimerCallback(void *p_tmr, void *p_arg);
-//void EventFlagsCallback(uint8_t buttons);
-
-#endif  // APP_H
+#endif // APP_H

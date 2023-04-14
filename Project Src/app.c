@@ -48,12 +48,15 @@ void app_init(void)
 	// Init all the flag mutex sem
 	OSFlag_Init();
 
-	Speed_Setpoint_Create();
-	Vehicle_Direction_Create();
-	Vehicle_Monitor_Create();
+	// Creat all task here:
+	// Input task:
+	Button_Task_Create();
+	CapSensense_Task_Create();
+	// Physics taks:
+	Physics_Task_Create()
+		// Display task:
+		LCDOutput_Create();
 	LedOutput_Create();
-	LCDOutput_Create();
-	IdleTask_Create();
 }
 
 void LCD_init()
@@ -97,12 +100,6 @@ void LCD_init()
 
 //***********************************************************************************
 
-// Shared data structures and function
-
-//***********************************************************************************
-
-//***********************************************************************************
-
 // Flag, Timer, Semaphore Mutex create here
 
 //***********************************************************************************
@@ -143,8 +140,8 @@ void OSFlag_Init(void)
 
 //***********************************************************************************
 
-volatile int button0_state = 0; // 0: released, 1: pressed
-volatile int button1_state = 0; // 0: released, 1: pressed
+// volatile int button0_state = 0; // 0: released, 1: pressed
+// volatile int button1_state = 0; // 0: released, 1: pressed
 
 // void Speed_Setpoint_Task(void *p_arg)
 // {
@@ -591,44 +588,46 @@ volatile int button1_state = 0; // 0: released, 1: pressed
 
 // //***********************************************************************************
 
-// void IdleTask(void *p_arg)
-// {
-// 	/* Use argument. */
-// 	(void)&p_arg;
+void IdleTask(void *p_arg)
+{
+	/* Use argument. */
+	(void)&p_arg;
+	RTOS_ERR err;
 
-// 	//    RTOS_ERR err;
+	while (DEF_TRUE)
+	{
+		EMU_EnterEM1();
 
-// 	while (DEF_TRUE)
-// 	{
-// 		EMU_EnterEM1();
-// 		// Not need for Time dely
-// 		// OSTimeDly(Dly_tick, OS_OPT_TIME_DLY, &err);
-// 	}
-// }
+		if (err.Code != RTOS_ERR_NONE)
+		{	
+			EFM_ASSERT(0); /* Handle error on task creation. */
+		}
+	}
+}
 
-// void IdleTask_Create()
-// {
-// 	RTOS_ERR err;
+void IdleTask_Create()
+{
+	RTOS_ERR err;
 
-// 	OSTaskCreate(&IdleTaskTCB,			/* Pointer to the task's TCB.  */
-// 				 "IdleTask",			/* Name to help debugging.     */
-// 				 &IdleTask,				/* Pointer to the task's code. */
-// 				 DEF_NULL,				/* Pointer to task's argument. */
-// 				 IdleTask_PRIO,			/* Task's priority.            */
-// 				 &IdleTaskStk[0],		/* Pointer to base of stack.   */
-// 				 (IdleTask_SIZE / 10u), /* Stack limit, from base.     */
-// 				 IdleTask_SIZE,			/* Stack size, in CPU_STK.     */
-// 				 10u,					/* Messages in task queue.     */
-// 				 0u,					/* Round-Robin time quanta.    */
-// 				 DEF_NULL,				/* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,	/* Task options.               */
-// 				 &err);
+	OSTaskCreate(&IdleTaskTCB,			/* Pointer to the task's TCB.  */
+				 "IdleTask",			/* Name to help debugging.     */
+				 &IdleTask,				/* Pointer to the task's code. */
+				 DEF_NULL,				/* Pointer to task's argument. */
+				 IdleTask_PRIO,			/* Task's priority.            */
+				 &IdleTaskStk[0],		/* Pointer to base of stack.   */
+				 (IdleTask_SIZE / 10u), /* Stack limit, from base.     */
+				 IdleTask_SIZE,			/* Stack size, in CPU_STK.     */
+				 10u,					/* Messages in task queue.     */
+				 0u,					/* Round-Robin time quanta.    */
+				 DEF_NULL,				/* External TCB data.          */
+				 OS_OPT_TASK_STK_CHK,	/* Task options.               */
+				 &err);
 
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
+	if (err.Code != RTOS_ERR_NONE)
+	{
+		/* Handle error on task creation. */
+	}
+}
 
 //***********************************************************************************
 
@@ -709,22 +708,3 @@ int read_capsense2(void)
 
 	return -1;
 }
-
-// void write_led(void)
-// {
-// 	if ((btn0 || slider0) && !(btn1 || slider1))
-// 	{ // Led0 on
-// 		GPIO_PinOutSet(LED0_port, LED0_pin);
-// 		GPIO_PinOutClear(LED1_port, LED1_pin);
-// 	}
-// 	else if (!(btn0 || slider0) && (btn1 || slider1))
-// 	{ // Led1 on
-// 		GPIO_PinOutSet(LED1_port, LED1_pin);
-// 		GPIO_PinOutClear(LED0_port, LED0_pin);
-// 	}
-// 	else
-// 	{ // also all off
-// 		GPIO_PinOutClear(LED0_port, LED0_pin);
-// 		GPIO_PinOutClear(LED1_port, LED1_pin);
-// 	}
-// }
