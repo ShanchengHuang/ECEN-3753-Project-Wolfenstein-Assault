@@ -19,8 +19,28 @@ void LedOutput(void *p_arg)
 						   (LED0 | LED1), 0,
 						   (OS_OPT_PEND_FLAG_SET_ANY + OS_OPT_PEND_FLAG_CONSUME + OS_OPT_PEND_BLOCKING), NULL, &err);
 
-		// TODO: light up LED base on Flag
+		if (RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE)
+		{
+			// Turn off both LEDs initially
+			GPIO_PinOutClear(LED0_port, LED0_pin);
+			GPIO_PinOutClear(LED1_port, LED1_pin);
 
+			// Light up LED0 if the corresponding flag is set
+			if (flags & LED0)
+			{
+				GPIO_PinOutSet(LED0_port, LED0_pin);
+			}
+
+			// Light up LED1 if the corresponding flag is set
+			if (flags & LED1)
+			{
+				GPIO_PinOutSet(LED1_port, LED1_pin);
+			}
+		}
+		else
+		{
+			// Handle error, if necessary
+		}
 	}
 }
 

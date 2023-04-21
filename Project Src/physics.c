@@ -7,13 +7,36 @@
 
 #include "physics.h"
 
+void applyForceToPlatform(int32_t force);
+void updatePlatformPosition(float deltaTime);
+void updateSatchelCharges(float deltaTime);
+void updateRailGunShots(float deltaTime);
+void checkCollisions();
+
 void Physics_Task(void *p_arg) {
 	/* Use argument. */
 	(void) &p_arg;
 	RTOS_ERR err;
 
 	while (DEF_TRUE) {
-		// TODO
+		
+    // Update platform force based on CapSense input
+    updatePlatformForce();
+
+    // Update platform position
+    updatePlatformPosition(deltaTime);
+
+    // Update satchel charges
+    updateSatchelCharges(deltaTime);
+
+    // Update rail gun shots
+    updateRailGunShots(deltaTime);
+
+    // Check for collisions
+    checkCollisions();
+
+    // Delay for TauPhysics milliseconds before next update
+    OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
 	}
 
 }
@@ -38,3 +61,21 @@ void Physics_Task_Create() {
 		/* Handle error on task creation. */
 	}
 }
+
+
+#include "capsense.h"
+
+// ... other code ...
+
+void updatePlatformForce() {
+  // Obtain the slider position from the CapSense input
+  uint8_t sliderPosition = CAPSENSE_getSliderPosition();
+
+  // Calculate the force based on the slider position
+  int32_t force = ConfigurationData.Platform.MaxForce * (sliderPosition - 128) / 128;
+
+  // Apply the force to the platform
+  applyForceToPlatform(force);
+}
+
+// ... other code ...
