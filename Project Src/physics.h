@@ -15,7 +15,7 @@
 #include <os.h>
 #include "em_emu.h"
 #include "gpio.h"
-//#include "capsense.h"
+#include "capsense.h"
 
 // For memcpy()
 #include <string.h>
