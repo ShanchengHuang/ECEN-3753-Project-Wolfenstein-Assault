@@ -39,6 +39,19 @@ typedef struct {
     } generator;
 } GameConfig;
 
+typedef struct
+{
+    button_event buttonEvent; // Button event data
+    int32_t capSenseForce;    // CapSense force value
+    float xPos;               // Platform x position
+    float yPos;               // Platform y position
+    float xVel;               // Platform x velocity
+    float yVel;               // Platform y velocity
+} SharedData;
+
+// Declare a global instance of the shared data structure
+SharedData sharedData;
+
 // Default Configuration Values
 GameConfig default_config = {
     .data_structure_version = 1,

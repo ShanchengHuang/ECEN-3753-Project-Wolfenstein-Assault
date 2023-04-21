@@ -94,21 +94,28 @@ void Button_Task(void *p_arg)
 	(void)&p_arg;
 	RTOS_ERR err;
 
-	while (DEF_TRUE)
-	{
-		// SemPended
-		OSSemPend(&BTNsemaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-		// TODO
-		//  Unit test here, do a print
+   while (DEF_TRUE)
+    {
+        // Wait for the semaphore
+        OSSemPend(&BTNsemaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 
-		OSMutexPend(&BTNMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
-		//  Get date from cap
-		OSMutexPost(&BTNMutex, OS_OPT_POST_NONE, &err);
+        // Read button event from the FIFO
+        button_event btn_event;
+        if (button_event_fifo_read(&fifo, &btn_event))
+        {
+            // Perform the action associated with the button event
+            perform_button_action(btn_event);
 
-		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
-		// Push date to the physics queue
-		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
-	}
+            // Lock the PhysicsMutex
+            OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+
+            // Update the shared data with the button event
+            // Assuming you have a shared data structure with a field for the button event
+            sharedData.buttonEvent = btn_event;
+
+            // Unlock the PhysicsMutex
+            OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
+        }
 }
 
 void Button_Task_Create()
@@ -145,14 +152,20 @@ void CapSensense_Task(void *p_arg)
 	{
 		// OS timer
 		OSTimeDlyHMSM(0u, 0u, 0u, 50u, OS_OPT_TIME_HMSM_STRICT, &err); /* Delay for 50 ms */
-		// TODO
-		//  Get date from cap
+
+		// Read CapSense slider position
+		uint8_t sliderPosition = CAPSENSE_getSliderPosition();
+
+		// Calculate the force to apply to the platform
+		int16_t force = ConfigurationData.Platform.MaxForce * (sliderPosition - 128) / 128;
+
 		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
-		// update in to the physics queue
-		
+
+		// Update the force in the shared data structure
+		// Assuming you have a shared data structure with a field for the platform force
+		sharedData.platformForce = force;
+
 		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err); /* Release the shared resource */
-															//  Physics Mutex post here
-															//  Update the capsence stats to the physics queue
 
 		if (err != OS_ERR_NONE)
 		{
@@ -183,6 +196,12 @@ void CapSensense_Task_Create()
 	{
 		/* Handle error on task creation. */
 	}
+}
+
+void perform_button_action(button_event btn_event)
+{
+    // Handle the button event and perform the corresponding action
+    // based on the button ID and state
 }
 
 volatile int button0_state = 0; // 0: released, 1: pressed
