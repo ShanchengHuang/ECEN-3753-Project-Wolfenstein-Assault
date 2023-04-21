@@ -26,7 +26,18 @@
   - Unit test all the timer functions
   - Unit test 
 
+
+
 ## Statement of where your project stands (Week4 updated)
+
+|        | Est hr | %of the Est | Actural Effeort | Status |
+|--------|--------|-------------|-----------------|--------|
+| Week 1 | 6      | 10          | 5 hr            | 10%    |
+| Week 2 | 5      | 20%         | 5 hr            | 20%    |
+| Week 3 | 5      | 40%         | 6 hr            | 40%    |
+| Week 4 | 8      | 70%         | 5-6hr           | 65%    |
+| Week 5 | 10     | 100%        |                 |        |
+
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
   - (Week 2) This week I have started coding the project, and useing the Lab7 workspace as the template and start working base on it, this week what I have mostly done is set up the function framework in the header file, start implementing some important files like physics, and set up the create date base of the queue. And doing some unit tests for the mutex.
@@ -42,8 +53,6 @@
 ### Next Task to work on: (Week 4 updated)
 
 
-
-
 Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
 
 Implement boundary condition handling in Task Physics - This task is not yet complete. The implementation of this task involves handling boundary conditions such as the platform going out of bounds or the satchel charge being thrown with an invalid velocity. The implementation is expected to take approximately 6 hours.
@@ -55,14 +64,11 @@ Test and debug entire system - This task is not yet complete
 
 ### Ongoing work items (Week3 updated):
 
-
 Implement Queue Button - This task was almost done. The implementation was straightforward, and it should completed within the estimated time frame.
 
 Implement Semaphore Button - This task was almost done. The implementation was straightforward, and it should completed within the estimated time frame.
 
 Implement Semaphore CapSense - This task was almost done. The implementation was relatively simple, and it should completed within the estimated time frame.
-
-
 
 Implement LCD Task - This task was just started. The implementation would have problem, I should 
 
@@ -91,7 +97,7 @@ Finishing the base function framework - and should have the all the post pend in
 
 <!-- Note: Completed work items are highlighted in bold. -->
 
-## Risk Register (Week3 updated)
+## Risk Register (Week4 updated)
 
 <!-- Adding issue of include in all the task file, eg: input.c has os define from app.h -->
 
