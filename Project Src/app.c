@@ -55,7 +55,7 @@ void app_init(void)
 	// Physics taks:
 	Physics_Task_Create()
 		// Display task:
-		LCDOutput_Create();
+	LCDOutput_Create();
 	LedOutput_Create();
 }
 

@@ -1,4 +1,5 @@
 // Configuration Data Structure
+#include <stdint.h>
 typedef struct {
     uint32_t data_structure_version;
     uint32_t tau_physics;
@@ -39,6 +40,10 @@ typedef struct {
     } generator;
 } GameConfig;
 
+typedef struct {
+    uint8_t button_id;    // Button ID (0 for Button0, 1 for Button1, etc.)
+    uint8_t button_state; // Button state (0 for released, 1 for pressed)
+} button_event;
 typedef struct
 {
     button_event buttonEvent; // Button event data

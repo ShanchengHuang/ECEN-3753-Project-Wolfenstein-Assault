@@ -22,9 +22,12 @@ void Physics_Task(void *p_arg)
 	while (DEF_TRUE)
 	{
 
+		float deltaTime = (float)default_config.tau_physics / 1000.0f;
+
+		
 		// Delay for TauPhysics milliseconds before next update
 		OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
-		
+
 		// Lock the PhysicsMutex before accessing shared data
 		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
 
@@ -51,8 +54,6 @@ void Physics_Task(void *p_arg)
 
 		// Unlock the PhysicsMutex
 		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
-
-		
 	}
 }
 
