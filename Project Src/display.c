@@ -172,11 +172,7 @@ void LCDOutput(void *p_arg)
 #include "lcd.h"
 #include "glib.h"
 #include "dmd.h"
-#include "sl_board_control.h"
-#include "satchel_system/ss.h"
-#include "platform_control/platform.h"
-#include "shield_system/shield.h"
-#include "game_management/game_management.h"
+#include "sl_board_control.h"S
 #include "math.h"
 #include "string.h"
 
