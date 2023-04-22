@@ -54,16 +54,18 @@ void railgun_task(void)
         if (semErr.Code)
             EFM_ASSERT(false);
         // TODO check railgun count, if good, decrement and pend hm mutex and respawn it
+
         int lowestIdx = 0;
         int lowestHeight = 0; // lowest is highest y
 
-        shoot_railgun(lowestIdx);
-
-        if (railgun_fired)
+        if (shoot_railgun(lowestIdx))
         {
             RTOS_ERR mutex_err;
             OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutex_err);
+            
+            // TODO adding the target xy
             draw_laser(shotX, shotY);
+
             OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutex_err);
         }
     }
@@ -71,23 +73,23 @@ void railgun_task(void)
 
 bool shoot_railgun(int idx)
 {
+    (void)&idx; // Put this into unuse, if I got time to add this.
     if (railgun_charges > 0)
     {
         railgun_charges--;
         score++;
-        railgun_fired = 3;
-        shotX = HMs[idx].x;
-        shotY = HMs[idx].y;
-        RTOS_ERR mutexErr;
-        OSMutexPend(&hm_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
-        if (mutexErr.Code)
-            EFM_ASSERT(false);
+        railgun_fired += 1;
 
-        // TODO
+        // RTOS_ERR mutexErr;
+        // OSMutexPend(&hm_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+        // if (mutexErr.Code)
+        //     EFM_ASSERT(false);
 
-        OSMutexPost(&hm_mutex, OS_OPT_POST_NONE, &mutexErr);
-        if (mutexErr.Code)
-            EFM_ASSERT(false);
+        // // TODO
+
+        // OSMutexPost(&hm_mutex, OS_OPT_POST_NONE, &mutexErr);
+        // if (mutexErr.Code)
+        //     EFM_ASSERT(false);
         return true;
     }
     return false;

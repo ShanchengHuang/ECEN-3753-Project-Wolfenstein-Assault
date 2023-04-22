@@ -6,6 +6,39 @@
 
 ![Task diagram](/screenshot/report/ECEN-3753-Project-Wolfenstein-Assault.png)
 
+1. Start
+    |
+2. Initialize System Clock, GPIO, and other peripherals
+    |
+3. Initialize the LCD screen and related components
+    |
+4. Draw the side boundaries of the game area
+    |
+5. Enter the main loop
+    |        
+6.  Update the game state (move satchel, platform, and railgun)
+    |    |--> 6.1 Move satchel based on its velocity
+    |    |--> 6.2 Update platform position based on user input
+    |    |--> 6.3 Calculate and update railgun angle based on satchel position
+    |
+7.  Check for game events (collisions, game over, or paused)
+    |    |--> 7.1 Check for satchel collisions with boundaries or railgun
+    |    |--> 7.2 Check for game over conditions (e.g., satchel falling off the screen)
+    |    |--> 7.3 Handle pause/resume game events
+    |
+8.  Draw the game elements on the LCD screen
+    |    |--> 8.1 Draw the platform and railgun
+    |    |--> 8.2 Draw the satchel as a square
+    |    |--> 8.3 Draw any other game elements (e.g., scores or indicators)
+    |    |--> 8.4 Update the LCD display
+    |
+9.  Wait for a predefined time period before updating the game state
+    |
+10. Repeat steps 6 through 9 until the game is stopped or the user quits
+    |
+11. End
+
+
 
 ## Test Plan and results (Week4 updated)
 
