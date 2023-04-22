@@ -15,46 +15,66 @@ void checkCollisions();
 
 void Physics_Task(void *p_arg)
 {
-	/* Use argument. */
+
+	RTOS_ERR semErr;
+	RTOS_ERR mutexErr;
 	(void)&p_arg;
-	RTOS_ERR err;
 
-	while (DEF_TRUE)
+	while (1)
 	{
+		OSSemPend(&physics_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
+		if (semErr.Code)
+			EFM_ASSERT(false);
 
-		float deltaTime = (float)default_config.tau_physics / 1000.0f;
-
+		OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
 		
-		// Delay for TauPhysics milliseconds before next update
-		OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
+		update_platform(&platform_data);
 
-		// Lock the PhysicsMutex before accessing shared data
-		OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+		OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
 
-		// Read the CapSense force value from the shared data
-		int32_t capSenseForce = sharedData.capSenseForce;
-
-		// Update platform force based on CapSense input
-		updatePlatformForce(capSenseForce);
-
-		// Update platform position
-		updatePlatformPosition(deltaTime);
-
-		// Update satchel charges
-		updateSatchelCharges(deltaTime);
-
-		// Update rail gun shots
-		updateRailGunShots(deltaTime);
-
-		// Check for collisions
-		checkCollisions();
-
-		// Update the shared data with the new platform position and other relevant data
-		// ... (update sharedData properties here) ...
-
-		// Unlock the PhysicsMutex
-		OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
 	}
+	// /* Use argument. */
+	// RTOS_ERR err;
+
+	// while (DEF_TRUE)
+	// {
+
+	// 	float deltaTime = (float)default_config.tau_physics / 1000.0f;
+
+	// 	// Delay for TauPhysics milliseconds before next update
+	// 	OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
+
+	// 	// Lock the PhysicsMutex before accessing shared data
+	// 	OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+
+	// 	// Read the CapSense force value from the shared data
+	// 	int32_t capSenseForce = sharedData.capSenseForce;
+
+	// 	// Update platform force based on CapSense input
+	// 	updatePlatformForce(capSenseForce);
+
+	// 	// Update platform position
+	// 	updatePlatformPosition(deltaTime);
+
+	// 	// Update satchel charges
+	// 	updateSatchelCharges(deltaTime);
+
+	// 	// Update rail gun shots
+	// 	updateRailGunShots(deltaTime);
+
+	// 	// Check for collisions
+	// 	checkCollisions();
+
+	// 	// Update the shared data with the new platform position and other relevant data
+	// 	// ... (update sharedData properties here) ...
+
+	// 	// Unlock the PhysicsMutex
+	// 	OSMutexPost(&PhysicsMutex, OS_OPT_POST_NONE, &err);
+	// }
 }
 
 void Physics_Task_Create()
@@ -95,33 +115,47 @@ void updatePlatformForce()
 	applyForceToPlatform(force);
 }
 
-void update_platform(SharedData * shared_data) {
-  shared_data->xPos += shared_data->xVel * PHYSICS_DELTA;
-  shared_data->xVel += shared_data->capSenseForce * PHYSICS_DELTA;
+void update_platform(SharedData *shared_data)
+{
+	shared_data->xPos += shared_data->xVel * PHYSICS_DELTA;
+	shared_data->xVel += shared_data->capSenseForce * PHYSICS_DELTA;
 
-  float half_platform_length = default_config.platform.length / 2;
+	float half_platform_length = default_config.platform.length / 2;
 
-  if ((shared_data->xPos - half_platform_length) < CANYON_START) {
-      if (shared_data->xVel < (-1 * default_config.platform.max_platform_bounce_speed)) {
-          game_over("Too Fast");
-      } else if (PLATFORM_BOUNCE_ENABLED) {
-          shared_data->capSenseForce = 0;
-          shared_data->xVel = fabs(shared_data->xVel);
-      } else {
-          shared_data->capSenseForce = 0;
-          shared_data->xVel = 0;
-          shared_data->xPos = CANYON_START + half_platform_length;
-      }
-  } else if ((shared_data->xPos + half_platform_length) > CANYON_END) {
-      if (shared_data->xVel > default_config.platform.max_platform_bounce_speed) {
-          game_over("Too Fast");
-      } else if (PLATFORM_BOUNCE_ENABLED) {
-          shared_data->capSenseForce = 0;
-          shared_data->xVel = -1 * fabs(shared_data->xVel);
-      } else {
-          shared_data->capSenseForce = 0;
-          shared_data->xVel = 0;
-          shared_data->xPos = CANYON_END - half_platform_length;
-      }
-  }
+	if ((shared_data->xPos - half_platform_length) < CANYON_START)
+	{
+		if (shared_data->xVel < (-1 * default_config.platform.max_platform_bounce_speed))
+		{
+			game_over("Too Fast");
+		}
+		else if (PLATFORM_BOUNCE_ENABLED)
+		{
+			shared_data->capSenseForce = 0;
+			shared_data->xVel = fabs(shared_data->xVel);
+		}
+		else
+		{
+			shared_data->capSenseForce = 0;
+			shared_data->xVel = 0;
+			shared_data->xPos = CANYON_START + half_platform_length;
+		}
+	}
+	else if ((shared_data->xPos + half_platform_length) > CANYON_END)
+	{
+		if (shared_data->xVel > default_config.platform.max_platform_bounce_speed)
+		{
+			game_over("Too Fast");
+		}
+		else if (PLATFORM_BOUNCE_ENABLED)
+		{
+			shared_data->capSenseForce = 0;
+			shared_data->xVel = -1 * fabs(shared_data->xVel);
+		}
+		else
+		{
+			shared_data->capSenseForce = 0;
+			shared_data->xVel = 0;
+			shared_data->xPos = CANYON_END - half_platform_length;
+		}
+	}
 }

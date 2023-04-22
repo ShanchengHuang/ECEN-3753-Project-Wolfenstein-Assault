@@ -19,11 +19,13 @@ void railgun_task_create(void)
 {
     RTOS_ERR semErr;
     RTOS_ERR tskErr;
+
     OSSemCreate(
         &railgun_semaphore,
         "railgun semaphore",
         0,
         &semErr);
+
     OSTaskCreate(
         &railgunTCB,         /* Pointer to the task's TCB.  */
         "railgun Task.",     /* Name to help debugging.     */
@@ -42,11 +44,29 @@ void railgun_task_create(void)
         EFM_ASSERT(false);
 }
 
-if (railgun_fired) {
-  RTOS_ERR mutex_err;
-  OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutex_err);
-  draw_laser(shotX, shotY);
-  OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutex_err);
+void railgun_task(void)
+{
+    RTOS_ERR semErr;
+    RTOS_ERR mutexErr;
+    while (1)
+    {
+        OSSemPend(&railgun_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
+        if (semErr.Code)
+            EFM_ASSERT(false);
+        // TODO check railgun count, if good, decrement and pend hm mutex and respawn it
+        int lowestIdx = 0;
+        int lowestHeight = 0; // lowest is highest y
+
+        shoot_railgun(lowestIdx);
+
+        if (railgun_fired)
+        {
+            RTOS_ERR mutex_err;
+            OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutex_err);
+            draw_laser(shotX, shotY);
+            OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutex_err);
+        }
+    }
 }
 
 bool shoot_railgun(int idx)
@@ -63,7 +83,7 @@ bool shoot_railgun(int idx)
         if (mutexErr.Code)
             EFM_ASSERT(false);
 
-        generate_hm(idx);
+        // TODO
 
         OSMutexPost(&hm_mutex, OS_OPT_POST_NONE, &mutexErr);
         if (mutexErr.Code)
@@ -71,28 +91,4 @@ bool shoot_railgun(int idx)
         return true;
     }
     return false;
-}
-
-void railgun_task(void)
-{
-    RTOS_ERR semErr;
-    RTOS_ERR mutexErr;
-    while (1)
-    {
-        OSSemPend(&railgun_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
-        if (semErr.Code)
-            EFM_ASSERT(false);
-        // TODO check railgun count, if good, decrement and pend hm mutex and respawn it
-        int lowestIdx = 0;
-        int lowestHeight = 0; // lowest is highest y
-        for (int i = 0; i < HM_COUNT; i++)
-        {
-            if (lowestHeight < HMs[i].y)
-            {
-                lowestHeight = HMs[i].y;
-                lowestIdx = i;
-            }
-        }
-        shoot_railgun(lowestIdx);
-    }
 }

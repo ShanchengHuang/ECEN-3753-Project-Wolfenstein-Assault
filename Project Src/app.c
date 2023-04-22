@@ -42,14 +42,13 @@ void app_init(void)
 	// Initialize our capactive touch sensor driver!
 	CAPSENSE_Init();
 
+	railgun_task_create():
+
 	// Initialize our LCD system
 	LCD_init();
 
 	// Init all the flag mutex sem
 	OSFlag_Init();
-
-	// Creat all task here:
-	// Input task:
 	Button_Task_Create();
 	CapSensense_Task_Create();
 	// Physics taks:
