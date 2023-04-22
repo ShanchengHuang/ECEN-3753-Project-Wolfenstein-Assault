@@ -280,7 +280,7 @@ void LCDOutput(void *p_arg)
 
 		/* Draw text on the memory lcd display*/
 		GLIB_drawStringOnLine(&glibContext,
-							  "Welcome to...\n*Holtzman Pong**!",
+							  "Welcome to...\n**Wolfenstein Assault**!",
 							  0,
 							  GLIB_ALIGN_LEFT,
 							  5,
@@ -419,126 +419,7 @@ void LCDOutput(void *p_arg)
 
 	void draw_game_stopped()
 	{
-		char state_string[14];
-		sprintf(state_string, gameState == GAME_OVER ? "Game Over" : "Holtzman Pong");
-		char difficulty_string[14];
-		char bounce_string[14];
-		char start_string[8];
-		char cannon_string[18];
-		char score_string[9];
-		char hs_string[20];
-		switch (difficulty)
-		{
-		case EASY:
-			sprintf(difficulty_string, "%sLevel: Easy", cursor_pos == 0 ? ">" : " ");
-			break;
-		case MEDIUM:
-			sprintf(difficulty_string, "%sLevel: Medium", cursor_pos == 0 ? ">" : " ");
-			break;
-		case HARD:
-			sprintf(difficulty_string, "%sLevel: Hard", cursor_pos == 0 ? ">" : " ");
-			break;
-		case INSANE:
-			sprintf(difficulty_string, "%sLevel: Insane", cursor_pos == 0 ? ">" : " ");
-			break;
-		default:
-			EFM_ASSERT(false);
-			break;
-		}
-		if (PLATFORM_BOUNCE_ENABLED)
-		{
-			sprintf(bounce_string, "%sBounce:On", cursor_pos == 1 ? ">" : " ");
-		}
-		else
-		{
-			sprintf(bounce_string, "%sBounce:Off", cursor_pos == 1 ? ">" : " ");
-		}
-		if (auto_cannon)
-		{
-			sprintf(cannon_string, "%sAuto Cannon:On", cursor_pos == 2 ? ">" : " ");
-		}
-		else
-		{
-			sprintf(cannon_string, "%sAuto Cannon:Off", cursor_pos == 2 ? ">" : " ");
-		}
-		if (cursor_pos == 3)
-		{
-			sprintf(start_string, ">Start!");
-		}
-		else
-		{
-			sprintf(start_string, "Start!");
-		}
-		if (gameState == GAME_OVER)
-		{
-			sprintf(score_string, "Score: %d", score);
-			sprintf(hs_string, "High Score: %d", high_score);
-			GLIB_drawStringOnLine(
-				&glibContext,
-				score_string,
-				0,
-				GLIB_ALIGN_LEFT,
-				0,
-				0,
-				true);
-			GLIB_drawStringOnLine(
-				&glibContext,
-				hs_string,
-				1,
-				GLIB_ALIGN_LEFT,
-				0,
-				0,
-				true);
-		}
-
-		GLIB_drawStringOnLine(
-			&glibContext,
-			state_string,
-			3,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
-		GLIB_drawStringOnLine(
-			&glibContext,
-			death_cause,
-			4,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
-		GLIB_drawStringOnLine(
-			&glibContext,
-			difficulty_string,
-			5,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
-		GLIB_drawStringOnLine(
-			&glibContext,
-			bounce_string,
-			6,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
-		GLIB_drawStringOnLine(
-			&glibContext,
-			cannon_string,
-			7,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
-		GLIB_drawStringOnLine(
-			&glibContext,
-			start_string,
-			8,
-			GLIB_ALIGN_CENTER,
-			0,
-			0,
-			true);
+		
 	}
 
 	void lcd_task()
