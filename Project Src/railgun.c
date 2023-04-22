@@ -41,6 +41,14 @@ void railgun_task_create(void)
     if (semErr.Code || tskErr.Code)
         EFM_ASSERT(false);
 }
+
+if (railgun_fired) {
+  RTOS_ERR mutex_err;
+  OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutex_err);
+  draw_laser(shotX, shotY);
+  OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutex_err);
+}
+
 bool shoot_railgun(int idx)
 {
     if (railgun_charges > 0)
