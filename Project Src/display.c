@@ -172,7 +172,7 @@ void LCDOutput(void *p_arg)
 #include "lcd.h"
 #include "glib.h"
 #include "dmd.h"
-#include "sl_board_control.h"S
+#include "sl_board_control.h"
 #include "math.h"
 #include "string.h"
 
