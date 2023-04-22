@@ -37,6 +37,22 @@ static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 // Timer
 static OS_TCB Physics_TaskTCB;
 
+
+uint8_t railgun_shots = 5;
+OS_SEM railgun_semaphore;
+bool auto_cannon = true;
+int railgun_fired = 0;
+int shotX;
+int shotY;
+
+static OS_TCB railgunTCB;
+static CPU_STK railgunSTK[STACK_SIZES];
+
+extern uint8_t PLATFORM_COUNT;
+extern struct PlatformData Platforms[];
+extern OS_MUTEX platform_mutex;
+extern int score;
+
 // TODO: create queue for all the physics var
 //***********************************************************************************
 // function prototypes
