@@ -12,7 +12,7 @@ static CPU_STK railgunSTK[STACK_SIZES];
 
 extern uint8_t HM_COUNT;
 extern struct HoltzmanData HMs[];
-extern OS_MUTEX hm_mutex;
+extern OS_MUTEX sc_mutex;
 extern int score;
 
 void railgun_task_create(void)
@@ -81,13 +81,13 @@ bool shoot_railgun(int idx)
         railgun_fired += 1;
 
         // RTOS_ERR mutexErr;
-        // OSMutexPend(&hm_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+        // OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
         // if (mutexErr.Code)
         //     EFM_ASSERT(false);
 
         // // TODO
 
-        // OSMutexPost(&hm_mutex, OS_OPT_POST_NONE, &mutexErr);
+        // OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutexErr);
         // if (mutexErr.Code)
         //     EFM_ASSERT(false);
         return true;

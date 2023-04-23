@@ -17,12 +17,14 @@
 #include "gpio.h"
 #include "capsense.h"
 
-// For memcpy()
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+#include"constant.h"
+#include"platform.h"
 
 //***********************************************************************************
 // global variables
@@ -59,5 +61,12 @@ extern int score;
 //***********************************************************************************
 void Physics_Task(void *p_arg);
 void Physics_Task_Create();
+
+
+void applyForceToPlatform(int32_t force);
+void updatePlatformPosition(float deltaTime);
+void updateSatchelCharges(float deltaTime);
+void updateRailGunShots(float deltaTime);
+void checkCollisions();
 
 #endif /* PHYSICS_H_ */

@@ -1,11 +1,11 @@
 
 #include "platform.h"
-#include "capsense.h"
 
 #define PLATFORM_PERIOD 1
 
 int PLATFORM_BOUNCE_ENABLED;
-int MAX_SPEED = 100;
+int MAX_SPEED = ConfigurationData.platform.max_platform_bounce_speed; // Update this line
+
 OS_TMR platform_timer;
 OS_MUTEX platform_mutex;
 
@@ -33,15 +33,18 @@ void platform_timer_cb(void)
 
 void platform_task_create(void)
 {
+    // Declare error variables for semaphore
     RTOS_ERR semErr;
     RTOS_ERR tmrErr;
     RTOS_ERR tskErr;
     RTOS_ERR mutexErr;
+    // Create a semaphore for the platform task
     OSSemCreate(
         &platform_semaphore,
         "platform Semaphore",
         0,
         &semErr);
+    // Create a periodic timer with the specified period and callback function
     OSTmrCreate(
         &platform_timer,
         "platform timer",
@@ -51,6 +54,7 @@ void platform_task_create(void)
         &platform_timer_cb,
         NULL,
         &tmrErr);
+    // Create the platform task with the specified parameters
     OSTaskCreate(
         &platformTCB,              /* Pointer to the task's TCB.  */
         "platform Task.",          /* Name to help debugging.     */
@@ -65,10 +69,12 @@ void platform_task_create(void)
         DEF_NULL,                  /* External TCB data.          */
         OS_OPT_TASK_STK_CHK,       /* Task options.               */
         &tskErr);
+    // Create a mutex for the platform task
     OSMutexCreate(&platform_mutex, "platform_mutex", &mutexErr);
+    // Check for errors in semaphore, timer, task, and mutex creation
     if (semErr.Code || tmrErr.Code || tskErr.Code || mutexErr.Code)
         EFM_ASSERT(false);
-
+    // Initialize platform bounce flag and platform data variables
     PLATFORM_BOUNCE_ENABLED = false;
     platform_data.ax = 0;
     platform_data.vx = 0;
@@ -165,6 +171,7 @@ void platform_task(void)
         }
 
         OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
+
         if (mutexErr.Code)
             EFM_ASSERT(false);
     }

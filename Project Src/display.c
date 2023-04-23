@@ -359,7 +359,7 @@ void LCDOutput(void *p_arg)
 		int lowestY = 0;
 		int lowestX = 0;
 		// draw the hm
-		OSMutexPend(&hm_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutErr);
+		OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutErr);
 		if (mutErr.Code)
 			EFM_ASSERT(false);
 		for (int i = 0; i < HM_COUNT; i++)
@@ -371,7 +371,7 @@ void LCDOutput(void *p_arg)
 				lowestX = (int)HMs[i].x;
 			}
 		}
-		OSMutexPost(&hm_mutex, OS_OPT_POST_NONE, &mutErr);
+		OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutErr);
 		if (mutErr.Code)
 			EFM_ASSERT(false);
 

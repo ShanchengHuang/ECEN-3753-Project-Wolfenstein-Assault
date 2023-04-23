@@ -1,46 +1,71 @@
 // Configuration Data Structure
 #include <stdint.h>
-typedef struct {
+
+#define STACK_SIZES 256u
+
+#define SCREEN_PIXELS 128u
+#define SCREEN_MM 23.04
+#define CANYON_SIZE_PIXELS 118
+#define CANYON_SIZE_MM (CANYON_SIZE_PIXELS * SCREEN_MM / SCREEN_PIXELS)
+#define NORMAL_PRIORITY 21
+#define BELOW_NORMAL_PRIORITY (NORMAL_PRIORITY + 1)
+#define ABOVE_NORMAL_PRIORITY (NORMAL_PRIORITY - 1)
+#define CANYON_START ((SCREEN_PIXELS - CANYON_SIZE_PIXELS) / 2)
+#define CANYON_END (SCREEN_PIXELS - CANYON_START)
+
+// Declaration of the external ConfigurationData variable
+extern GameConfig ConfigurationData;
+
+typedef struct
+{
     uint32_t data_structure_version;
     uint32_t tau_physics;
     uint32_t tau_display;
     uint32_t tau_slider;
     uint32_t canyon_size;
-    struct {
+    struct
+    {
         uint32_t castle_height;
         uint32_t foundation_hits_required;
         uint32_t foundation_depth;
     } wolfenstein;
-    struct {
+    struct
+    {
         uint32_t limiting_method;
         uint32_t display_diameter;
-        union {
+        union
+        {
             uint32_t tau_throw;
             uint32_t max_num_in_flight;
         };
     } satchel_charges;
-    struct {
+    struct
+    {
         uint32_t max_force;
         uint32_t mass;
         uint32_t length;
         uint32_t max_platform_bounce_speed;
     } platform;
-    struct {
+    struct
+    {
         uint32_t effective_range;
         uint32_t activation_energy;
     } shield;
-    struct {
+    struct
+    {
         uint32_t elevation_angle;
         uint32_t shot_mass;
         uint32_t shot_display_diameter;
     } railgun;
-    struct {
+    struct
+    {
         uint32_t energy_storage;
         uint32_t power;
     } generator;
 } GameConfig;
 
-typedef struct {
+typedef struct
+{
     uint8_t button_id;    // Button ID (0 for Button0, 1 for Button1, etc.)
     uint8_t button_state; // Button state (0 for released, 1 for pressed)
 } button_event;
@@ -70,8 +95,7 @@ GameConfig default_config = {
         .foundation_depth = 5000,
     },
     .satchel_charges = {
-        .limiting_method = 0,
-        .display_diameter = 10,
+        .limiting_method = 0, .display_diameter = 10,
         .tau_throw = 0, // Union with MaxNumInFlight
     },
     .platform = {

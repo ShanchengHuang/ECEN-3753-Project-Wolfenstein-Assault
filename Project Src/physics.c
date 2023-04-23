@@ -7,11 +7,42 @@
 
 #include "physics.h"
 
-void applyForceToPlatform(int32_t force);
-void updatePlatformPosition(float deltaTime);
-void updateSatchelCharges(float deltaTime);
-void updateRailGunShots(float deltaTime);
-void checkCollisions();
+
+GameConfig ConfigurationData = {
+	.data_structure_version = 1,
+	.tau_physics = 50,
+	.tau_display = 150,
+	.tau_slider = 100,
+	.canyon_size = 100000,
+	.wolfenstein = {
+		.castle_height = 5000,
+		.foundation_hits_required = 2,
+		.foundation_depth = 5000,
+	},
+	.satchel_charges = {
+		.limiting_method = 0, .display_diameter = 10,
+		.tau_throw = 0, // or .max_num_in_flight = 0, depending on the limiting method
+	},
+	.platform = {
+		.max_force = 20000000,
+		.mass = 100,
+		.length = 10000,
+		.max_platform_bounce_speed = 50000,
+	},
+	.shield = {
+		.effective_range = 15000,
+		.activation_energy = 30000,
+	},
+	.railgun = {
+		.elevation_angle = 800,
+		.shot_mass = 50,
+		.shot_display_diameter = 5,
+	},
+	.generator = {
+		.energy_storage = 50000,
+		.power = 20000,
+	},
+};
 
 void Physics_Task(void *p_arg)
 {
@@ -22,52 +53,52 @@ void Physics_Task(void *p_arg)
 
 	while (1)
 	{
-		OSSemPend(&physics_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
-		if (semErr.Code)
-			EFM_ASSERT(false);
+		// Delay for TauPhysics milliseconds before next update
+		OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
+
+		// OSSemPend(&physics_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
+		// if (semErr.Code)
+		// 	EFM_ASSERT(false);
 
 		OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
-		
+
 		if (mutexErr.Code)
 			EFM_ASSERT(false);
 		update_platform(&platform_data);
 
 		OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
-		if (mutexErr.Code)
-			EFM_ASSERT(false);
 
+		// if (mutexErr.Code)
+		// 	EFM_ASSERT(false);
+
+		// Update satchel charges
+		updateSatchelCharges(deltaTime);
+
+		// Update rail gun shots
+		updateRailGunShots(deltaTime);
+
+		// Check for collisions and endgame
+		checkCollisions();
+
+		// float deltaTime = (float)default_config.tau_physics / 1000.0f;
+
+		// // Lock the PhysicsMutex before accessing shared data
+		// OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+
+		// // Read the CapSense force value from the shared data
+		// int32_t capSenseForce = sharedData.capSenseForce;
+
+		// // Update platform force based on CapSense input
+		// updatePlatformForce(capSenseForce);
+
+		// // Update platform position
+		// updatePlatformPosition(deltaTime);
 	}
 	// /* Use argument. */
 	// RTOS_ERR err;
 
 	// while (DEF_TRUE)
 	// {
-
-	// 	float deltaTime = (float)default_config.tau_physics / 1000.0f;
-
-	// 	// Delay for TauPhysics milliseconds before next update
-	// 	OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
-
-	// 	// Lock the PhysicsMutex before accessing shared data
-	// 	OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
-
-	// 	// Read the CapSense force value from the shared data
-	// 	int32_t capSenseForce = sharedData.capSenseForce;
-
-	// 	// Update platform force based on CapSense input
-	// 	updatePlatformForce(capSenseForce);
-
-	// 	// Update platform position
-	// 	updatePlatformPosition(deltaTime);
-
-	// 	// Update satchel charges
-	// 	updateSatchelCharges(deltaTime);
-
-	// 	// Update rail gun shots
-	// 	updateRailGunShots(deltaTime);
-
-	// 	// Check for collisions
-	// 	checkCollisions();
 
 	// 	// Update the shared data with the new platform position and other relevant data
 	// 	// ... (update sharedData properties here) ...
@@ -103,17 +134,17 @@ void Physics_Task_Create()
 
 // ... other code ...
 
-void updatePlatformForce()
-{
-	// Obtain the slider position from the CapSense input
-	uint8_t sliderPosition = CAPSENSE_getSliderPosition();
+// void updatePlatformForce()
+// {
+// 	// Obtain the slider position from the CapSense input
+// 	uint8_t sliderPosition = CAPSENSE_getSliderPosition();
 
-	// Calculate the force based on the slider position
-	int32_t force = ConfigurationData.Platform.MaxForce * (sliderPosition - 128) / 128;
+// 	// Calculate the force based on the slider position
+// 	int32_t force = ConfigurationData.Platform.MaxForce * (sliderPosition - 128) / 128;
 
-	// Apply the force to the platform
-	applyForceToPlatform(force);
-}
+// 	// Apply the force to the platform
+// 	applyForceToPlatform(force);
+// }
 
 void update_platform(SharedData *shared_data)
 {
@@ -126,7 +157,7 @@ void update_platform(SharedData *shared_data)
 	{
 		if (shared_data->xVel < (-1 * default_config.platform.max_platform_bounce_speed))
 		{
-			game_over("Too Fast");
+			// TODO game over
 		}
 		else if (PLATFORM_BOUNCE_ENABLED)
 		{
@@ -144,7 +175,7 @@ void update_platform(SharedData *shared_data)
 	{
 		if (shared_data->xVel > default_config.platform.max_platform_bounce_speed)
 		{
-			game_over("Too Fast");
+			// TODO game over
 		}
 		else if (PLATFORM_BOUNCE_ENABLED)
 		{
@@ -158,4 +189,18 @@ void update_platform(SharedData *shared_data)
 			shared_data->xPos = CANYON_END - half_platform_length;
 		}
 	}
+}
+
+void updateSatchelCharges(deltaTime)
+{
+}
+
+// Update rail gun shots
+void updateRailGunShots(deltaTime)
+{
+}
+
+// Check for collisions and endgame
+void checkCollisions()
+{
 }
