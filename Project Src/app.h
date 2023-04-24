@@ -56,8 +56,8 @@ static volatile bool btn1 = 0;
 // #define RSET_DIRECTIONFLAG 0b1000
 
 /* Define flag bits */
-#define LED0  (1 << 0)
-#define LED1  (1 << 1)
+#define LED0 (1 << 0)
+#define LED1 (1 << 1)
 
 #define UPDATEFLAG1 1
 #define UPDATEFLAG2 2
@@ -75,6 +75,17 @@ static OS_FLAG_GRP AlertFlag;
 // Define the Mutex
 static OS_MUTEX BTNMutex;
 static OS_MUTEX PhysicsMutex;
+
+// Game m
+OS_FLAG_GRP game_state;
+OS_Q btn_q;
+enum game_state_e gameState = PREGAME;
+enum difficulty_e difficulty;
+int cursor_pos = 0;
+char death_cause[32] = "";
+int score = 0;
+int high_score = 0;
+int lives = 3;
 
 //***********************************************************************************
 // function prototypes
@@ -120,6 +131,12 @@ void button_event_fifo_write(ButtonEventFifo *fifo, int button_id,
 
 ButtonEvent button_event_fifo_read(ButtonEventFifo *fifo);
 
+
+// Added Idle task();
+void IdleTask_Create();
+void IdleTask(void *p_arg);
+
+
 void OSFlag_Init(void);
 
 void GPIO_EVEN_IRQHandler(void);
@@ -146,9 +163,6 @@ void read_capsense(void);
 int read_capsense2(void);
 void write_led(void);
 
-// Added Idle task();
-void IdleTask_Create();
-void IdleTask(void *p_arg);
 
 void LED_Output_Task_Init(void);
 
