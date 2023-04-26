@@ -42,17 +42,8 @@ void app_init(void)
 	// Initialize our capactive touch sensor driver!
 	CAPSENSE_Init();
 
-	railgun_task_create();
-
-	// Initialize our LCD system
-	LCD_init();
-
-	// Init all the flag mutex sem
-	// OSFlag_Init();
-	// Button_Task_Create();
-	// CapSensense_Task_Create();
-	// Physics taks:
-	railgun_task_create();
+	// Initialize game element:
+	railgun_task_create(); // it should has both Shild and Railgun task
 	Physics_Task_Create();
 	platform_task_create();
 
@@ -60,9 +51,11 @@ void app_init(void)
 	LCDOutput_Create();
 	LedOutput_Create();
 
+	// Idle task:
 	IdleTask_Create();
 
-	// game_management
+	// Game_management:
+	Game_management_task_create();
 }
 
 void LCD_init()
@@ -89,14 +82,14 @@ void LCD_init()
 	/* Use Normal font */
 	GLIB_setFont(&glibContext, (GLIB_Font_t *)&GLIB_FontNormal8x8);
 
-	/* Draw text on the memory lcd display*/
-	GLIB_drawStringOnLine(&glibContext, "Welcome to...\n**The final Labs**!", 0,
-						  GLIB_ALIGN_LEFT, 5, 5,
+	// Game start up
+	GLIB_drawStringOnLine(&glibContext, "   Wolfenstein\n     Assault", 1,
+						  GLIB_ALIGN_LEFT, 0, 10,
 						  true);
 
 	/* Draw text on the memory lcd display*/
-	GLIB_drawStringOnLine(&glibContext, "Wolfenstein Assault\n BY Jack Huang!", 2,
-						  GLIB_ALIGN_LEFT, 5, 5,
+	GLIB_drawStringOnLine(&glibContext, " Press any key \n  To start", 1,
+						  GLIB_ALIGN_LEFT, 0, 50,
 						  true);
 
 	//	SlightLeftTurnArrow(&glibContext);
@@ -109,9 +102,12 @@ void game_over(char cause[])
 	RTOS_ERR flgErr;
 	RTOS_ERR tmrErr;
 	gameState = GAME_OVER;
+
 	cursor_pos = 0;
+
 	if (score > high_score)
 		high_score = score;
+	// TODO Print the Endgame
 	strcpy(death_cause, cause);
 	for (int i = 0; i < 3; i++)
 	{
@@ -122,7 +118,10 @@ void game_over(char cause[])
 				EFM_ASSERT(false);
 		}
 	}
+
 	turn_off_led();
+
+	// Stop all the timer and flag
 	OSTmrStop(&physics_timer, OS_OPT_TMR_NONE, NULL, &tmrErr);
 	if (tmrErr.Code)
 		EFM_ASSERT(false);
@@ -142,7 +141,7 @@ void decrement_life(void)
 	lives--;
 	if (lives == 0)
 	{
-		game_over("HM Hit");
+		game_over("Satchel has exploded");
 	}
 }
 
@@ -157,27 +156,33 @@ void start_game()
 	laser_charges = 5;
 	lives = 3;
 	score = 0;
-	hm_init();
+
+	satchel_init();
 	gameState = IN_PROGRESS;
 
+	// Timer and
 	OSTmrStart(&ledTmrs[0], &tmrErr);
 	if (tmrErr.Code != RTOS_ERR_NONE)
 		EFM_ASSERT(false);
 	OSTmrStart(&physics_timer, &tmrErr);
+
 	OSFlagPost(&game_state, IN_PROGRESS, OS_OPT_POST_FLAG_SET, &flgErr);
 	if (tmrErr.Code != RTOS_ERR_NONE || flgErr.Code)
 		EFM_ASSERT(false);
+
 	OSTmrStart(&platform_timer, &tmrErr);
+
 	OSFlagPost(&game_state, PREGAME | GAME_OVER, OS_OPT_POST_FLAG_CLR, &flgErr);
 	if (flgErr.Code || tmrErr.Code)
 		EFM_ASSERT(false);
 }
 
-void game_management_task_create(void)
+void Game_management_task_create(void)
 {
 	RTOS_ERR tskErr;
 	RTOS_ERR flgErr;
 	RTOS_ERR qErr;
+
 	OSTaskCreate(
 		&gameTCB,			   /* Pointer to the task's TCB.  */
 		"game Task.",		   /* Name to help debugging.     */
@@ -204,37 +209,14 @@ void game_management_task_create(void)
 		"Q for managing game state",
 		4,
 		&qErr);
-		
+
 	if (flgErr.Code || tskErr.Code || qErr.Code)
 		EFM_ASSERT(false);
 }
 
 void update_difficulty(void)
 {
-	switch (difficulty)
-	{
-	case EASY:
-		difficulty = MEDIUM;
-		MAX_SPEED = 50;
-		break;
-	case MEDIUM:
-		difficulty = HARD;
-		HM_COUNT = 2;
-		break;
-	case HARD:
-		difficulty = INSANE;
-		GRAVITY_PIXELS = 30;
-		break;
-	case INSANE:
-		difficulty = EASY;
-		HM_COUNT = 1;
-		MAX_SPEED = 100;
-		GRAVITY_PIXELS = 20;
-		break;
-	default:
-		EFM_ASSERT(false);
-		break;
-	}
+	// TODO, adding it when I have time
 }
 
 void game_management_task(void)
@@ -247,527 +229,19 @@ void game_management_task(void)
 	while (1)
 	{
 		while (OSFlagPend(&game_state, PREGAME | GAME_OVER, 0, OS_OPT_PEND_FLAG_SET_ANY, NULL, &flgErr) != IN_PROGRESS)
-		{
-			btnMsg = OSQPend(&btn_q, 0, OS_OPT_PEND_BLOCKING, &size, NULL, &qErr);
-			if (qErr.Code)
-				EFM_ASSERT(false);
-			if (*btnMsg == 1)
-			{
-				cursor_pos = (cursor_pos + 1) % 4;
-			}
-			else
-			{
-				switch (cursor_pos)
-				{
-				case 0:
-					update_difficulty();
-					break;
-				case 1:
-					PLATFORM_BOUNCE_ENABLED = !PLATFORM_BOUNCE_ENABLED;
-					break;
-				case 2:
-					auto_cannon = !auto_cannon;
-					break;
-				case 3:
-					start_game();
-					break;
-				default:
-					EFM_ASSERT(false);
-					break;
-				}
-			}
-			free(btnMsg);
+		{ // When getting btn feaback star game
+
+			// TODO adding semaphore
+			OSQPend(&btn_q, 0, OS_OPT_PEND_BLOCKING, &size, NULL, &qErr);
+
+			start_game();
 		}
 	}
 }
 
-//***********************************************************************************
-
-// Flag, Timer, Semaphore Mutex create here
-
-//***********************************************************************************
-// void OSFlag_Init(void)
-// {
-
-// 	RTOS_ERR err;
-
-// 	// Init all the values:
-// 	// btn.button_state = 0;
-// 	// vehicle_speed.decrements = 5;
-// 	// vehicle_speed.increments = 5;
-// 	// vehicle_direction.current_direction = -1;
-
-// 	// Create the event flag group
-// 	OSFlagCreate(&UpdateFlag, "Speed update Flag Group", 0, &err);
-// 	OSFlagCreate(&AlertFlag, "Alert event Group", 0, &err);
-
-// 	// Create the periodic timer for sampling the touch slider
-// 	//	OSTmrCreate(&CapSenseTimer, "CapSense Timer", 0, 1, OS_OPT_TMR_PERIODIC,
-// 	//			&TimerCallback, NULL, &err);
-
-// 	// Create the semaphore
-// 	OSSemCreate(&BTNsemaphore, "Button Semaphore", 0, &err);
-
-// 	// Create the Mutex
-// 	OSMutexCreate(&CapSenseMutex, "CapSense task Mutex", &err);
-// 	OSMutexCreate(&ButtonMutex, "Button task Mutex", &err);
-// 	OSMutexCreate(&PhysicsMutex, "Physics task Mutex", &err);
-
-// 	// Error check
-// 	APP_RTOS_ASSERT_DBG((RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE), 1);
-// }
-
-//***********************************************************************************
-
-// Speed Setpoint Task
-
-//***********************************************************************************
-
-// volatile int button0_state = 0; // 0: released, 1: pressed
-// volatile int button1_state = 0; // 0: released, 1: pressed
-
-// void Speed_Setpoint_Task(void *p_arg)
-// {
-
-// 	(void)&p_arg;
-// 	RTOS_ERR err;
-// 	ButtonEvent event;
-
-// 	while (DEF_TRUE)
-// 	{
-
-// 		// Wait for the semaphore
-// 		OSSemPend(&BTNsemaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-
-// 		// Read button events from the FIFO and check if two pressed at same time
-// 		if (TwoButtonsPressed(&fifo))
-// 		{
-// 			event.button_id = -1;
-// 			event.button_state = -1;
-// 		}
-// 		else
-// 		{
-// 			event = button_event_fifo_read(&fifo);
-// 		}
-
-// 		// Mutex to wirte
-// 		OSMutexPend(&SpeedMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-
-// 		if (event.button_id == 0 && event.button_state)
-// 		{
-// 			vehicle_speed.speed -= vehicle_speed.decrements;
-// 		}
-// 		else if (event.button_id == 1 && event.button_state)
-// 		{
-// 			vehicle_speed.speed += vehicle_speed.increments;
-// 		}
-// 		OSMutexPost(&SpeedMutex, OS_OPT_POST_NONE, &err);
-
-// 		// release flage to the update flag
-// 		OSFlagPost(&UpdateFlag, UPDATEFLAG1, OS_OPT_POST_FLAG_SET, &err);
-
-// 		// Error Check
-// 		APP_RTOS_ASSERT_DBG((RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE), 1);
-// 	}
-// }
-
-// void Speed_Setpoint_Create()
-// {
-
-// 	RTOS_ERR err;
-
-// 	OSTaskCreate(&Speed_SetpointTCB,		  /* Pointer to the task's TCB.  */
-// 				 "Speed_Setpoint_Task.",	  /* Name to help debugging.     */
-// 				 &Speed_Setpoint_Task,		  /* Pointer to the task's code. */
-// 				 DEF_NULL,					  /* Pointer to task's argument. */
-// 				 Speed_Setpoint_PRIO,		  /* Task's priority.            */
-// 				 &Speed_SetpointStk[0],		  /* Pointer to base of stack.   */
-// 				 (Speed_Setpoint_SIZE / 10u), /* Stack limit, from base.     */
-// 				 Speed_Setpoint_SIZE,		  /* Stack size, in CPU_STK.     */
-// 				 10u,						  /* Messages in task queue.     */
-// 				 0u,						  /* Round-Robin time quanta.    */
-// 				 DEF_NULL,					  /* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,		  /* Task options.               */
-// 				 &err);
-
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
-
 // //***********************************************************************************
 
-// // Vehicle Direction Task
-
-// //***********************************************************************************
-
-// void Vehicle_Direction_Task(void *p_arg)
-// {
-
-// 	(void)&p_arg;
-// 	RTOS_ERR err;
-// 	int current_position;
-// 	//	VehicleDirectionData prev_vehicle_direction;
-
-// 	while (DEF_TRUE)
-// 	{
-// 		// Delate for awakened periodically
-// 		OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_HMSM_STRICT, &err);
-
-// 		// Read the current position
-// 		current_position = read_capsense2();
-
-// 		// Mutex to wirte into direction
-// 		OSMutexPend(&DirectMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-
-// 		// if there are changes in direction
-// 		if (current_position != vehicle_direction.current_direction)
-// 		{
-
-// 			vehicle_direction.current_direction = current_position;
-
-// 			// Clear time if dir changes
-// 			vehicle_direction.time_constant = 0;
-
-// 			// Update the number of turns
-// 			if (current_position == 0 || current_position == 1)
-// 			{
-// 				vehicle_direction.left_turns += 1;
-// 			}
-// 			else if (current_position == 2 || current_position == 3)
-// 			{
-// 				vehicle_direction.right_turns += 1;
-// 			}
-
-// 			OSFlagPost(&UpdateFlag, UPDATEFLAG2, OS_OPT_POST_FLAG_SET, &err);
-// 		}
-// 		else if (current_position != -1)
-// 		{
-// 			// no direction changes, and not in straight
-// 			vehicle_direction.time_constant += 1;
-// 		}
-
-// 		OSMutexPost(&DirectMutex, OS_OPT_POST_NONE, &err);
-// 	}
-// }
-
-// void Vehicle_Direction_Create()
-// {
-// 	RTOS_ERR err;
-
-// 	OSTaskCreate(&Vehicle_DirectionTCB,			 /* Pointer to the task's TCB.  */
-// 				 "Vehicle Direction Task.",		 /* Name to help debugging.     */
-// 				 &Vehicle_Direction_Task,		 /* Pointer to the task's code. */
-// 				 DEF_NULL,						 /* Pointer to task's argument. */
-// 				 Vehicle_Direction_PRIO,		 /* Task's priority.            */
-// 				 &Vehicle_DirectionStk[0],		 /* Pointer to base of stack.   */
-// 				 (Vehicle_Direction_SIZE / 10u), /* Stack limit, from base.     */
-// 				 Vehicle_Direction_SIZE,		 /* Stack size, in CPU_STK.     */
-// 				 10u,							 /* Messages in task queue.     */
-// 				 0u,							 /* Round-Robin time quanta.    */
-// 				 DEF_NULL,						 /* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,			 /* Task options.               */
-// 				 &err);
-
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
-
-// //***********************************************************************************
-
-// // Vehicle Monitor Task
-
-// //***********************************************************************************
-
-// void Vehicle_Monitor_Task(void *p_arg)
-// {
-
-// 	/* Use argument. */
-// 	(void)&p_arg;
-
-// 	RTOS_ERR err;
-// 	bool speed_violation;
-// 	bool direction_violation;
-
-// 	while (DEF_TRUE)
-// 	{
-
-// 		OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_HMSM_STRICT, &err);
-
-// 		// Flag pend for update
-// 		OSFlagPend(&UpdateFlag, UPDATEFLAG1 | UPDATEFLAG2, 0,
-// 				   OS_OPT_PEND_FLAG_SET_ANY, NULL, &err);
-
-// 		// Mutex to read
-// 		OSMutexPend(&DirectMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-// 		OSMutexPend(&SpeedMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-
-// 		if (vehicle_direction.time_constant >= TIME_THRESHOLD)
-// 		{
-// 			direction_violation = true;
-// 		}
-// 		else
-// 		{
-// 			direction_violation = false;
-// 		}
-
-// 		// Mutex to read
-
-// 		if (vehicle_speed.speed >= SPEED_THRESHOLD || (vehicle_direction.current_direction != -1 && vehicle_speed.speed >= 45))
-// 		{
-// 			speed_violation = true;
-// 		}
-// 		else
-// 		{
-// 			speed_violation = false;
-// 		}
-
-// 		OSMutexPost(&DirectMutex, OS_OPT_POST_NONE, &err);
-// 		OSMutexPost(&SpeedMutex, OS_OPT_POST_NONE, &err);
-
-// 		//  violation Check
-// 		if (speed_violation)
-// 		{
-// 			OSFlagPost(&AlertFlag, (OS_FLAGS)SPEEDEDFLAG, OS_OPT_POST_FLAG_SET,
-// 					   &err);
-// 		}
-// 		else
-// 		{
-// 			OSFlagPost(&AlertFlag, (OS_FLAGS)RSET_SPEEDEDFLAG,
-// 					   OS_OPT_POST_FLAG_SET, &err);
-// 		}
-
-// 		if (direction_violation)
-// 		{
-// 			OSFlagPost(&AlertFlag, (OS_FLAGS)DIRECTIONFLAG,
-// 					   OS_OPT_POST_FLAG_SET, &err);
-// 		}
-// 		else
-// 		{
-// 			OSFlagPost(&AlertFlag, (OS_FLAGS)RSET_DIRECTIONFLAG,
-// 					   OS_OPT_POST_FLAG_SET, &err);
-// 		}
-
-// 		APP_RTOS_ASSERT_DBG((RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE), 1);
-// 	}
-// }
-
-// void Vehicle_Monitor_Create()
-// {
-// 	RTOS_ERR err;
-
-// 	OSTaskCreate(&Vehicle_MonitorTCB,		   /* Pointer to the task's TCB.  */
-// 				 "Vehicle Monitor Task.",	   /* Name to help debugging.     */
-// 				 &Vehicle_Monitor_Task,		   /* Pointer to the task's code. */
-// 				 DEF_NULL,					   /* Pointer to task's argument. */
-// 				 Vehicle_Monitor_PRIO,		   /* Task's priority.            */
-// 				 &Vehicle_MonitorStk[0],	   /* Pointer to base of stack.   */
-// 				 (Vehicle_Monitor_SIZE / 10u), /* Stack limit, from base.     */
-// 				 Vehicle_Monitor_SIZE,		   /* Stack size, in CPU_STK.     */
-// 				 10u,						   /* Messages in task queue.     */
-// 				 0u,						   /* Round-Robin time quanta.    */
-// 				 DEF_NULL,					   /* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,		   /* Task options.               */
-// 				 &err);
-
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
-
-//***********************************************************************************
-
-// LedOutput
-
-//***********************************************************************************
-
-// void LedOutput(void *p_arg)
-// {
-
-// 	(void)&p_arg;
-// 	RTOS_ERR err;
-// 	OS_FLAGS flags;
-
-// 	while (DEF_TRUE)
-// 	{
-
-// 		flags = OSFlagPend(&AlertFlag,
-// 						   (SPEEDEDFLAG | RSET_SPEEDEDFLAG | DIRECTIONFLAG | RSET_DIRECTIONFLAG), 0,
-// 						   (OS_OPT_PEND_FLAG_SET_ANY + OS_OPT_PEND_FLAG_CONSUME + OS_OPT_PEND_BLOCKING), NULL, &err);
-
-// 		APP_RTOS_ASSERT_DBG((RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE), 1);
-
-// 		// Had to reverse due to the flag
-// 		if (flags & SPEEDEDFLAG)
-// 		{
-// 			// Handle case for FLAG1
-// 			GPIO_PinOutSet(LED0_port, LED0_pin);
-// 		}
-// 		else if (flags & RSET_SPEEDEDFLAG)
-// 		{
-// 			GPIO_PinOutClear(LED0_port, LED0_pin);
-// 		}
-
-// 		if (flags & DIRECTIONFLAG)
-// 		{
-// 			// Handle case for FLAG2
-// 			GPIO_PinOutSet(LED1_port, LED1_pin);
-// 		}
-// 		else if (flags & RSET_DIRECTIONFLAG)
-// 		{
-// 			GPIO_PinOutClear(LED1_port, LED1_pin);
-// 		}
-// 	}
-// }
-
-// void LedOutput_Create()
-// {
-// 	RTOS_ERR err;
-
-// 	OSTaskCreate(&LedOutputTCB,			 /* Pointer to the task's TCB.  */
-// 				 "Led Output Task.",	 /* Name to help debugging.     */
-// 				 &LedOutput,			 /* Pointer to the task's code. */
-// 				 DEF_NULL,				 /* Pointer to task's argument. */
-// 				 LedOutput_PRIO,		 /* Task's priority.            */
-// 				 &LedOutputStk[0],		 /* Pointer to base of stack.   */
-// 				 (LedOutput_SIZE / 10u), /* Stack limit, from base.     */
-// 				 LedOutput_SIZE,		 /* Stack size, in CPU_STK.     */
-// 				 10u,					 /* Messages in task queue.     */
-// 				 0u,					 /* Round-Robin time quanta.    */
-// 				 DEF_NULL,				 /* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,	 /* Task options.               */
-// 				 &err);
-
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
-
-//***********************************************************************************
-
-// LCDOutput
-
-//***********************************************************************************
-
-// void LCDOutput(void *p_arg)
-// {
-
-// 	(void)&p_arg;
-// 	RTOS_ERR err;
-
-// 	VehicleDirectionData current_direction;
-// 	SpeedSetpointData current_speed;
-
-// 	const char *direction_str;
-
-// 	char speed_str[20];
-
-// 	while (DEF_TRUE)
-// 	{
-// 		// delate
-// 		OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_HMSM_STRICT, &err);
-
-// 		// Get the direction
-// 		OSMutexPend(&DirectMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-// 		current_direction = vehicle_direction;
-// 		//		(void) &current_direction;
-// 		switch (vehicle_direction.current_direction)
-// 		{
-// 		case 0:
-// 			direction_str = "Hard Left";
-// 			break;
-// 		case 1:
-// 			direction_str = "Slight Left";
-// 			break;
-// 		case 2:
-// 			direction_str = "Slight Right";
-// 			break;
-// 		case 3:
-// 			direction_str = "Hard Right";
-// 			break;
-// 		default:
-// 			direction_str = "Straight";
-// 			break;
-// 		}
-// 		OSMutexPost(&DirectMutex, OS_OPT_POST_NONE, &err);
-
-// 		// Get the speed
-// 		OSMutexPend(&SpeedMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-// 		current_speed = vehicle_speed;
-// 		(void)&current_speed;
-// 		snprintf(speed_str, sizeof(speed_str), "Speed: %d mph",
-// 				 vehicle_speed.speed);
-// 		OSMutexPost(&SpeedMutex, OS_OPT_POST_NONE, &err);
-
-// 		/* Fill lcd with background color */
-// 		GLIB_clear(&glibContext);
-
-// 		/* Use Normal font */
-// 		GLIB_setFont(&glibContext, (GLIB_Font_t *)&GLIB_FontNormal8x8);
-
-// 		/* Draw text on the memory lcd display*/
-// 		GLIB_drawStringOnLine(&glibContext, direction_str, 0, GLIB_ALIGN_LEFT,
-// 							  5, 5,
-// 							  true);
-
-// 		switch (current_direction.current_direction)
-// 		{
-// 		case 0:
-// 			HardLeftTurnArrow(&glibContext);
-// 			break;
-// 		case 1:
-// 			SlightLeftTurnArrow(&glibContext);
-// 			break;
-// 		case 2:
-// 			SlightRightTurnArrow(&glibContext);
-// 			break;
-// 		case 3:
-// 			HardRightTurnArrow(&glibContext);
-// 			break;
-// 		default:
-// 			Straight(&glibContext);
-// 			break;
-// 		}
-// 		/* Draw text on the memory lcd display*/
-// 		GLIB_drawStringOnLine(&glibContext, speed_str, 1, GLIB_ALIGN_LEFT, 5, 5,
-// 							  true);
-// 		/* Post updates to display */
-// 		DMD_updateDisplay();
-// 	}
-// }
-
-// void LCDOutput_Create()
-// {
-// 	RTOS_ERR err;
-
-// 	OSTaskCreate(&LCDOutputTCB,			 /* Pointer to the task's TCB.  */
-// 				 "LCD Output Task.",	 /* Name to help debugging.     */
-// 				 LCDOutput,				 /* Pointer to the task's code. */
-// 				 DEF_NULL,				 /* Pointer to task's argument. */
-// 				 LCDOutput_PRIO,		 /* Task's priority.            */
-// 				 &LCDOutputStk[0],		 /* Pointer to base of stack.   */
-// 				 (LCDOutput_SIZE / 10u), /* Stack limit, from base.     */
-// 				 LCDOutput_SIZE,		 /* Stack size, in CPU_STK.     */
-// 				 10u,					 /* Messages in task queue.     */
-// 				 0u,					 /* Round-Robin time quanta.    */
-// 				 DEF_NULL,				 /* External TCB data.          */
-// 				 OS_OPT_TASK_STK_CHK,	 /* Task options.               */
-// 				 &err);
-
-// 	if (err.Code != RTOS_ERR_NONE)
-// 	{
-// 		/* Handle error on task creation. */
-// 	}
-// }
-
-// //***********************************************************************************
-
-// // IdleTask
+// IdleTask
 
 // //***********************************************************************************
 
@@ -783,7 +257,6 @@ void IdleTask(void *p_arg)
 
 		if (err.Code != RTOS_ERR_NONE)
 		{
-			EFM_ASSERT(0); /* Handle error on task creation. */
 		}
 	}
 }
@@ -812,82 +285,6 @@ void IdleTask_Create()
 	}
 }
 
-//***********************************************************************************
+// //***********************************************************************************
 
-// Function from lab 2
-
-//***********************************************************************************
-
-void read_button0(void)
-{
-	if (!GPIO_PinInGet(BUTTON0_port, BUTTON0_pin))
-	{
-		btn0 = true;
-	}
-	else
-	{
-		btn0 = false;
-	}
-}
-
-void read_button1(void)
-{
-	if (!GPIO_PinInGet(BUTTON1_port, BUTTON1_pin))
-	{
-		btn1 = true;
-	}
-	else
-	{
-		btn1 = false;
-	}
-}
-
-void read_capsense(void)
-{
-	CAPSENSE_Sense();
-
-	if (CAPSENSE_getPressed(0) || CAPSENSE_getPressed(1))
-	{
-		slider1 = true;
-	}
-	else
-	{
-		slider1 = false;
-	}
-
-	if (CAPSENSE_getPressed(2) || CAPSENSE_getPressed(3))
-	{
-		slider0 = true;
-	}
-	else
-	{
-		slider0 = false;
-	}
-}
-
-int read_capsense2(void)
-{
-	CAPSENSE_Sense();
-
-	if (CAPSENSE_getPressed(0))
-	{
-		return 0;
-	}
-
-	if (CAPSENSE_getPressed(1))
-	{
-		return 1;
-	}
-
-	if (CAPSENSE_getPressed(2))
-	{
-		return 2;
-	}
-
-	if (CAPSENSE_getPressed(3))
-	{
-		return 3;
-	}
-
-	return -1;
-}
+// //***********************************************************************************

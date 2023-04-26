@@ -11,6 +11,8 @@
 #include "em_emu.h"
 #include "gpio.h"
 #include "capsense.h"
+#include "constants.h"
+
 
 #include <string.h>
 #include <stdint.h>
@@ -21,15 +23,38 @@
 //***********************************************************************************
 // global variables
 //***********************************************************************************
+
+#define SHIELD_ACTIVE_100MS 5
+#define SHIELD_RECHARGE_100MS 15
+
+#define PASSIVE_KINETIC_REDUCTION -0.75
+#define ACTIVE_KINETIC_GAIN -1.25
+
+struct ShieldState {
+  bool active;
+  bool recharging;
+};
+
+
+OS_Q shield_msg;
+struct ShieldState shield_state;
+OS_TMR shieldRechargeTimer;
+
+static OS_TMR shieldActiveTimer;
+static OS_TCB shieldTCB;
+static CPU_STK shieldSTK[STACK_SIZES];
+static OS_MUTEX shield_mutex;
+
+
 // Task stack size and priority
-#define Physics_Task_STK_SIZE 256u
-#define Physics_Task_PRIO 21u
+// #define Physics_Task_STK_SIZE 256u
+// #define Physics_Task_PRIO 21u
 
-// Task stack
-static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
+// // Task stack
+// static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 
-// Timer
-static OS_TCB Physics_TaskTCB;
+// // Timer
+// static OS_TCB Physics_TaskTCB;
 
 
 //***********************************************************************************
@@ -40,5 +65,11 @@ void railgun_task_create(void);
 void railgun_task(void);
 bool shoot_railgun(int idx);
 
+void shield_task(void);
+void shield_task_create(void);
+
+
 
 #endif /* RAILGUN_H_ */
+
+

@@ -25,6 +25,7 @@
 
 #include"constant.h"
 #include"platform.h"
+#include"satchel.h"
 
 //***********************************************************************************
 // global variables

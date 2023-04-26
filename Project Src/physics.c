@@ -7,7 +7,6 @@
 
 #include "physics.h"
 
-
 GameConfig ConfigurationData = {
 	.data_structure_version = 1,
 	.tau_physics = 50,
@@ -53,6 +52,7 @@ void Physics_Task(void *p_arg)
 
 	while (1)
 	{
+		
 		// Delay for TauPhysics milliseconds before next update
 		OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
 
@@ -72,28 +72,39 @@ void Physics_Task(void *p_arg)
 		// 	EFM_ASSERT(false);
 
 		// Update satchel charges
+
+		OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
+
+		// Update satchel charges
 		updateSatchelCharges(deltaTime);
 
-		// Update rail gun shots
-		updateRailGunShots(deltaTime);
-
-		// Check for collisions and endgame
 		checkCollisions();
 
-		// float deltaTime = (float)default_config.tau_physics / 1000.0f;
+		OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
 
-		// // Lock the PhysicsMutex before accessing shared data
-		// OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+		// Update rail gun shots
+		// updateRailGunShots(deltaTime);
 
-		// // Read the CapSense force value from the shared data
-		// int32_t capSenseForce = sharedData.capSenseForce;
-
-		// // Update platform force based on CapSense input
-		// updatePlatformForce(capSenseForce);
-
-		// // Update platform position
-		// updatePlatformPosition(deltaTime);
+		// Check for collisions and endgame
 	}
+
+	// float deltaTime = (float)default_config.tau_physics / 1000.0f;
+
+	// // Lock the PhysicsMutex before accessing shared data
+	// OSMutexPend(&PhysicsMutex, 0u, OS_OPT_PEND_BLOCKING, 0u, &err);
+
+	// // Read the CapSense force value from the shared data
+	// int32_t capSenseForce = sharedData.capSenseForce;
+
+	// // Update platform force based on CapSense input
+	// updatePlatformForce(capSenseForce);
+
+	// // Update platform position
+	// updatePlatformPosition(deltaTime);
 	// /* Use argument. */
 	// RTOS_ERR err;
 
@@ -191,16 +202,75 @@ void update_platform(SharedData *shared_data)
 	}
 }
 
-void updateSatchelCharges(deltaTime)
+void updateSatchelCharges(struct HoltzmanData Satchels[])
 {
-}
-
-// Update rail gun shots
-void updateRailGunShots(deltaTime)
-{
+	for (int i = 0; i < SATCHEL_COUNT; i++)
+	{
+		Satchels[i].x += Satchels[i].vx * PHYSICS_DELTA;
+		Satchels[i].y += Satchels[i].vy * PHYSICS_DELTA;
+		Satchels[i].vy += GRAVITY_PIXELS * PHYSICS_DELTA;
+		if ((Satchels[i].x - SATCH_DIAMETER) < CANYON_START)
+		{
+			Satchels[i].vx = fabs(Satchels[i].vx);
+		}
+		else if ((Satchels[i].x + SATCH_DIAMETER) > CANYON_END)
+		{
+			Satchels[i].vx = -1 * fabs(Satchels[i].vx);
+		}
+	}
 }
 
 // Check for collisions and endgame
-void checkCollisions()
+
+void checkCollisions(struct SatchelData Satchels[], struct SharedData *shared_data, struct ShieldState *shieldDat)
 {
+	RTOS_ERR mutexErr;
+	for (int i = 0; i < SATCHEL_COUNT; i++)
+	{
+		if ((Satchels[i].y + GRAVITY_PIXELS) >= PLATFORM_Y && Satchels[i].vy > 0)
+		{ // reached the platforms y
+			if (Satchels[i].vy > GAME_OVER_SPEED &&
+				Satchels[i].x < (shared_data->x + (PLATFORM_WIDTH / 2)) &&
+				Satchels[i].x > (shared_data->x - (PLATFORM_WIDTH / 2)))
+			{ // between the platform bounds
+				// TODO
+				Satchels[i].vy *= shieldDat->active ? ACTIVE_KINETIC_GAIN : PASSIVE_KINETIC_REDUCTION;
+			}
+			else
+			{
+				// TODO game over (respawning satchel is temporary for debugging)
+				if (!auto_cannon || !shoot_laser(i))
+				{
+					// TODO
+					decrement_life();
+
+					OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+					if (mutexErr.Code)
+						EFM_ASSERT(false);
+					generate_satchel(i);
+					OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutexErr);
+					if (mutexErr.Code)
+						EFM_ASSERT(false);
+				}
+			}
+		}
+		else if (Satchels[i].y < 0)
+		{
+			OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+			if (mutexErr.Code)
+				EFM_ASSERT(false);
+
+			generate_satchel(i);
+
+			OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutexErr);
+			if (mutexErr.Code)
+				EFM_ASSERT(false);
+			score++;
+		}
+	}
 }
+
+// Update rail gun shots
+// void updateRailGunShots(deltaTime)
+// {
+// }
