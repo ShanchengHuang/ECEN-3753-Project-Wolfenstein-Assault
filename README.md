@@ -39,7 +39,7 @@
 11. End
 
 
-## Test Plan and results (Week4 updated)
+## Test Plan and results (Week5 updated)
 
 - Test the main path of the Task Physics function. This is because the Task Physics function is responsible for the core game logic, such as updating the platform's position and velocity, updating the satchel charge's path, and determining when the game is won or lost. Testing the main path of this function would help to ensure that the game logic is working correctly and that the game is functioning as intended.
 
@@ -58,6 +58,9 @@
   - Unit test all the timer functions
   - Unit test 
 
+- Test LCD task, useing the Lab 7 as unit test, so I can test and design all the display element without interfere with other code (Week 5)
+- Testing the movement of the platform (Week 5)
+- Testing the satchel (Week 5)
 
 
 ## Statement of where your project stands (Week4 updated)
@@ -68,7 +71,7 @@
 | Week 2 | 5      | 20%         | 5 hr            | 20%    |
 | Week 3 | 5      | 40%         | 6 hr            | 40%    |
 | Week 4 | 8      | 70%         | 5-6hr           | 65%    |
-| Week 5 | 10     | 100%        |                 |        |
+| Week 5 | 10     | 100%        | 12hr            | 85%    |
 
 - Accurate summary statement of your functionality deliverables and usability so far
   - (Week 1) This week I did the project planning, created my task diagram, and identified 2 cutting points for unit testing
@@ -83,22 +86,22 @@
 
 ## List of in-scope work items
 
-### Next Task to work on: (Week 4 updated)
+### Next Task to work on: (Week 5 updated)
 
 
 Physics model. [Platform] - This task was not completed . The implementation of the physics model for the platform was more challenging than anticipated, and it may took longer than estimated. In hindsight, it would have been helpful to have a menu system in place to make it easier to test the physics model with different inputs.
 
 Implement boundary condition handling in Task Physics - This task is not yet complete. The implementation of this task involves handling boundary conditions such as the platform going out of bounds or the satchel charge being thrown with an invalid velocity. The implementation is expected to take approximately 6 hours.
 
-Implement satchel charge throwing logic - This task is not yet complete. The implementation of this task involves generating a random position for the satchel charge to land and calculating the velocity required to reach that position. The implementation is expected to take approximately 5 hours.
+Implement satchel throwing logic - This task is not yet complete. The implementation of this task involves generating a random position for the satchel charge to land and calculating the velocity required to reach that position. The implementation is expected to take approximately 5 hours.
 
 
 Test and debug entire system - This task is not yet complete
 
-### Ongoing work items (Week3 updated):
+### Ongoing work items (Week5 updated):
 
 Implement Queue Button - This task was almost done. The implementation was straightforward, and it should completed within the estimated time frame.
-
+ssssssssssssssss
 Implement Semaphore Button - This task was almost done. The implementation was straightforward, and it should completed within the estimated time frame.
 
 Implement Semaphore CapSense - This task was almost done. The implementation was relatively simple, and it should completed within the estimated time frame.
@@ -130,7 +133,7 @@ Finishing the base function framework - and should have the all the post pend in
 
 <!-- Note: Completed work items are highlighted in bold. -->
 
-## Risk Register (Week4 updated)
+## Risk Register (Week5 updated)
 
 <!-- Adding issue of include in all the task file, eg: input.c has os define from app.h -->
 
