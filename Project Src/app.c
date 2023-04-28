@@ -67,7 +67,7 @@ void game_over(char cause[]) {
 
 }
 
-void decrement_life(void) {
+void decrement_life() {
 	lives--;
 	if (lives == 0) {
 		game_over("Satchel has exploded");

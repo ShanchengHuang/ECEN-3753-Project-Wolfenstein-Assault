@@ -23,7 +23,7 @@ struct SatchelData {
 };
 
 
-void generate_satchel(int idx);
+void generate_satchel();
 void satchel_init(void);
 
 #endif /* _SATCHEL_H_ */

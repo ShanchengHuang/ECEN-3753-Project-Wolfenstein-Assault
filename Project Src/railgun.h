@@ -34,9 +34,9 @@ struct ShieldState {
   bool recharging;
 };
 
+struct ShieldState shield_state;
 
 OS_Q shield_msg;
-struct ShieldState shield_state;
 OS_TMR shieldRechargeTimer;
 
 static OS_TMR shieldActiveTimer;

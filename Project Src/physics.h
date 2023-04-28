@@ -26,6 +26,8 @@
 #include"constant.h"
 #include"platform.h"
 #include"satchel.h"
+#include"railgun.h"
+
 
 //***********************************************************************************
 // global variables
@@ -35,6 +37,9 @@
 #define Physics_Task_PRIO 21u
 
 #define PHYSICS_DELTA (150 / 10.0) // TODO change this match to  constant.h
+
+#define GRAVITY_PIXELS  20
+
 // Task stack
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 static OS_TCB Physics_TaskTCB;
@@ -64,7 +69,7 @@ void Physics_Task_Create();
 void update_platform(struct PlatData *shared_data);
 void updateSatchelCharges(struct HoltzmanData Satchels[]);
 void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data,
-		struct ShieldState *shieldDat);
+		struct ShieldState shieldDat);
 
 void checkCollisions();
 
