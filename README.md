@@ -59,8 +59,13 @@
   - Unit test 
 
 - Test LCD task, useing the Lab 7 as unit test, so I can test and design all the display element without interfere with other code (Week 5)
+![](/screenshot/report/LCD_actual.jpg)
+![](/screenshot/report/LCD_design_1.jpg)
+![](/screenshot/report/LCD_design_2.jpg)
+
 - Testing the movement of the platform (Week 5)
-- Testing the satchel (Week 5)
+- Testing the satchel movement(Week 5)
+- 
 
 
 ## Statement of where your project stands (Week4 updated)
