@@ -19,6 +19,13 @@
 #define MAX_FORCE MAX_PIXEL_FORCE *SCREEN_MM / SCREEN_PIXELS // kg * px/s^s
 #define MAX_PIXEL_ACCEL MAX_PIXEL_FORCE / PLATFORM_MASS
 
+#define PLATFORM_PERIOD 1
+
+int PLATFORM_BOUNCE_ENABLED;
+
+//int MAX_SPEED = ConfigurationData.platform.max_platform_speed; // Update this line
+int MAX_SPEED = 150; // Update this line
+
 struct PlatData {
 	double x;
 	double vx;

@@ -24,17 +24,7 @@
 //GameConfig ConfigurationData;
 
 // Default Configuration Values
-GameConfig ConfigurationData = { .data_structure_version = 1, .tau_physics = 50,
-		.tau_display = 150, .tau_slider = 100, .canyon_size = 100000,
-		.wolfenstein = { .castle_height = 5000, .foundation_hits_required = 2,
-				.foundation_depth = 5000, }, .satchel_charges = {
-				.limiting_method = 0, .display_diameter = 10, .tau_throw = 0, // Union with MaxNumInFlight
-				}, .platform = { .max_force = 20000000, .mass = 100, .length =
-				10000, .max_platform_speed = 50000, }, .shield = {
-				.effective_range = 15000, .activation_energy = 30000, },
-		.railgun = { .elevation_angle = 800, .shot_mass = 50,
-				.shot_display_diameter = 5, }, .generator = { .energy_storage =
-				50000, .power = 20000, }, };
+
 
 void app_init(void) {
 	// Initialize GPIO

@@ -1,11 +1,6 @@
 #include "platform.h"
 
-#define PLATFORM_PERIOD 1
 
-int PLATFORM_BOUNCE_ENABLED;
-
-//int MAX_SPEED = ConfigurationData.platform.max_platform_speed; // Update this line
-int MAX_SPEED = 150; // Update this line
 
 
 

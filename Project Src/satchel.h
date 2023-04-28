@@ -11,6 +11,9 @@
 
 OS_MUTEX satchel_mutex;
 
+struct SatchelData Satchels;
+
+
 struct SatchelData {
   double vx;
   double vy;

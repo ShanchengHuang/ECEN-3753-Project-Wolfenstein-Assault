@@ -34,12 +34,10 @@
 #define Physics_Task_STK_SIZE 256u
 #define Physics_Task_PRIO 21u
 
+#define PHYSICS_DELTA (150 / 10.0) // TODO change this match to  constant.h
 // Task stack
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
-
-// Timer
 static OS_TCB Physics_TaskTCB;
-
 
 uint8_t railgun_shots = 5;
 OS_SEM railgun_semaphore;
@@ -64,8 +62,9 @@ void Physics_Task(void *p_arg);
 void Physics_Task_Create();
 
 void update_platform(struct PlatData *shared_data);
-updateSatchelCharges(struct HoltzmanData Satchels[]);
-void checkCollisions(struct SatchelData Satchels[], struct SharedData *shared_data, struct ShieldState *shieldDat);
+void updateSatchelCharges(struct HoltzmanData Satchels[]);
+void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data,
+		struct ShieldState *shieldDat);
 
 void checkCollisions();
 

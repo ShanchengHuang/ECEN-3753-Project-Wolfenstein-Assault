@@ -4,7 +4,6 @@
 
 uint8_t SATCHEL_COUNT = 1;
 
-struct SatchelData Satchels[2];
 
 
 void generate_satchel(int idx)
