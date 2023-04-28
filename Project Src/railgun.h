@@ -11,7 +11,8 @@
 #include "em_emu.h"
 #include "gpio.h"
 #include "capsense.h"
-#include "constants.h"
+#include "constant.h"
+//#include "platform.h"
 
 
 #include <string.h>

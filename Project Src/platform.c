@@ -4,7 +4,8 @@
 
 int PLATFORM_BOUNCE_ENABLED;
 
-int MAX_SPEED = ConfigurationData.platform.max_platform_bounce_speed; // Update this line
+//int MAX_SPEED = ConfigurationData.platform.max_platform_speed; // Update this line
+int MAX_SPEED = 150; // Update this line
 
 struct PlatData platform_data;
 
@@ -20,9 +21,9 @@ struct PlatData platform_data;
 //}
 
 void platform_task_create(void) {
-	RTOS_ERR semErr;
-	RTOS_ERR tmrErr;
-	RTOS_ERR tskErr;
+//	RTOS_ERR semErr;
+	RTOS_ERR err;
+//	RTOS_ERR tskErr;
 	RTOS_ERR mutexErr;
 
 	// Create a semaphore for the platform task
@@ -38,7 +39,7 @@ void platform_task_create(void) {
 	"platform Task.", /* Name to help debugging.     */
 	&platform_task, /* Pointer to the task's code. */
 	DEF_NULL, /* Pointer to task's argument. */
-	ABOVE_NORMAL_PRIORITY - 1, /* Task's priority.            */
+	(ABOVE_NORMAL_PRIORITY - 1), /* Task's priority.            */
 	&platformSTK[0], /* Pointer to base of stack.   */
 	(STACK_SIZES / 10u), /* Stack limit, from base.     */
 	STACK_SIZES, /* Stack size, in CPU_STK.     */
@@ -46,13 +47,13 @@ void platform_task_create(void) {
 	120u, /* Round-Robin time quanta.    */
 	DEF_NULL, /* External TCB data.          */
 	OS_OPT_TASK_STK_CHK, /* Task options.               */
-	&tskErr);
+	&err);
 
 	// Create a mutex for the platform task
 	OSMutexCreate(&platform_mutex, "platform_mutex", &mutexErr);
 	// Check for errors in semaphore, timer, task, and mutex creation
 
-	if (semErr.Code || tmrErr.Code || tskErr.Code || mutexErr.Code)
+	if (err.Code)
 		EFM_ASSERT(false);
 
 	// Initialize platform bounce flag and platform data variables
@@ -73,9 +74,9 @@ void platform_task(void) {
 //        OSSemPend(&platform_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
 //        if (semErr.Code)
 //            EFM_ASSERT(false);
-
-		OSTimeDly((OS_TICK) ConfigurationData.tau_physics, OS_OPT_TIME_DLY,
-				&err);
+//
+		// Delate for awakened periodically
+		OSTimeDlyHMSM(0, 0, 0, 150, OS_OPT_TIME_HMSM_STRICT, &err);
 
 		CAPSENSE_Sense();
 		int pressed = -1;
@@ -116,7 +117,7 @@ void platform_task(void) {
 			float railgun_impact_force = 2000.0;
 			float railgun_distance = sqrt(
 					pow((platform_data.x - shotX), 2)
-							+ pow((platform_data.y - shotY), 2));
+							+ pow((128 - 5 - shotY), 2));
 			float railgun_force_on_platform = railgun_impact_force
 					/ pow(railgun_distance, 2);
 			platform_data.ax += railgun_force_on_platform

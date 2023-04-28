@@ -3,7 +3,7 @@
 #include "os.h"
 #include "constant.h"
 
-#define SATCH_DIAMETER  ConfigurationData.satchel_charges.display_diameter
+#define SATCH_DIAMETER  4
 // #define SIDE_HIT_KINETIC_REDUCTION 0.75
 
 

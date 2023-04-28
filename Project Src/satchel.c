@@ -8,8 +8,8 @@ OS_MUTEX sc_mutex;
 
 void generate_satchel(int idx)
 {
-    Satchels[idx].x = (rand() % (CANYON_SIZE_PIXELS - (2 * SATCH_PIXEL_RADIUS))) + SATCH_PIXEL_RADIUS + CANYON_START;
-    Satchels[idx].y = SATCH_PIXEL_RADIUS;
+    Satchels[idx].x = (rand() % (CANYON_SIZE_PIXELS - (2 * SATCH_DIAMETER))) + SATCH_DIAMETER + CANYON_START;
+    Satchels[idx].y = SATCH_DIAMETER;
     Satchels[idx].exploded = 0;
     Satchels[idx].vx = (rand() % 20) - 10;
     Satchels[idx].vy = rand() % 10;

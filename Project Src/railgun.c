@@ -10,8 +10,6 @@ int shotY;
 static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];
 
-extern uint8_t HM_COUNT;
-extern struct HoltzmanData HMs[];
 // extern OS_MUTEX sc_mutex;
 extern int score;
 

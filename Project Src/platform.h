@@ -1,3 +1,6 @@
+#include<math.h>
+#include<stdio.h>
+
 #include "capsense.h"
 #include "stdbool.h"
 #include "constant.h"
@@ -16,7 +19,8 @@
 OS_TMR platform_timer;
 OS_MUTEX platform_mutex;
 
-static OS_SEM platform_semaphore;
+//static OS_SEM platform_semaphore;
+
 static OS_TCB platformTCB;
 static CPU_STK platformSTK[STACK_SIZES];
 
@@ -31,6 +35,7 @@ struct PlatData{
 extern int railgun_fired;
 extern int shotX;
 extern int shotY;
+
 extern int railgun_shots;
 
 void platform_task(void);
