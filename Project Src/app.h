@@ -55,6 +55,8 @@ void app_init(void);
 //static volatile bool btn0 = 0;
 //static volatile bool btn1 = 0;
 
+static OS_TCB gameTCB;
+static CPU_STK gameSTK[STACK_SIZES];
 
 static OS_TCB IdleTaskTCB;
 static CPU_STK IdleTaskStk[STACK_SIZES];
@@ -63,31 +65,17 @@ static CPU_STK IdleTaskStk[STACK_SIZES];
 
 #define Dly_tick 2
 
-// #define SPEEDEDFLAG 0b0001
-// #define RSET_SPEEDEDFLAG 0b0010
-// #define DIRECTIONFLAG 0b0100
-// #define RSET_DIRECTIONFLAG 0b1000
-
-/* Define flag bits */
-#define LED0 (1 << 0)
-#define LED1 (1 << 1)
-
-#define UPDATEFLAG1 1
-#define UPDATEFLAG2 2
-
-#define BUTTON_FIFO_SIZE 10
-
-// Semaphore, Flag, Mutex
-static OS_SEM BTNsemaphore;
-static OS_SEM BTNsemaphore;
-
-// Define the event flag group object
-// static OS_FLAG_GRP UpdateFlag;
-static OS_FLAG_GRP AlertFlag;
-
-// Define the Mutex
-static OS_MUTEX BTNMutex;
-static OS_MUTEX PhysicsMutex;
+//// Semaphore, Flag, Mutex
+//static OS_SEM BTNsemaphore;
+//static OS_SEM BTNsemaphore;
+//
+//// Define the event flag group object
+//// static OS_FLAG_GRP UpdateFlag;
+//static OS_FLAG_GRP AlertFlag;
+//
+//// Define the Mutex
+//static OS_MUTEX BTNMutex;
+//static OS_MUTEX PhysicsMutex;
 
 // Game m
 OS_FLAG_GRP game_state;
@@ -110,39 +98,14 @@ enum game_state_e {
 
 // OS_TMR CapSenseTimer;
 
-typedef struct {
-	int button_id;	  // Button 0 or Button 1
-	int button_state; // 0 for released, 1 for pressed
-} ButtonEvent;
 
-typedef struct {
-	ButtonEvent buffer[BUTTON_FIFO_SIZE];
-	int head;
-	int tail;
-	int count;
-} ButtonEventFifo;
-
-typedef struct {
-	int speed;
-	int increments;
-	int decrements;
-} SpeedSetpointData;
-
-typedef struct {
-	int current_direction;
-	int time_constant;
-	int left_turns;
-	int right_turns;
-} VehicleDirectionData;
+// //***********************************************************************************
+// Function Prototype
+// //***********************************************************************************
 
 void app_init(void);
 
 void LCD_init();
-
-void button_event_fifo_write(ButtonEventFifo *fifo, int button_id,
-		int button_state);
-
-ButtonEvent button_event_fifo_read(ButtonEventFifo *fifo);
 
 // Added Idle task();
 void IdleTask_Create();
@@ -150,38 +113,9 @@ void IdleTask(void *p_arg);
 
 void OSFlag_Init(void);
 
-void GPIO_EVEN_IRQHandler(void);
-void GPIO_ODD_IRQHandler(void);
-
-void Speed_Setpoint_Task(void *p_arg);
-void Speed_Setpoint_Create();
-
-void Vehicle_Direction_Task(void *p_arg);
-void Vehicle_Direction_Create();
-
-void Vehicle_Monitor_Task(void *p_arg);
-void Vehicle_Monitor_Create();
-
-void LedOutput(void *p_arg);
-void LedOutput_Create();
-
-void LCDOutput(void *p_arg);
-void LCDOutput_Create();
-
-void read_button0(void);
-void read_button1(void);
-void read_capsense(void);
-int read_capsense2(void);
-void write_led(void);
-
 void LED_Output_Task_Init(void);
 
-bool TwoButtonsPressed(ButtonEventFifo *fifo);
 
-// Function for the Prject task
-
-// void TimerCallback(OS_TMR *p_tmr, void *p_arg);
-// void TimerCallback(void *p_tmr, void *p_arg);
-// void EventFlagsCallback(uint8_t buttons);
+void Game_management_task_create(void);
 
 #endif // APP_H

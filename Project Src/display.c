@@ -276,17 +276,21 @@ void LCD_init()
 	/* Use Narrow font */
 	GLIB_setFont(&glibContext, (GLIB_Font_t *)&GLIB_FontNarrow6x8);
 
+
+	// Game start up
+	GLIB_drawStringOnLine(&glibContext, "   Wolfenstein\n     Assault", 1,
+			GLIB_ALIGN_LEFT, 0, 10,
+			true);
+
 	/* Draw text on the memory lcd display*/
-	GLIB_drawStringOnLine(&glibContext,
-						  "Welcome to...\n**Wolfenstein Assault**!",
-						  0,
-						  GLIB_ALIGN_LEFT,
-						  5,
-						  5,
-						  true);
+	GLIB_drawStringOnLine(&glibContext, " Press any key \n  To start", 1,
+			GLIB_ALIGN_LEFT, 0, 50,
+			true);
 	/* Post updates to display */
 	DMD_updateDisplay();
 }
+
+
 
 void draw_sides()
 {

@@ -37,42 +37,17 @@
 //GameConfig ConfigurationData;
 
 // Default Configuration Values
-GameConfig ConfigurationData = {
-    .data_structure_version = 1,
-    .tau_physics = 50,
-    .tau_display = 150,
-    .tau_slider = 100,
-    .canyon_size = 100000,
-    .wolfenstein = {
-        .castle_height = 5000,
-        .foundation_hits_required = 2,
-        .foundation_depth = 5000,
-    },
-    .satchel_charges = {
-        .limiting_method = 0, .display_diameter = 10,
-        .tau_throw = 0, // Union with MaxNumInFlight
-    },
-    .platform = {
-        .max_force = 20000000,
-        .mass = 100,
-        .length = 10000,
-        .max_platform_speed = 50000,
-    },
-    .shield = {
-        .effective_range = 15000,
-        .activation_energy = 30000,
-    },
-    .railgun = {
-        .elevation_angle = 800,
-        .shot_mass = 50,
-        .shot_display_diameter = 5,
-    },
-    .generator = {
-        .energy_storage = 50000,
-        .power = 20000,
-    },
-};
-
+GameConfig ConfigurationData = { .data_structure_version = 1, .tau_physics = 50,
+		.tau_display = 150, .tau_slider = 100, .canyon_size = 100000,
+		.wolfenstein = { .castle_height = 5000, .foundation_hits_required = 2,
+				.foundation_depth = 5000, }, .satchel_charges = {
+				.limiting_method = 0, .display_diameter = 10, .tau_throw = 0, // Union with MaxNumInFlight
+				}, .platform = { .max_force = 20000000, .mass = 100, .length =
+				10000, .max_platform_speed = 50000, }, .shield = {
+				.effective_range = 15000, .activation_energy = 30000, },
+		.railgun = { .elevation_angle = 800, .shot_mass = 50,
+				.shot_display_diameter = 5, }, .generator = { .energy_storage =
+				50000, .power = 20000, }, };
 
 void app_init(void) {
 	// Initialize GPIO
@@ -97,55 +72,20 @@ void app_init(void) {
 	Game_management_task_create();
 }
 
-void LCD_init() {
-	uint32_t status;
-	/* Enable the memory lcd */
-	status = sl_board_enable_display();
-	EFM_ASSERT(status == SL_STATUS_OK);
-
-	/* Initialize the DMD support for memory lcd display */
-	status = DMD_init(0);
-	EFM_ASSERT(status == DMD_OK);
-
-	/* Initialize the glib context */
-	status = GLIB_contextInit(&glibContext);
-	EFM_ASSERT(status == GLIB_OK);
-
-	glibContext.backgroundColor = White;
-	glibContext.foregroundColor = Black;
-
-	/* Fill lcd with background color */
-	GLIB_clear(&glibContext);
-
-	/* Use Normal font */
-	GLIB_setFont(&glibContext, (GLIB_Font_t*) &GLIB_FontNormal8x8);
-
-	// Game start up
-	GLIB_drawStringOnLine(&glibContext, "   Wolfenstein\n     Assault", 1,
-			GLIB_ALIGN_LEFT, 0, 10,
-			true);
-
-	/* Draw text on the memory lcd display*/
-	GLIB_drawStringOnLine(&glibContext, " Press any key \n  To start", 1,
-			GLIB_ALIGN_LEFT, 0, 50,
-			true);
-
-	//	SlightLeftTurnArrow(&glibContext);
-	/* Post updates to display */
-	DMD_updateDisplay();
-}
-
 void game_over(char cause[]) {
 
 	gameState = GAME_OVER;
 
-//	cursor_pos = 0;
 
 	if (score > high_score)
 		high_score = score;
-	// TODO Print the Endgame
 
-	//	turn_off_led();
+	//  Print the Endgame in LCD
+	strcpy(death_cause, cause);
+
+	// Turn off led
+	GPIO_PinOutClear(LED1_port, LED1_pin);
+	GPIO_PinOutClear(LED0_port, LED0_pin);
 
 	// Stop all the timer and flag
 
@@ -168,51 +108,8 @@ void start_game() {
 
 	// init the values
 	// Default Configuration Values
-	GameConfig default_config = {
-	    .data_structure_version = 1,
-	    .tau_physics = 50,
-	    .tau_display = 150,
-	    .tau_slider = 100,
-	    .canyon_size = 100000,
-	    .wolfenstein = {
-	        .castle_height = 5000,
-	        .foundation_hits_required = 2,
-	        .foundation_depth = 5000,
-	    },
-	    .satchel_charges = {
-	        .limiting_method = 0, .display_diameter = 10,
-	        .tau_throw = 0, // Union with MaxNumInFlight
-	    },
-	    .platform = {
-	        .max_force = 20000000,
-	        .mass = 100,
-	        .length = 10000,
-	        .max_platform_bounce_speed = 50000,
-	    },
-	    .shield = {
-	        .effective_range = 15000,
-	        .activation_energy = 30000,
-	    },
-	    .railgun = {
-	        .elevation_angle = 800,
-	        .shot_mass = 50,
-	        .shot_display_diameter = 5,
-	    },
-	    .generator = {
-	        .energy_storage = 50000,
-	        .power = 20000,
-	    },
-	};
-
 	satchel_init();
 	gameState = IN_PROGRESS;
-
-	// Timer
-
-//	OSTmrStart(&ledTmrs[0], &tmrErr);
-//	if (tmrErr.Code != RTOS_ERR_NONE)
-//		EFM_ASSERT(false);
-
 
 	OSFlagPost(&game_state, IN_PROGRESS, OS_OPT_POST_FLAG_SET, &flgErr);
 	if (tmrErr.Code != RTOS_ERR_NONE || flgErr.Code)
@@ -228,21 +125,21 @@ void start_game() {
 void Game_management_task_create(void) {
 //	RTOS_ERR tskErr;
 //	RTOS_ERR flgErr;
-//	RTOS_ERR qErr;
+	RTOS_ERR err;
 //
-//	OSTaskCreate(&gameTCB, /* Pointer to the task's TCB.  */
-//	"game Task.", /* Name to help debugging.     */
-//	&game_management_task, /* Pointer to the task's code. */
-//	DEF_NULL, /* Pointer to task's argument. */
-//	ABOVE_NORMAL_PRIORITY, /* Task's priority.            */
-//	&gameSTK[0], /* Pointer to base of stack.   */
-//	(STACK_SIZES / 10u), /* Stack limit, from base.     */
-//	STACK_SIZES, /* Stack size, in CPU_STK.     */
-//	10u, /* Messages in task queue.     */
-//	120u, /* Round-Robin time quanta.    */
-//	DEF_NULL, /* External TCB data.          */
-//	OS_OPT_TASK_STK_CHK, /* Task options.               */
-//	&tskErr);
+	OSTaskCreate(&gameTCB, /* Pointer to the task's TCB.  */
+	"game Task.", /* Name to help debugging.     */
+	&game_management_task, /* Pointer to the task's code. */
+	DEF_NULL, /* Pointer to task's argument. */
+	ABOVE_NORMAL_PRIORITY, /* Task's priority.            */
+	&gameSTK[0], /* Pointer to base of stack.   */
+	(STACK_SIZES / 10u), /* Stack limit, from base.     */
+	STACK_SIZES, /* Stack size, in CPU_STK.     */
+	10u, /* Messages in task queue.     */
+	120u, /* Round-Robin time quanta.    */
+	DEF_NULL, /* External TCB data.          */
+	OS_OPT_TASK_STK_CHK, /* Task options.               */
+	&err);
 //
 //	OSFlagCreate(&game_state, "game state flags", PREGAME, &flgErr);
 //

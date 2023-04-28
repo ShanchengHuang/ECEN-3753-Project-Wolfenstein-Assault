@@ -96,7 +96,7 @@ railgun.o: ../railgun.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_gpio.h \
  ../capsense.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//hardware/kit/SLSTK3402A_EFM32PG12/config/capsenseconfig.h \
- ../constant.h ../platform.h
+ ../constant.h
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/common/toolchain/inc/sl_gcc_preinclude.h:
 ../railgun.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/micrium_os/kernel/include/os.h:
@@ -195,4 +195,3 @@ railgun.o: ../railgun.c \
 ../capsense.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//hardware/kit/SLSTK3402A_EFM32PG12/config/capsenseconfig.h:
 ../constant.h:
-../platform.h:
