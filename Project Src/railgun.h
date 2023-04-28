@@ -1,5 +1,3 @@
-
-
 #ifndef RAILGUN_H_
 #define RAILGUN_H_
 

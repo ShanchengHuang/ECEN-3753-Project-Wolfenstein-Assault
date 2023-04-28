@@ -19,7 +19,8 @@ void generate_satchel(int idx)
 void satchel_init()
 {
     RTOS_ERR mutexErr;
-    OSMutexCreate(&sc_mutex, "sc_mutex", &mutexErr);
+    OSMutexCreate(&satchel_mutex, "satchel_mutex", &mutexErr);
+
     if (mutexErr.Code)
         EFM_ASSERT(false);
     for (int i = 0; i < SATCHEL_COUNT; i++)

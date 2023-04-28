@@ -1,4 +1,8 @@
 // Configuration Data Structure
+
+#ifndef _CONSTANT_H_
+#define _CONSTANT_H_
+
 #include <stdint.h>
 
 #define STACK_SIZES 256u
@@ -17,52 +21,44 @@
 // Declaration of the external ConfigurationData variable
 //extern GameConfig ConfigurationData;
 
-typedef struct
-{
-    uint32_t data_structure_version;
-    uint32_t tau_physics;
-    uint32_t tau_display;
-    uint32_t tau_slider;
-    uint32_t canyon_size;
-    struct
-    {
-        uint32_t castle_height;
-        uint32_t foundation_hits_required;
-        uint32_t foundation_depth;
-    } wolfenstein;
-    struct
-    {
-        uint32_t limiting_method;
-        uint32_t display_diameter;
-        union
-        {
-            uint32_t tau_throw;
-            uint32_t max_num_in_flight;
-        };
-    } satchel_charges;
-    struct
-    {
-        uint32_t max_force;
-        uint32_t mass;
-        uint32_t length;
-        uint32_t max_platform_speed;
-    } platform;
-    struct
-    {
-        uint32_t effective_range;
-        uint32_t activation_energy;
-    } shield;
-    struct
-    {
-        uint32_t elevation_angle;
-        uint32_t shot_mass;
-        uint32_t shot_display_diameter;
-    } railgun;
-    struct
-    {
-        uint32_t energy_storage;
-        uint32_t power;
-    } generator;
+typedef struct {
+	uint32_t data_structure_version;
+	uint32_t tau_physics;
+	uint32_t tau_display;
+	uint32_t tau_slider;
+	uint32_t canyon_size;
+	struct {
+		uint32_t castle_height;
+		uint32_t foundation_hits_required;
+		uint32_t foundation_depth;
+	} wolfenstein;
+	struct {
+		uint32_t limiting_method;
+		uint32_t display_diameter;
+		union {
+			uint32_t tau_throw;
+			uint32_t max_num_in_flight;
+		};
+	} satchel_charges;
+	struct {
+		uint32_t max_force;
+		uint32_t mass;
+		uint32_t length;
+		uint32_t max_platform_speed;
+	} platform;
+	struct {
+		uint32_t effective_range;
+		uint32_t activation_energy;
+	} shield;
+	struct {
+		uint32_t elevation_angle;
+		uint32_t shot_mass;
+		uint32_t shot_display_diameter;
+	} railgun;
+	struct {
+		uint32_t energy_storage;
+		uint32_t power;
+	} generator;
 } GameConfig;
 
 //typedef struct
@@ -83,4 +79,6 @@ typedef struct
 //
 //// Declare a global instance of the shared data structure
 //SharedData sharedData;
+
+#endif /* _CONSTANT_H_ */
 

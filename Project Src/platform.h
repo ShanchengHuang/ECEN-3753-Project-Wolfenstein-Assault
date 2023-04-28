@@ -1,3 +1,6 @@
+#ifndef _PLARTFORM_H_
+#define _PLARTFORM_H_
+
 #include<math.h>
 #include<stdio.h>
 
@@ -16,12 +19,11 @@
 #define MAX_FORCE MAX_PIXEL_FORCE *SCREEN_MM / SCREEN_PIXELS // kg * px/s^s
 #define MAX_PIXEL_ACCEL MAX_PIXEL_FORCE / PLATFORM_MASS
 
-struct PlatData{
+struct PlatData {
 	double x;
 	double vx;
 	double ax;
 };
-
 
 OS_MUTEX platform_mutex;
 
@@ -29,7 +31,6 @@ OS_MUTEX platform_mutex;
 
 static OS_TCB platformTCB;
 static CPU_STK platformSTK[STACK_SIZES];
-
 
 extern int railgun_fired;
 extern int shotX;
@@ -40,3 +41,5 @@ extern int shotY;
 void platform_task(void);
 void platform_task_create(void);
 void platform_timer_cb(void);
+
+#endif /* _PLARTFORM_H_ */

@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include"constant.h"
+//#include"constant.h"
 #include"platform.h"
 #include"satchel.h"
 

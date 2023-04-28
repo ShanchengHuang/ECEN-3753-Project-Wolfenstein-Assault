@@ -10,7 +10,6 @@
 void Physics_Task(void *p_arg) {
 
 	RTOS_ERR err;
-	RTOS_ERR semErr;
 	RTOS_ERR mutexErr;
 	(void) &p_arg;
 
