@@ -19,20 +19,7 @@
  * Initialize application.
  ******************************************************************************/
 
-// For display
-#include "glib.h"
-
-#include "sl_board_control.h"
-#include "em_assert.h"
-#include "dmd.h"
-#include "os.h"
-
 #include "app.h"
-
-#include "input.h"
-#include "timer.h"
-#include "display.h"
-#include "physics.h"
 
 //GameConfig ConfigurationData;
 
@@ -75,7 +62,6 @@ void app_init(void) {
 void game_over(char cause[]) {
 
 	gameState = GAME_OVER;
-
 
 	if (score > high_score)
 		high_score = score;
@@ -157,7 +143,6 @@ void game_management_task(void) {
 	RTOS_ERR flgErr;
 	RTOS_ERR qErr;
 
-	uint8_t *btnMsg;
 	uint8_t *size;
 	while (1) {
 		while (OSFlagPend(&game_state, PREGAME | GAME_OVER, 0,

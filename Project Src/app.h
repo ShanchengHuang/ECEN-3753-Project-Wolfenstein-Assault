@@ -28,6 +28,9 @@ void app_init(void);
 #include "em_emu.h"
 #include "gpio.h"
 #include "capsense.h"
+#include "sl_board_control.h"
+#include "em_assert.h"
+#include "dmd.h"
 // #include "efm32gg11b.h" //For EFM_ASSERT
 
 // For memcpy()
@@ -43,6 +46,8 @@ void app_init(void);
 #include "railgun.h"
 #include "satchel.h"
 #include "timer.h"
+#include "display.h"
+#include "glib.h"
 
 //***********************************************************************************
 
@@ -79,18 +84,19 @@ static CPU_STK IdleTaskStk[STACK_SIZES];
 
 // Game m
 OS_FLAG_GRP game_state;
-OS_Q btn_q;
+
+enum game_state_e {
+	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
+};
+
 enum game_state_e gameState = PREGAME;
-enum difficulty_e difficulty;
+
 int cursor_pos = 0;
 char death_cause[32] = "";
 int score = 0;
 int high_score = 0;
 int lives = 3;
 
-enum game_state_e {
-	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
-};
 
 //***********************************************************************************
 // function prototypes
@@ -98,24 +104,23 @@ enum game_state_e {
 
 // OS_TMR CapSenseTimer;
 
-
 // //***********************************************************************************
 // Function Prototype
 // //***********************************************************************************
 
 void app_init(void);
-
 void LCD_init();
 
 // Added Idle task();
 void IdleTask_Create();
 void IdleTask(void *p_arg);
 
-void OSFlag_Init(void);
+void game_over(char cause[]);
+void decrement_life();
+void start_game();
 
-void LED_Output_Task_Init(void);
-
-
-void Game_management_task_create(void);
+void Game_management_task_create();
+void update_difficulty(void);
+void game_management_task(void);
 
 #endif // APP_H

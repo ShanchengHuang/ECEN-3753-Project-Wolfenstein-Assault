@@ -9,30 +9,10 @@ int MAX_SPEED = 150; // Update this line
 
 struct PlatData platform_data;
 
-//void platform_timer_cb(void)
-//{
-//    RTOS_ERR semPostErr;
-//    OSSemPost(
-//        &platform_semaphore,
-//        OS_OPT_POST_1,
-//        &semPostErr);
-//    if (semPostErr.Code)
-//        EFM_ASSERT(false);
-//}
-
 void platform_task_create(void) {
-//	RTOS_ERR semErr;
-	RTOS_ERR err;
-//	RTOS_ERR tskErr;
-	RTOS_ERR mutexErr;
 
-	// Create a semaphore for the platform task
-//	OSSemCreate(&platform_semaphore, "platform Semaphore", 0, &semErr);
-//	// Create a periodic timer with the specified period and callback function
-//	OSTmrCreate(&platform_timer, "platform timer", 0,
-//	PLATFORM_PERIOD,
-//	OS_OPT_TMR_PERIODIC, &platform_timer_cb,
-//	NULL, &tmrErr);
+	RTOS_ERR err;
+	RTOS_ERR mutexErr;
 
 	// Create the platform task with the specified parameters
 	OSTaskCreate(&platformTCB, /* Pointer to the task's TCB.  */
@@ -57,6 +37,7 @@ void platform_task_create(void) {
 		EFM_ASSERT(false);
 
 	// Initialize platform bounce flag and platform data variables
+
 	PLATFORM_BOUNCE_ENABLED = false;
 	platform_data.ax = 0;
 	platform_data.vx = 0;
@@ -64,17 +45,12 @@ void platform_task_create(void) {
 }
 
 void platform_task(void) {
-	RTOS_ERR semErr;
 	RTOS_ERR mutexErr;
 	RTOS_ERR err;
 	float delta_t = PLATFORM_PERIOD / 1000.0;
 
 	while (1) {
 
-//        OSSemPend(&platform_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
-//        if (semErr.Code)
-//            EFM_ASSERT(false);
-//
 		// Delate for awakened periodically
 		OSTimeDlyHMSM(0, 0, 0, 150, OS_OPT_TIME_HMSM_STRICT, &err);
 

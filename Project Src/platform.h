@@ -16,7 +16,13 @@
 #define MAX_FORCE MAX_PIXEL_FORCE *SCREEN_MM / SCREEN_PIXELS // kg * px/s^s
 #define MAX_PIXEL_ACCEL MAX_PIXEL_FORCE / PLATFORM_MASS
 
-OS_TMR platform_timer;
+struct PlatData{
+	double x;
+	double vx;
+	double ax;
+};
+
+
 OS_MUTEX platform_mutex;
 
 //static OS_SEM platform_semaphore;
@@ -24,19 +30,12 @@ OS_MUTEX platform_mutex;
 static OS_TCB platformTCB;
 static CPU_STK platformSTK[STACK_SIZES];
 
-struct PlatData{
-	double x;
-	double vx;
-	double ax;
-} ;
-
-
 
 extern int railgun_fired;
 extern int shotX;
 extern int shotY;
 
-extern int railgun_shots;
+//extern int railgun_shots;
 
 void platform_task(void);
 void platform_task_create(void);

@@ -52,7 +52,7 @@ static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];
 
 extern uint8_t PLATFORM_COUNT;
-extern struct PlatformData Platforms[];
+// extern struct PlatformData Platforms[];
 extern OS_MUTEX platform_mutex;
 extern int score;
 

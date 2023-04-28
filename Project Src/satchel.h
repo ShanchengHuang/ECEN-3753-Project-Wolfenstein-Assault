@@ -6,6 +6,7 @@
 #define SATCH_DIAMETER  4
 // #define SIDE_HIT_KINETIC_REDUCTION 0.75
 
+OS_MUTEX sc_mutex;
 
 struct SatchelData {
   double vx;

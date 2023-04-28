@@ -3,8 +3,9 @@
 #include "stdlib.h"
 
 uint8_t SATCHEL_COUNT = 1;
+
 struct SatchelData Satchels[2];
-OS_MUTEX sc_mutex;
+
 
 void generate_satchel(int idx)
 {
