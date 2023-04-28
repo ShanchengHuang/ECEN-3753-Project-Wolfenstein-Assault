@@ -50,13 +50,13 @@
   - One possible way to create a cutting point for testing boundary condition handling would be to introduce intentionally incorrect or out-of-bounds inputs to the Task Physics function and verify that the function handles these inputs correctly. For example, you could test what happens when the platform's position exceeds the boundaries of the canyon or when the satchel charge is thrown with an invalid velocity. By testing these boundary conditions, you can ensure that the game functions correctly even under unexpected circumstances.
   
 - Test all flags, interrupts and mutexes in all tasks to ensure all resources are available to all functions and prevent any deadlocks from occurring (Week 3 updated)
-  - Based on the current framework I have built, I can have some simple unit test for all the flag, mutex, and interrupt, I can change the values of a variables and use debug to check.
-
 
   - Unit test and pass all the flag
   - Unit test and all the metux are working
   - Unit test all the timer functions
-  - Unit test 
+  - Unit test share files
+
+- Based on the current framework I have built, I can have some simple unit test for all the flag, mutex, and interrupt, I can change the values of a variables and use debug to check.(Week4)
 
 - Test LCD task, useing the Lab 7 as unit test, so I can test and design all the display element without interfere with other code (Week 5)
 ![](/screenshot/report/LCD_actual.jpg)
@@ -83,11 +83,13 @@
   - (Week 2) This week I have started coding the project, and useing the Lab7 workspace as the template and start working base on it, this week what I have mostly done is set up the function framework in the header file, start implementing some important files like physics, and set up the create date base of the queue. And doing some unit tests for the mutex.
   - (Week 3) For this week, the plan is update all the flags and the Mutex, also finish some input function as `Button_Task` and `CapSensense_Task`, and start doing the `Physics_Task` and it's queue.
   - (Week 4) For this week, I should have finished or come close to finish all the other functions but the `Physics_Task`  
+  - (Week 5) This is the last week before the official submission. This week I mainly modify bugs. Most of the game has been completed. However, due to the temporary modification of the game structure in the previous week, there are problems in the final integration part.
 - Summary effort & estimate numbers
   - (Week 1)I have completed 10% of my currently-scoped which in 5 hr (Which would take from 75 to 150 hr), estimated work 15% of the budgeted total-project time next week.  For the work that has been completed, I took 1.5x as much time as I estimated.
   - (Week 2) For this week I have completed 20ish% of the currently scoped, in about 5-5hr, in estimated 20% of the total work hours. Which is slightly faster than the initial estimate
   - (Week 3) For this week I have completed 40ish% of the currently scoped, in about 6hr, in estimated 35-40% of the total work hours. Which is slightly slower than the initial estimate
   - (Week 4) For this week I have completed 65ish% of the currently scoped, in about 5hr, in estimated 60% of the total work hours. Which is slightly slower than the initial estimate
+  - (Week 5) This week I spent far more than 10 hours of working time, about 15 hours, 50% more than planned, 85% of the total project completed, And I have test LCD display test and other smaller tests, 20% behind the expected plan.
 
 ## List of in-scope work items
 
