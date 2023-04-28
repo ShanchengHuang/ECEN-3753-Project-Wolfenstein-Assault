@@ -83,7 +83,7 @@ void Physics_Task_Create() {
 // 	applyForceToPlatform(force);
 // }
 
-void update_platform(SharedData *shared_data) {
+void update_platform(struct PlatData *shared_data) {
 
 	shared_data->xPos += shared_data->xVel * PHYSICS_DELTA;
 	shared_data->xVel += shared_data->capSenseForce * PHYSICS_DELTA;
@@ -152,24 +152,24 @@ void checkCollisions(struct SatchelData Satchels[],
 					// TODO
 					decrement_life();
 
-					OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
+					OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
 							&mutexErr);
 					if (mutexErr.Code)
 						EFM_ASSERT(false);
 					generate_satchel(i);
-					OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutexErr);
+					OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
 					if (mutexErr.Code)
 						EFM_ASSERT(false);
 				}
 			}
 		} else if (Satchels[i].y < 0) {
-			OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+			OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
 			if (mutexErr.Code)
 				EFM_ASSERT(false);
 
 			generate_satchel(i);
 
-			OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutexErr);
+			OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
 			if (mutexErr.Code)
 				EFM_ASSERT(false);
 			score++;

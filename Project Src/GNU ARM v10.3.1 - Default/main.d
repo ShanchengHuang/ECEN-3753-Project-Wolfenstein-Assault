@@ -102,7 +102,7 @@ main.o: ../main.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/emlib/inc/em_assert.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/dmd/dmd.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/em_types.h \
- ../physics.h ../platform.h ../constant.h ../satchel.h ../railgun.h \
+ ../physics.h ../constant.h ../platform.h ../satchel.h ../railgun.h \
  ../timer.h ../display.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/glib/glib.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/glib/glib_color.h \
@@ -213,8 +213,8 @@ main.o: ../main.c \
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/dmd/dmd.h:
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/gecko_sdk_suite/v3.2//platform/middleware/glib/em_types.h:
 ../physics.h:
-../platform.h:
 ../constant.h:
+../platform.h:
 ../satchel.h:
 ../railgun.h:
 ../timer.h:

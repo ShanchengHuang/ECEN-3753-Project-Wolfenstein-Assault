@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-//#include"constant.h"
+#include"constant.h"
 #include"platform.h"
 #include"satchel.h"
 
@@ -63,11 +63,10 @@ extern int score;
 void Physics_Task(void *p_arg);
 void Physics_Task_Create();
 
+void update_platform(struct PlatData *shared_data);
+updateSatchelCharges(struct HoltzmanData Satchels[]);
+void checkCollisions(struct SatchelData Satchels[], struct SharedData *shared_data, struct ShieldState *shieldDat);
 
-void applyForceToPlatform(int32_t force);
-void updatePlatformPosition(float deltaTime);
-void updateSatchelCharges(float deltaTime);
-void updateRailGunShots(float deltaTime);
 void checkCollisions();
 
 #endif /* PHYSICS_H_ */

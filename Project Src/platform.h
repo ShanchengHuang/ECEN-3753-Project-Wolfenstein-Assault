@@ -25,6 +25,8 @@ struct PlatData {
 	double ax;
 };
 
+struct PlatData platform_data;
+
 OS_MUTEX platform_mutex;
 
 //static OS_SEM platform_semaphore;
