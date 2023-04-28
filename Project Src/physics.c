@@ -7,46 +7,46 @@
 
 #include "physics.h"
 
-GameConfig ConfigurationData = {
-	.data_structure_version = 1,
-	.tau_physics = 50,
-	.tau_display = 150,
-	.tau_slider = 100,
-	.canyon_size = 100000,
-	.wolfenstein = {
-		.castle_height = 5000,
-		.foundation_hits_required = 2,
-		.foundation_depth = 5000,
-	},
-	.satchel_charges = {
-		.limiting_method = 0, .display_diameter = 10,
-		.tau_throw = 0, // or .max_num_in_flight = 0, depending on the limiting method
-	},
-	.platform = {
-		.max_force = 20000000,
-		.mass = 100,
-		.length = 10000,
-		.max_platform_bounce_speed = 50000,
-	},
-	.shield = {
-		.effective_range = 15000,
-		.activation_energy = 30000,
-	},
-	.railgun = {
-		.elevation_angle = 800,
-		.shot_mass = 50,
-		.shot_display_diameter = 5,
-	},
-	.generator = {
-		.energy_storage = 50000,
-		.power = 20000,
-	},
-};
+//GameConfig ConfigurationData = {
+//	.data_structure_version = 1,
+//	.tau_physics = 50,
+//	.tau_display = 150,
+//	.tau_slider = 100,
+//	.canyon_size = 100000,
+//	.wolfenstein = {
+//		.castle_height = 5000,
+//		.foundation_hits_required = 2,
+//		.foundation_depth = 5000,
+//	},
+//	.satchel_charges = {
+//		.limiting_method = 0, .display_diameter = 10,
+//		.tau_throw = 0, // or .max_num_in_flight = 0, depending on the limiting method
+//	},
+//	.platform = {
+//		.max_force = 20000000,
+//		.mass = 100,
+//		.length = 10000,
+//		.max_platform_bounce_speed = 50000,
+//	},
+//	.shield = {
+//		.effective_range = 15000,
+//		.activation_energy = 30000,
+//	},
+//	.railgun = {
+//		.elevation_angle = 800,
+//		.shot_mass = 50,
+//		.shot_display_diameter = 5,
+//	},
+//	.generator = {
+//		.energy_storage = 50000,
+//		.power = 20000,
+//	},
+//};
 
 void Physics_Task(void *p_arg)
 {
 
-	RTOS_ERR semErr;
+	RTOS_ERR err;
 	RTOS_ERR mutexErr;
 	(void)&p_arg;
 
@@ -54,7 +54,7 @@ void Physics_Task(void *p_arg)
 	{
 		
 		// Delay for TauPhysics milliseconds before next update
-		OSTimeDly((OS_TICK)ConfigurationData.TauPhysics, OS_OPT_TIME_DLY, &err);
+		OSTimeDly((OS_TICK)ConfigurationData.tau_physics, OS_OPT_TIME_DLY, &err);
 
 		// OSSemPend(&physics_semaphore, 0, OS_OPT_PEND_BLOCKING, NULL, &semErr);
 		// if (semErr.Code)

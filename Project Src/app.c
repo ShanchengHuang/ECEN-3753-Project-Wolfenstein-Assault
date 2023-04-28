@@ -34,8 +34,7 @@
 #include "display.h"
 #include "physics.h"
 
-void app_init(void)
-{
+void app_init(void) {
 	// Initialize GPIO
 	gpio_open();
 
@@ -58,8 +57,7 @@ void app_init(void)
 	Game_management_task_create();
 }
 
-void LCD_init()
-{
+void LCD_init() {
 	uint32_t status;
 	/* Enable the memory lcd */
 	status = sl_board_enable_display();
@@ -80,91 +78,101 @@ void LCD_init()
 	GLIB_clear(&glibContext);
 
 	/* Use Normal font */
-	GLIB_setFont(&glibContext, (GLIB_Font_t *)&GLIB_FontNormal8x8);
+	GLIB_setFont(&glibContext, (GLIB_Font_t*) &GLIB_FontNormal8x8);
 
 	// Game start up
 	GLIB_drawStringOnLine(&glibContext, "   Wolfenstein\n     Assault", 1,
-						  GLIB_ALIGN_LEFT, 0, 10,
-						  true);
+			GLIB_ALIGN_LEFT, 0, 10,
+			true);
 
 	/* Draw text on the memory lcd display*/
 	GLIB_drawStringOnLine(&glibContext, " Press any key \n  To start", 1,
-						  GLIB_ALIGN_LEFT, 0, 50,
-						  true);
+			GLIB_ALIGN_LEFT, 0, 50,
+			true);
 
 	//	SlightLeftTurnArrow(&glibContext);
 	/* Post updates to display */
 	DMD_updateDisplay();
 }
 
-void game_over(char cause[])
-{
-	RTOS_ERR flgErr;
-	RTOS_ERR tmrErr;
+void game_over(char cause[]) {
+
 	gameState = GAME_OVER;
 
-	cursor_pos = 0;
+//	cursor_pos = 0;
 
 	if (score > high_score)
 		high_score = score;
 	// TODO Print the Endgame
-	strcpy(death_cause, cause);
-	for (int i = 0; i < 3; i++)
-	{
-		if (OSTmrStateGet(&ledTmrs[i], &tmrErr) == OS_TMR_STATE_RUNNING)
-		{
-			OSTmrStop(&ledTmrs[i], OS_OPT_TMR_NONE, NULL, &tmrErr);
-			if (tmrErr.Code)
-				EFM_ASSERT(false);
-		}
-	}
 
-	turn_off_led();
+	//	turn_off_led();
 
 	// Stop all the timer and flag
-	OSTmrStop(&physics_timer, OS_OPT_TMR_NONE, NULL, &tmrErr);
-	if (tmrErr.Code)
-		EFM_ASSERT(false);
-	OSTmrStop(&platform_timer, OS_OPT_TMR_NONE, NULL, &tmrErr);
-	if (tmrErr.Code)
-		EFM_ASSERT(false);
-	OSFlagPost(&game_state, GAME_OVER, OS_OPT_POST_FLAG_SET, &flgErr);
-	if (flgErr.Code)
-		EFM_ASSERT(false);
-	OSFlagPost(&game_state, IN_PROGRESS, OS_OPT_POST_FLAG_CLR, &flgErr);
-	if (flgErr.Code)
-		EFM_ASSERT(false);
+
 }
 
-void decrement_life(void)
-{
+void decrement_life(void) {
 	lives--;
-	if (lives == 0)
-	{
+	if (lives == 0) {
 		game_over("Satchel has exploded");
 	}
 }
 
-void start_game()
-{
+void start_game() {
 	RTOS_ERR tmrErr;
 	RTOS_ERR flgErr;
 
 	platform_data.ax = 0;
 	platform_data.vx = 0;
 	platform_data.x = SCREEN_PIXELS / 2;
-	laser_charges = 5;
-	lives = 3;
-	score = 0;
+
+	// init the values
+	// Default Configuration Values
+	GameConfig default_config = {
+	    .data_structure_version = 1,
+	    .tau_physics = 50,
+	    .tau_display = 150,
+	    .tau_slider = 100,
+	    .canyon_size = 100000,
+	    .wolfenstein = {
+	        .castle_height = 5000,
+	        .foundation_hits_required = 2,
+	        .foundation_depth = 5000,
+	    },
+	    .satchel_charges = {
+	        .limiting_method = 0, .display_diameter = 10,
+	        .tau_throw = 0, // Union with MaxNumInFlight
+	    },
+	    .platform = {
+	        .max_force = 20000000,
+	        .mass = 100,
+	        .length = 10000,
+	        .max_platform_bounce_speed = 50000,
+	    },
+	    .shield = {
+	        .effective_range = 15000,
+	        .activation_energy = 30000,
+	    },
+	    .railgun = {
+	        .elevation_angle = 800,
+	        .shot_mass = 50,
+	        .shot_display_diameter = 5,
+	    },
+	    .generator = {
+	        .energy_storage = 50000,
+	        .power = 20000,
+	    },
+	};
 
 	satchel_init();
 	gameState = IN_PROGRESS;
 
-	// Timer and
-	OSTmrStart(&ledTmrs[0], &tmrErr);
-	if (tmrErr.Code != RTOS_ERR_NONE)
-		EFM_ASSERT(false);
-	OSTmrStart(&physics_timer, &tmrErr);
+	// Timer
+
+//	OSTmrStart(&ledTmrs[0], &tmrErr);
+//	if (tmrErr.Code != RTOS_ERR_NONE)
+//		EFM_ASSERT(false);
+
 
 	OSFlagPost(&game_state, IN_PROGRESS, OS_OPT_POST_FLAG_SET, &flgErr);
 	if (tmrErr.Code != RTOS_ERR_NONE || flgErr.Code)
@@ -177,59 +185,46 @@ void start_game()
 		EFM_ASSERT(false);
 }
 
-void Game_management_task_create(void)
-{
-	RTOS_ERR tskErr;
-	RTOS_ERR flgErr;
-	RTOS_ERR qErr;
-
-	OSTaskCreate(
-		&gameTCB,			   /* Pointer to the task's TCB.  */
-		"game Task.",		   /* Name to help debugging.     */
-		&game_management_task, /* Pointer to the task's code. */
-		DEF_NULL,			   /* Pointer to task's argument. */
-		ABOVE_NORMAL_PRIORITY, /* Task's priority.            */
-		&gameSTK[0],		   /* Pointer to base of stack.   */
-		(STACK_SIZES / 10u),   /* Stack limit, from base.     */
-		STACK_SIZES,		   /* Stack size, in CPU_STK.     */
-		10u,				   /* Messages in task queue.     */
-		120u,				   /* Round-Robin time quanta.    */
-		DEF_NULL,			   /* External TCB data.          */
-		OS_OPT_TASK_STK_CHK,   /* Task options.               */
-		&tskErr);
-
-	OSFlagCreate(
-		&game_state,
-		"game state flags",
-		PREGAME,
-		&flgErr);
-
-	OSQCreate(
-		&btn_q,
-		"Q for managing game state",
-		4,
-		&qErr);
-
-	if (flgErr.Code || tskErr.Code || qErr.Code)
-		EFM_ASSERT(false);
+void Game_management_task_create(void) {
+//	RTOS_ERR tskErr;
+//	RTOS_ERR flgErr;
+//	RTOS_ERR qErr;
+//
+//	OSTaskCreate(&gameTCB, /* Pointer to the task's TCB.  */
+//	"game Task.", /* Name to help debugging.     */
+//	&game_management_task, /* Pointer to the task's code. */
+//	DEF_NULL, /* Pointer to task's argument. */
+//	ABOVE_NORMAL_PRIORITY, /* Task's priority.            */
+//	&gameSTK[0], /* Pointer to base of stack.   */
+//	(STACK_SIZES / 10u), /* Stack limit, from base.     */
+//	STACK_SIZES, /* Stack size, in CPU_STK.     */
+//	10u, /* Messages in task queue.     */
+//	120u, /* Round-Robin time quanta.    */
+//	DEF_NULL, /* External TCB data.          */
+//	OS_OPT_TASK_STK_CHK, /* Task options.               */
+//	&tskErr);
+//
+//	OSFlagCreate(&game_state, "game state flags", PREGAME, &flgErr);
+//
+//	OSQCreate(&btn_q, "Q for managing game state", 4, &qErr);
+//
+//	if (flgErr.Code || tskErr.Code || qErr.Code)
+//		EFM_ASSERT(false);
 }
 
-void update_difficulty(void)
-{
+void update_difficulty(void) {
 	// TODO, adding it when I have time
 }
 
-void game_management_task(void)
-{
+void game_management_task(void) {
 	RTOS_ERR flgErr;
 	RTOS_ERR qErr;
 
 	uint8_t *btnMsg;
 	uint8_t *size;
-	while (1)
-	{
-		while (OSFlagPend(&game_state, PREGAME | GAME_OVER, 0, OS_OPT_PEND_FLAG_SET_ANY, NULL, &flgErr) != IN_PROGRESS)
-		{ // When getting btn feaback star game
+	while (1) {
+		while (OSFlagPend(&game_state, PREGAME | GAME_OVER, 0,
+		OS_OPT_PEND_FLAG_SET_ANY, NULL, &flgErr) != IN_PROGRESS) { // When getting btn feaback star game
 
 			// TODO adding semaphore
 			OSQPend(&btn_q, 0, OS_OPT_PEND_BLOCKING, &size, NULL, &qErr);
@@ -245,42 +240,37 @@ void game_management_task(void)
 
 // //***********************************************************************************
 
-void IdleTask(void *p_arg)
-{
+void IdleTask(void *p_arg) {
 	/* Use argument. */
-	(void)&p_arg;
+	(void) &p_arg;
 	RTOS_ERR err;
 
-	while (DEF_TRUE)
-	{
+	while (DEF_TRUE) {
 		EMU_EnterEM1();
 
-		if (err.Code != RTOS_ERR_NONE)
-		{
+		if (err.Code != RTOS_ERR_NONE) {
 		}
 	}
 }
 
-void IdleTask_Create()
-{
+void IdleTask_Create() {
 	RTOS_ERR err;
 
-	OSTaskCreate(&IdleTaskTCB,			/* Pointer to the task's TCB.  */
-				 "IdleTask",			/* Name to help debugging.     */
-				 &IdleTask,				/* Pointer to the task's code. */
-				 DEF_NULL,				/* Pointer to task's argument. */
-				 IdleTask_PRIO,			/* Task's priority.            */
-				 &IdleTaskStk[0],		/* Pointer to base of stack.   */
-				 (IdleTask_SIZE / 10u), /* Stack limit, from base.     */
-				 IdleTask_SIZE,			/* Stack size, in CPU_STK.     */
-				 10u,					/* Messages in task queue.     */
-				 0u,					/* Round-Robin time quanta.    */
-				 DEF_NULL,				/* External TCB data.          */
-				 OS_OPT_TASK_STK_CHK,	/* Task options.               */
-				 &err);
+	OSTaskCreate(&IdleTaskTCB, /* Pointer to the task's TCB.  */
+	"IdleTask", /* Name to help debugging.     */
+	&IdleTask, /* Pointer to the task's code. */
+	DEF_NULL, /* Pointer to task's argument. */
+	NORMAL_PRIORITY, /* Task's priority.            */
+	&IdleTaskStk[0], /* Pointer to base of stack.   */
+	(STACK_SIZES / 10u), /* Stack limit, from base.     */
+	STACK_SIZES, /* Stack size, in CPU_STK.     */
+	10u, /* Messages in task queue.     */
+	0u, /* Round-Robin time quanta.    */
+	DEF_NULL, /* External TCB data.          */
+	OS_OPT_TASK_STK_CHK, /* Task options.               */
+	&err);
 
-	if (err.Code != RTOS_ERR_NONE)
-	{
+	if (err.Code != RTOS_ERR_NONE) {
 		/* Handle error on task creation. */
 	}
 }

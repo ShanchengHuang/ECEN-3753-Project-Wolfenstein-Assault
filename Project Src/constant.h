@@ -69,18 +69,19 @@ typedef struct
     uint8_t button_id;    // Button ID (0 for Button0, 1 for Button1, etc.)
     uint8_t button_state; // Button state (0 for released, 1 for pressed)
 } button_event;
-typedef struct
-{
-    button_event buttonEvent; // Button event data
-    int32_t capSenseForce;    // CapSense force value
-    float xPos;               // Platform x position
-    float yPos;               // Platform y position
-    float xVel;               // Platform x velocity
-    float yVel;               // Platform y velocity
-} SharedData;
 
-// Declare a global instance of the shared data structure
-SharedData sharedData;
+//typedef struct
+//{
+//    button_event buttonEvent; // Button event data
+//    int32_t capSenseForce;    // CapSense force value
+//    float xPos;               // Platform x position
+//    float yPos;               // Platform y position
+//    float xVel;               // Platform x velocity
+//    float yVel;               // Platform y velocity
+//} SharedData;
+//
+//// Declare a global instance of the shared data structure
+//SharedData sharedData;
 
 // Default Configuration Values
 GameConfig default_config = {

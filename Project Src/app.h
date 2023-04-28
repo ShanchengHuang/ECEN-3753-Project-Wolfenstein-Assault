@@ -37,16 +37,29 @@ void app_init(void);
 #include <stdlib.h>
 #include <stdio.h>
 
+// From other header
+#include "physics.h"
+#include "platform.h"
+#include "railgun.h"
+#include "satchel.h"
+#include "timer.h"
+
 //***********************************************************************************
 
 // global variables
 
 //***********************************************************************************
 
-static volatile bool slider0 = 0;
-static volatile bool slider1 = 0;
-static volatile bool btn0 = 0;
-static volatile bool btn1 = 0;
+//static volatile bool slider0 = 0;
+//static volatile bool slider1 = 0;
+//static volatile bool btn0 = 0;
+//static volatile bool btn1 = 0;
+
+
+static OS_TCB IdleTaskTCB;
+static CPU_STK IdleTaskStk[STACK_SIZES];
+
+//struct PlatformData platform_data;
 
 #define Dly_tick 2
 
@@ -87,35 +100,35 @@ int score = 0;
 int high_score = 0;
 int lives = 3;
 
+enum game_state_e {
+	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
+};
+
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
 
 // OS_TMR CapSenseTimer;
 
-typedef struct
-{
+typedef struct {
 	int button_id;	  // Button 0 or Button 1
 	int button_state; // 0 for released, 1 for pressed
 } ButtonEvent;
 
-typedef struct
-{
+typedef struct {
 	ButtonEvent buffer[BUTTON_FIFO_SIZE];
 	int head;
 	int tail;
 	int count;
 } ButtonEventFifo;
 
-typedef struct
-{
+typedef struct {
 	int speed;
 	int increments;
 	int decrements;
 } SpeedSetpointData;
 
-typedef struct
-{
+typedef struct {
 	int current_direction;
 	int time_constant;
 	int left_turns;
@@ -127,15 +140,13 @@ void app_init(void);
 void LCD_init();
 
 void button_event_fifo_write(ButtonEventFifo *fifo, int button_id,
-							 int button_state);
+		int button_state);
 
 ButtonEvent button_event_fifo_read(ButtonEventFifo *fifo);
-
 
 // Added Idle task();
 void IdleTask_Create();
 void IdleTask(void *p_arg);
-
 
 void OSFlag_Init(void);
 
@@ -162,7 +173,6 @@ void read_button1(void);
 void read_capsense(void);
 int read_capsense2(void);
 void write_led(void);
-
 
 void LED_Output_Task_Init(void);
 
