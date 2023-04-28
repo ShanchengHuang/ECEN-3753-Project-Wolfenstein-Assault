@@ -208,6 +208,8 @@ void draw_satchel(int x, int y)
 // 	0,
 // 	SCREEN_PIXELS - 1,
 // 	SCREEN_PIXELS - 1};
+
+
 static int charge_text_offset = -1 * CANYON_START - 5;
 static int lifeXOffset = CANYON_START + HM_PIXEL_RADIUS + 3;
 

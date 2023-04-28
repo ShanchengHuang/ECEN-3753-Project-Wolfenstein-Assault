@@ -14,6 +14,8 @@
 // Display
 #include "glib.h"
 
+#include "constant.h"
+
 // OS
 #include "os.h"
 
