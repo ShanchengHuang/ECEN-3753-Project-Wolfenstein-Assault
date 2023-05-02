@@ -35,7 +35,7 @@ void platform_task_create(void) {
 
 	platform_data.ax = 0;
 	platform_data.vx = 0;
-	platform_data.x = SCREEN_PIXELS / 2;
+	platform_data.x = SCREEN_PIXELS*2/3;
 }
 
 void platform_task(void) {
@@ -46,7 +46,7 @@ void platform_task(void) {
 	while (1) {
 
 		// Delate for awakened periodically
-		OSTimeDlyHMSM(0, 0, 0, 150, OS_OPT_TIME_HMSM_STRICT, &err);
+		OSTimeDlyHMSM(0, 0, 0, 50, OS_OPT_TIME_HMSM_STRICT, &err);
 
 		CAPSENSE_Sense();
 

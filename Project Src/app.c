@@ -33,8 +33,7 @@ int lives = 3;
 
 // Default Configuration Values
 
-void app_init(void)
-{
+void app_init(void) {
 	// Initialize GPIO
 	gpio_open();
 
@@ -42,7 +41,8 @@ void app_init(void)
 	CAPSENSE_Init();
 
 	// Initialize game element:
-	//	railgun_task_create(); // it should has both Shild and Railgun task
+	railgun_task_create();
+	shield_task_create();
 	Physics_Task_Create();
 	platform_task_create();
 
@@ -51,7 +51,7 @@ void app_init(void)
 	//	LedOutput_Create();
 
 	// Idle task:
-	//	IdleTask_Create();
+//	IdleTask_Create();
 
 	start_game();
 
@@ -59,8 +59,7 @@ void app_init(void)
 	//	Game_management_task_create();
 }
 
-void game_over()
-{
+void game_over() {
 
 	//	gameState = GAME_OVER;
 
@@ -72,8 +71,7 @@ void game_over()
 	GPIO_PinOutClear(LED1_port, LED1_pin);
 	GPIO_PinOutClear(LED0_port, LED0_pin);
 
-	while (1)
-	{
+	while (1) {
 		//		inf loop
 	}
 }
@@ -87,8 +85,7 @@ void game_over()
 // 	}
 // }
 
-void start_game()
-{
+void start_game() {
 	//	RTOS_ERR err;
 	//	RTOS_ERR flgErr;
 
@@ -158,42 +155,37 @@ void start_game()
 
 // //***********************************************************************************
 
-void IdleTask(void *p_arg)
-{
+void IdleTask(void *p_arg) {
 	/* Use argument. */
-	(void)&p_arg;
+	(void) &p_arg;
 	RTOS_ERR err;
 
-	while (DEF_TRUE)
-	{
+	while (DEF_TRUE) {
 		EMU_EnterEM1();
 
-		if (err.Code != RTOS_ERR_NONE)
-		{
+		if (err.Code != RTOS_ERR_NONE) {
 		}
 	}
 }
 
-void IdleTask_Create()
-{
+void IdleTask_Create() {
 	RTOS_ERR err;
 
-	OSTaskCreate(&IdleTaskTCB,		  /* Pointer to the task's TCB.  */
-				 "IdleTask",		  /* Name to help debugging.     */
-				 &IdleTask,			  /* Pointer to the task's code. */
-				 DEF_NULL,			  /* Pointer to task's argument. */
-				 NORMAL_PRIORITY,	  /* Task's priority.            */
-				 &IdleTaskStk[0],	  /* Pointer to base of stack.   */
-				 (STACK_SIZES / 10u), /* Stack limit, from base.     */
-				 STACK_SIZES,		  /* Stack size, in CPU_STK.     */
-				 10u,				  /* Messages in task queue.     */
-				 0u,				  /* Round-Robin time quanta.    */
-				 DEF_NULL,			  /* External TCB data.          */
-				 OS_OPT_TASK_STK_CHK, /* Task options.               */
-				 &err);
+	OSTaskCreate(&IdleTaskTCB, /* Pointer to the task's TCB.  */
+	"IdleTask", /* Name to help debugging.     */
+	&IdleTask, /* Pointer to the task's code. */
+	DEF_NULL, /* Pointer to task's argument. */
+	NORMAL_PRIORITY, /* Task's priority.            */
+	&IdleTaskStk[0], /* Pointer to base of stack.   */
+	(STACK_SIZES / 10u), /* Stack limit, from base.     */
+	STACK_SIZES, /* Stack size, in CPU_STK.     */
+	10u, /* Messages in task queue.     */
+	0u, /* Round-Robin time quanta.    */
+	DEF_NULL, /* External TCB data.          */
+	OS_OPT_TASK_STK_CHK, /* Task options.               */
+	&err);
 
-	if (err.Code != RTOS_ERR_NONE)
-	{
+	if (err.Code != RTOS_ERR_NONE) {
 		/* Handle error on task creation. */
 	}
 }

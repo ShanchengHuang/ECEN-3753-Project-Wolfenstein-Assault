@@ -1,8 +1,8 @@
 #include "railgun.h"
 
-uint8_t railgun_charges = 5;
+// uint8_t railgun_charges = 5;
 
-//bool railgun_fired = false;
+int railgun_fired = 0;
 
 struct BulletData Bullet;
 
@@ -10,6 +10,9 @@ static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];
 
 struct ShieldState shield_state;
+
+OS_MUTEX shield_mutex;
+OS_MUTEX railgun_mutex;
 
 // extern OS_MUTEX sc_mutex;
 //extern int score;
@@ -61,7 +64,7 @@ void railgun_task(void)
 				OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 
 				Bullet.x = platform_data.x;
-				Bullet.y = 0;
+				Bullet.y = 128;
 				Bullet.vx = (charger * 20);
 				Bullet.vy = 10;
 

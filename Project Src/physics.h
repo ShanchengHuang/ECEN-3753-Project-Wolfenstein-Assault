@@ -40,21 +40,21 @@
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 static OS_TCB Physics_TaskTCB;
 
-extern uint8_t railgun_shots;
-extern OS_SEM railgun_semaphore;
-extern int railgun_fired;
-extern int shotX;
-extern int shotY;
+//extern uint8_t railgun_shots;
+//extern OS_SEM railgun_semaphore;
+//extern int railgun_fired;
+//extern int shotX;
+//extern int shotY;
 
 static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];
 
-extern uint8_t PLATFORM_COUNT;
+//extern uint8_t PLATFORM_COUNT;
 // extern struct PlatformData Platforms[];
 extern OS_MUTEX platform_mutex;
-extern int score;
+//extern int score;
 
-extern int win_time;
+
 extern bool castle_hit;
 
 // TODO: create queue for all the physics var
@@ -69,6 +69,7 @@ void updateSatchelCharges(struct SatchelData *Satchels);
 void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data,
                      struct ShieldState shieldDat);
 
-void checkCollisions();
+void checkBulletHit(struct BulletData Bullet);
+void updateRailGunShots(struct BulletData *Bullet);
 
 #endif /* PHYSICS_H_ */

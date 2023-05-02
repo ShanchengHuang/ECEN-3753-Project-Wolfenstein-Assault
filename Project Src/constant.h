@@ -18,6 +18,8 @@
 #define CANYON_START ((SCREEN_PIXELS - CANYON_SIZE_PIXELS) / 2)
 #define CANYON_END (SCREEN_PIXELS - CANYON_START)
 
+extern int win_time;
+
 // Declaration of the external ConfigurationData variable
 // extern GameConfig ConfigurationData;
 
