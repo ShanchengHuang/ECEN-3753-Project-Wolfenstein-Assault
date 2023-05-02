@@ -2,15 +2,17 @@
 
 
 
-
+struct PlatData platform_data;
+int MAX_SPEED = 150;
+OS_MUTEX platform_mutex;
 
 void platform_task_create(void) {
 
 	RTOS_ERR err;
-	RTOS_ERR mutexErr;
 
 	// Create the platform task with the specified parameters
-	OSTaskCreate(&platformTCB, /* Pointer to the task's TCB.  */
+	OSTaskCreate(
+	&platformTCB, /* Pointer to the task's TCB.  */
 	"platform Task.", /* Name to help debugging.     */
 	&platform_task, /* Pointer to the task's code. */
 	DEF_NULL, /* Pointer to task's argument. */
@@ -25,15 +27,12 @@ void platform_task_create(void) {
 	&err);
 
 	// Create a mutex for the platform task
-	OSMutexCreate(&platform_mutex, "platform_mutex", &mutexErr);
-	// Check for errors in semaphore, timer, task, and mutex creation
-
+	OSMutexCreate(&platform_mutex, "platform_mutex", &err);
 	if (err.Code)
 		EFM_ASSERT(false);
 
 	// Initialize platform bounce flag and platform data variables
 
-	PLATFORM_BOUNCE_ENABLED = false;
 	platform_data.ax = 0;
 	platform_data.vx = 0;
 	platform_data.x = SCREEN_PIXELS / 2;
@@ -62,6 +61,7 @@ void platform_task(void) {
 			}
 		}
 		OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+
 		if (mutexErr.Code)
 			EFM_ASSERT(false);
 
@@ -98,6 +98,7 @@ void platform_task(void) {
 //		}
 
 		// Update platform velocity and position
+
 		platform_data.vx += platform_data.ax * delta_t;
 		platform_data.x += platform_data.vx * delta_t;
 

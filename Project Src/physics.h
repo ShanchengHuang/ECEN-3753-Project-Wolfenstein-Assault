@@ -13,10 +13,6 @@
 //***********************************************************************************
 // For OS level lib
 #include <os.h>
-#include "em_emu.h"
-#include "gpio.h"
-#include "capsense.h"
-
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -35,20 +31,20 @@
 #define Physics_Task_STK_SIZE 256u
 #define Physics_Task_PRIO 21u
 
-#define PHYSICS_DELTA (150 / 10.0) // TODO change this match to  constant.h
-
+#define GRAVITY GRAVITY_PIXELS * SCREEN_MM / SCREEN_PIXELS
+#define GAME_OVER_SPEED 25
+#define PHYSICS_DELTA (1 / 10.0) // TODO change this match to  constant.h
 #define GRAVITY_PIXELS 20
 
 // Task stack
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
 static OS_TCB Physics_TaskTCB;
 
-uint8_t railgun_shots = 5;
-OS_SEM railgun_semaphore;
-bool auto_cannon = true;
-int railgun_fired = 0;
-int shotX;
-int shotY;
+extern uint8_t railgun_shots;
+extern OS_SEM railgun_semaphore;
+extern int railgun_fired;
+extern int shotX;
+extern int shotY;
 
 static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];

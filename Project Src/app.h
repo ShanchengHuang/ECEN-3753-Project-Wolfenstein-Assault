@@ -42,10 +42,10 @@ void app_init(void);
 
 // From other header
 #include "physics.h"
-#include "platform.h"
-#include "railgun.h"
-#include "satchel.h"
-#include "timer.h"
+//#include "platform.h"
+//#include "railgun.h"
+//#include "satchel.h"
+//#include "timer.h"
 #include "display.h"
 #include "glib.h"
 
@@ -60,8 +60,9 @@ void app_init(void);
 //static volatile bool btn0 = 0;
 //static volatile bool btn1 = 0;
 
-static OS_TCB gameTCB;
-static CPU_STK gameSTK[STACK_SIZES];
+//static OS_TCB gameTCB;
+//static CPU_STK gameSTK[STACK_SIZES];
+
 
 static OS_TCB IdleTaskTCB;
 static CPU_STK IdleTaskStk[STACK_SIZES];
@@ -82,20 +83,20 @@ static CPU_STK IdleTaskStk[STACK_SIZES];
 //static OS_MUTEX BTNMutex;
 //static OS_MUTEX PhysicsMutex;
 
-// Game m
-OS_FLAG_GRP game_state;
+// Game
+//extern OS_FLAG_GRP game_state;
 
-enum game_state_e {
-	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
-};
+//enum game_state_e {
+//	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
+//};
+//
+//extern enum game_state_e gameState;
 
-enum game_state_e gameState = PREGAME;
-
-int cursor_pos = 0;
-char death_cause[32] = "";
-int score = 0;
-int high_score = 0;
-int lives = 3;
+extern int cursor_pos;
+extern char death_cause[32];
+extern int score;
+extern int high_score;
+extern int lives;
 
 
 //***********************************************************************************

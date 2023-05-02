@@ -7,6 +7,15 @@
 
 #include "physics.h"
 
+
+
+uint8_t railgun_shots = 5;
+OS_SEM railgun_semaphore;
+int railgun_fired = 0;
+int shotX;
+int shotY;
+
+
 void Physics_Task(void *p_arg) {
 
 	RTOS_ERR err;
@@ -85,10 +94,11 @@ void update_platform(struct PlatData *plat_data) {
 
 	plat_data->x += plat_data->vx * PHYSICS_DELTA;
 	plat_data->vx += plat_data->ax * PHYSICS_DELTA;
+
 	if ((plat_data->x - (PLATFORM_WIDTH / 2)) < CANYON_START) {
 		if (plat_data->vx < (-1 * MAX_SPEED)) {
 			//			game_over("Too Fast");
-		} else if (PLATFORM_BOUNCE_ENABLED) {
+		} else if (1) {
 			plat_data->ax = 0;
 			plat_data->vx = fabs(plat_data->vx);
 		} else {
@@ -96,10 +106,11 @@ void update_platform(struct PlatData *plat_data) {
 			plat_data->vx = 0;
 			plat_data->x = CANYON_START + PLATFORM_WIDTH / 2;
 		}
+
 	} else if ((plat_data->x + (PLATFORM_WIDTH / 2)) > CANYON_END) {
 		if (plat_data->vx > MAX_SPEED) {
 			//			game_over("Too Fast");
-		} else if (PLATFORM_BOUNCE_ENABLED) {
+		} else if (1) {
 			plat_data->ax = 0;
 			plat_data->vx = -1 * fabs(plat_data->vx);
 		} else {
@@ -109,75 +120,75 @@ void update_platform(struct PlatData *plat_data) {
 		}
 	}
 }
-
-void updateSatchelCharges(struct SatchelData *Satchels) {
-	Satchels->x += Satchels->vx * PHYSICS_DELTA;
-	Satchels->y += Satchels->vy * PHYSICS_DELTA;
-	Satchels->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
-	if ((Satchels->x - SATCH_DIAMETER) < CANYON_START) {
-		Satchels->vx = fabs(Satchels->vx);
-	} else if ((Satchels->x + SATCH_DIAMETER) > CANYON_END) {
-		Satchels->vx = -1 * fabs(Satchels->vx);
-	}
-}
-
-// Check for collisions and endgame
-
-void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data, struct ShieldState shieldDat) {
-
-	RTOS_ERR mutexErr;
-	if ((Satchels.y + GRAVITY_PIXELS) >= PLATFORM_Y && Satchels.vy > 0) { // If reached the platforms
-		if (Satchels.x < (platform_data.x + (PLATFORM_WIDTH / 2))
-				&& Satchels.x > (platform_data.x - (PLATFORM_WIDTH / 2))
-				&& shieldDat.active) { // with in  the platform and the shell is on
-									   // TODO
-			OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
-					&mutexErr);
-			if (mutexErr.Code)
-				EFM_ASSERT(false);
-
-			generate_satchel();
-
-			OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
-			if (mutexErr.Code)
-				EFM_ASSERT(false);
-			score++;
-		} else {
-			// Out of the platform
-			// TODO game over (respawning satchel is temporary for debugging)
-			decrement_life();
-
-			OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
-					&mutexErr);
-			if (mutexErr.Code)
-				EFM_ASSERT(false);
-
-			// Add another satcher
-			generate_satchel();
-
-			OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
-			if (mutexErr.Code)
-				EFM_ASSERT(false);
-		}
-
-		// // When satchels been destroy
-		// if (Satchels.y < 0)
-		// {
-		// 	OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
-		// 	if (mutexErr.Code)
-		// 		EFM_ASSERT(false);
-
-		// 	generate_satchel(i);
-
-		// 	OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
-		// 	if (mutexErr.Code)
-		// 		EFM_ASSERT(false);
-		// 	score++;
-		// }
-	}
-}
-
-// Update rail gun shots
-// void updateRailGunShots(deltaTime)
-// {s
-// }
+//
+//void updateSatchelCharges(struct SatchelData *Satchels) {
+//	Satchels->x += Satchels->vx * PHYSICS_DELTA;
+//	Satchels->y += Satchels->vy * PHYSICS_DELTA;
+//	Satchels->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
+//	if ((Satchels->x - SATCH_DIAMETER) < CANYON_START) {
+//		Satchels->vx = fabs(Satchels->vx);
+//	} else if ((Satchels->x + SATCH_DIAMETER) > CANYON_END) {
+//		Satchels->vx = -1 * fabs(Satchels->vx);
+//	}
+//}
+//
+//// Check for collisions and endgame
+//
+//void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data, struct ShieldState shieldDat) {
+//
+//	RTOS_ERR mutexErr;
+//	if ((Satchels.y + GRAVITY_PIXELS) >= PLATFORM_Y && Satchels.vy > 0) { // If reached the platforms
+//		if (Satchels.x < (platform_data.x + (PLATFORM_WIDTH / 2))
+//				&& Satchels.x > (platform_data.x - (PLATFORM_WIDTH / 2))
+//				&& shieldDat.active) { // with in  the platform and the shell is on
+//									   // TODO
+//			OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
+//					&mutexErr);
+//			if (mutexErr.Code)
+//				EFM_ASSERT(false);
+//
+//			generate_satchel();
+//
+//			OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+//			if (mutexErr.Code)
+//				EFM_ASSERT(false);
+//			score++;
+//		} else {
+//			// Out of the platform
+//			// TODO game over (respawning satchel is temporary for debugging)
+//			decrement_life();
+//
+//			OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL,
+//					&mutexErr);
+//			if (mutexErr.Code)
+//				EFM_ASSERT(false);
+//
+//			// Add another satcher
+//			generate_satchel();
+//
+//			OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+//			if (mutexErr.Code)
+//				EFM_ASSERT(false);
+//		}
+//
+//		// // When satchels been destroy
+//		// if (Satchels.y < 0)
+//		// {
+//		// 	OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+//		// 	if (mutexErr.Code)
+//		// 		EFM_ASSERT(false);
+//
+//		// 	generate_satchel(i);
+//
+//		// 	OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+//		// 	if (mutexErr.Code)
+//		// 		EFM_ASSERT(false);
+//		// 	score++;
+//		// }
+//	}
+//}
+//
+//// Update rail gun shots
+//// void updateRailGunShots(deltaTime)
+//// {s
+//// }

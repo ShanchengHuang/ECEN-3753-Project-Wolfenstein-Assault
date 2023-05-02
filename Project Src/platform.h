@@ -21,10 +21,10 @@
 
 #define PLATFORM_PERIOD 1
 
-int PLATFORM_BOUNCE_ENABLED;
+//int PLATFORM_BOUNCE_ENABLED;
 
 //int MAX_SPEED = ConfigurationData.platform.max_platform_speed; // Update this line
-int MAX_SPEED = 150; // Update this line
+extern int MAX_SPEED; // Update this line
 
 struct PlatData {
 	double x;
@@ -32,9 +32,8 @@ struct PlatData {
 	double ax;
 };
 
-struct PlatData platform_data;
-
-OS_MUTEX platform_mutex;
+extern struct PlatData platform_data;
+extern OS_MUTEX platform_mutex;
 
 //static OS_SEM platform_semaphore;
 
@@ -50,5 +49,6 @@ extern int shotY;
 void platform_task(void);
 void platform_task_create(void);
 void platform_timer_cb(void);
+
 
 #endif /* _PLARTFORM_H_ */

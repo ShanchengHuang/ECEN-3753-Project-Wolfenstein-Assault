@@ -14,7 +14,8 @@
 // Display
 #include "glib.h"
 
-#include "constant.h"
+//#include "constant.h"
+#include "platform.h"
 
 // OS
 #include "os.h"
@@ -28,13 +29,13 @@
 #define LCDOutput_PRIO 22u
 #define LCDOutput_SIZE 256u
 
-OS_TCB LedOutputTCB; /*   Task Control Block.   */
-CPU_STK LedOutputStk[LedOutput_SIZE]; /*   Stack.                */
+//OS_TCB LedOutputTCB; /*   Task Control Block.   */
+//CPU_STK LedOutputStk[LedOutput_SIZE]; /*   Stack.                */
 
-OS_TCB LCDOutputTCB; /*   Task Control Block.   */
-CPU_STK LCDOutputStk[LCDOutput_SIZE]; /*   Stack.                */
+extern OS_TCB LCDOutputTCB; /*   Task Control Block.   */
+extern CPU_STK LCDOutputStk[LCDOutput_SIZE]; /*   Stack.                */
 
-static GLIB_Context_t glibContext;
+//static GLIB_Context_t glibContext;
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
@@ -43,6 +44,9 @@ void Dispaly_Task_Create();
 
 void drawThickLine(GLIB_Context_t *glibContext, int x1, int y1, int x2, int y2,
 		int thickness);
-Straight(GLIB_Context_t *glibContext);
+
+//void Straight(GLIB_Context_t *glibContext);
+
+void lcd_task();
 
 #endif /* DISPLAY_H_ */
