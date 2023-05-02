@@ -47,7 +47,7 @@ void railgun_task(void) {
 
 		if (read_button1()) {
 			chager += 1;
-		}else{
+		} else {
 
 		}
 
@@ -75,7 +75,6 @@ bool shoot_railgun(int idx) {
 	}
 	return false;
 }
-
 
 void shield_task_create(void) {
 
@@ -109,9 +108,9 @@ void shield_task(void) {
 
 		OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_HMSM_STRICT, &err);
 
-		if(read_button0()){
+		if (read_button0()) {
 			shield_state.active = true;
-		}else{
+		} else {
 			shield_state.recharging += 10;
 		}
 
