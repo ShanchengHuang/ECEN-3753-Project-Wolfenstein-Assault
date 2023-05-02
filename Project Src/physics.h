@@ -55,7 +55,7 @@ extern OS_MUTEX platform_mutex;
 extern int score;
 
 extern int win_time;
-extern bool castle_hit
+extern bool castle_hit;
 
 // TODO: create queue for all the physics var
 //***********************************************************************************

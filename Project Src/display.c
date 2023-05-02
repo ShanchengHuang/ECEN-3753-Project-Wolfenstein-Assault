@@ -185,10 +185,11 @@ void draw_game(void)
 	OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutErr);
 	draw_satchel(sc_x, sc_y);
 
-	OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+	OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutErr);
 	int bt_x = Bullet.x;
 	int bt_y = Bullet.y;
-	OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, NULL, &mutexErr);
+	OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, &mutErr);
+
 	draw_bullet(bt_x, bt_y);
 
 	// draw the shield

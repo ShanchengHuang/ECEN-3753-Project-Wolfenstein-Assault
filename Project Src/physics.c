@@ -43,7 +43,7 @@ void Physics_Task(void *p_arg)
 		// Update rail gun shots
 		OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
 		updateRailGunShots(&Bullet);
-		OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, NULL, &mutexErr);
+		OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, &mutexErr);
 
 		// void updateRailGunShots(&shield_state)
 

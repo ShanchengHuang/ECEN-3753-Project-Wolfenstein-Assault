@@ -19,6 +19,7 @@
 
 #include "platform.h"
 #include "satchel.h"
+#include "railgun.h"
 
 // OS
 #include "os.h"

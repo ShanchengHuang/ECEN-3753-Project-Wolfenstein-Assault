@@ -1,7 +1,8 @@
 #include "railgun.h"
 
 uint8_t railgun_charges = 5;
-bool railgun_fired = 0;
+
+//bool railgun_fired = false;
 
 struct BulletData Bullet;
 
@@ -11,12 +12,12 @@ static CPU_STK railgunSTK[STACK_SIZES];
 struct ShieldState shield_state;
 
 // extern OS_MUTEX sc_mutex;
-extern int score;
+//extern int score;
 
 void railgun_task_create(void)
 {
-	RTOS_ERR semErr;
-	RTOS_ERR tskErr;
+
+	RTOS_ERR err;
 
 	OSMutexCreate(&railgun_mutex, "railgun Mutex", &err);
 
@@ -32,9 +33,8 @@ void railgun_task_create(void)
 				 120u,				  /* Round-Robin time quanta.    */
 				 DEF_NULL,			  /* External TCB data.          */
 				 OS_OPT_TASK_STK_CHK, /* Task options.               */
-				 &tskErr);
-	if (semErr.Code || tskErr.Code)
-		EFM_ASSERT(false);
+				 &err);
+
 }
 
 void railgun_task(void)
@@ -56,9 +56,9 @@ void railgun_task(void)
 			{
 				if (charger >= 20)
 				{
-					charger = 20
+					charger = 20;
 				}
-				OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+				OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 
 				Bullet.x = platform_data.x;
 				Bullet.y = 0;
@@ -68,17 +68,17 @@ void railgun_task(void)
 				shield_state.recharging -= 20;
 
 				railgun_fired = 1;
-				OSMutexPost(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+				OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, &err);
 			}
 			else
 			{
-				OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+				OSMutexPend(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 				Bullet.x = 0;
 				Bullet.y = 0;
 				Bullet.vx = 0;
 				Bullet.vy = 0;
 				railgun_fired = 0;
-				OSMutexPost(&railgun_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+				OSMutexPost(&railgun_mutex, OS_OPT_POST_NONE, &err);
 			}
 		}
 	}
@@ -139,15 +139,15 @@ void shield_task(void)
 
 		if (read_button0())
 		{
-			OSMutexPend(&shield_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+			OSMutexPend(&shield_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 			shield_state.active = true;
-			OSMutexPost(&shield_mutex, OS_OPT_POST_NONE, &mutexErr);
+			OSMutexPost(&shield_mutex, OS_OPT_POST_NONE, &err);
 		}
 		else
 		{
-			OSMutexPend(&shield_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+			OSMutexPend(&shield_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
 			shield_state.recharging += 10;
-			OSMutexPost(&shield_mutex, OS_OPT_POST_NONE, &mutexErr);
+			OSMutexPost(&shield_mutex, OS_OPT_POST_NONE, &err);
 		}
 	}
 }
