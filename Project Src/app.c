@@ -52,25 +52,27 @@ void app_init(void) {
 // Idle task:
 //	IdleTask_Create();
 
-//	start_game();
+	start_game();
 
 // Game_management:
 //	Game_management_task_create();
 }
 
-void game_over(char cause[]) {
+void game_over() {
 
 //	gameState = GAME_OVER;
 
-	if (score > high_score)
-		high_score = score;
+//	if (score > high_score)
+//		high_score = score;
 
-	//  Print the Endgame in LCD
-	strcpy(death_cause, cause);
-
-	// Turn off led
+//  Print the Endgame in LCD
+// Turn off led
 	GPIO_PinOutClear(LED1_port, LED1_pin);
 	GPIO_PinOutClear(LED0_port, LED0_pin);
+
+	while (1) {
+//		inf loop
+	}
 
 }
 

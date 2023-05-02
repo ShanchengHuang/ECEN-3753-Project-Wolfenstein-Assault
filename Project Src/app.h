@@ -116,7 +116,7 @@ void LCD_init();
 void IdleTask_Create();
 void IdleTask(void *p_arg);
 
-void game_over(char cause[]);
+void game_over();
 void decrement_life();
 void start_game();
 

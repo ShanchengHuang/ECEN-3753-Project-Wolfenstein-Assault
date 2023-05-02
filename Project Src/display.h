@@ -14,8 +14,11 @@
 // Display
 #include "glib.h"
 
-//#include "constant.h"
+#include "constant.h"
+#include <string.h>
+
 #include "platform.h"
+#include "satchel.h"
 
 // OS
 #include "os.h"
@@ -48,5 +51,6 @@ void drawThickLine(GLIB_Context_t *glibContext, int x1, int y1, int x2, int y2,
 //void Straight(GLIB_Context_t *glibContext);
 
 void lcd_task();
+void draw_game_stopped(const char* x);
 
 #endif /* DISPLAY_H_ */

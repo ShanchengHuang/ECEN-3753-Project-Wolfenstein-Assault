@@ -140,10 +140,11 @@ void draw_sides() {
 
 void draw_plat(int x) { // TODO
 // Draw the platform
+
 //	GLIB_drawLine(&glibContext, x - PLATFORM_WIDTH / 2, PLATFORM_Y,
 //			x + PLATFORM_WIDTH / 2, PLATFORM_Y);
 
-	GLIB_Rectangle_t castle_rect3 = {59 + x, 128 - 5, 59 + x + 20, 128 };
+	GLIB_Rectangle_t castle_rect3 = { x - 5, 128 - 5, x + 20 - 5, 128 };
 	GLIB_drawRectFilled(&glibContext, &castle_rect3);
 
 	// Calculate the angle of the railgun aiming at the satchel
@@ -158,7 +159,6 @@ void draw_plat(int x) { // TODO
 //		GLIB_drawLine(&glibContext, x, PLATFORM_Y - i, railgun_end_x,
 //				railgun_end_y - i);
 //	}
-
 
 }
 
@@ -218,21 +218,12 @@ void draw_game(void) {
 //	int lowestY = 0;
 //	int lowestX = 0;
 	// draw the
+	OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutErr);
+	int sc_x = Satchels.x;
+	int sc_y = Satchels.y;
+	OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutErr);
 
-//	OSMutexPend(&sc_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutErr);
-//	if (mutErr.Code)
-//		EFM_ASSERT(false);
-//	for (int i = 0; i < HM_COUNT; i++)
-//	{
-//		draw_hm((int)round(HMs[i].x), (int)round(HMs[i].y));
-//		if (lowestY < (int)HMs[i].y)
-//		{
-//			lowestY = (int)HMs[i].y;
-//			lowestX = (int)HMs[i].x;
-//		}
-//	}
-
-//	OSMutexPost(&sc_mutex, OS_OPT_POST_NONE, &mutErr);
+	draw_satchel(sc_x, sc_y);
 //	if (mutErr.Code)
 //		EFM_ASSERT(false);
 //
@@ -278,8 +269,13 @@ void draw_game(void) {
 //	}
 }
 
-void draw_game_stopped() {
-	// Game end here
+void draw_game_stopped(const char *x) {
+	GLIB_drawStringOnLine(&glibContext, x, 4, GLIB_ALIGN_CENTER, 0, 0,
+	true);
+
+	DMD_updateDisplay();
+
+	game_over();
 }
 
 void lcd_task() {

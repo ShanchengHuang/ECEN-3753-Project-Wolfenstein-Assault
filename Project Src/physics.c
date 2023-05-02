@@ -7,14 +7,11 @@
 
 #include "physics.h"
 
-
-
 uint8_t railgun_shots = 5;
 OS_SEM railgun_semaphore;
 int railgun_fired = 0;
 int shotX;
 int shotY;
-
 
 void Physics_Task(void *p_arg) {
 
@@ -31,26 +28,28 @@ void Physics_Task(void *p_arg) {
 
 		update_platform(&platform_data);
 
+//		generate_satchel();
+
 		OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
 
-//		// Update satchel charges
-//		OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
-//		if (mutexErr.Code)
-//			EFM_ASSERT(false);
-//
-//		// Update satchel charges
-//		updateSatchelCharges(&Satchels);
-//
-//		checkCollisions(Satchels,platform_data,shield_state);
-//
-//		OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
-//		if (mutexErr.Code)
-//			EFM_ASSERT(false);
+		// Update satchel charges
+		OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
 
-		// Update rail gun shots
-		// updateRailGunShots(deltaTime);
+		// Update satchel charges
+		updateSatchelCharges(&Satchels);
 
-		// Check for collisions and endgame
+//		checkCollisions(Satchels, platform_data, shield_state);
+
+		OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+		if (mutexErr.Code)
+			EFM_ASSERT(false);
+
+// Update rail gun shots
+// updateRailGunShots(deltaTime);
+
+// Check for collisions and endgame
 	}
 }
 
@@ -70,6 +69,7 @@ void Physics_Task_Create() {
 	DEF_NULL, /* External TCB data.          */
 	OS_OPT_TASK_STK_CHK, /* Task options.               */
 	&err);
+
 
 	if (err.Code != RTOS_ERR_NONE) {
 		/* Handle error on task creation. */
@@ -92,51 +92,51 @@ void Physics_Task_Create() {
 
 void update_platform(struct PlatData *plat_data) {
 
+	int MAX_SPEED_END = MAX_SPEED - 40;
+
 	plat_data->x += plat_data->vx * PHYSICS_DELTA;
 	plat_data->vx += plat_data->ax * PHYSICS_DELTA;
 
 	if ((plat_data->x - (PLATFORM_WIDTH / 2)) < CANYON_START) {
-		if (plat_data->vx < (-1 * MAX_SPEED)) {
-			//			game_over("Too Fast");
-		} else if (1) {
-			plat_data->ax = 0;
-			plat_data->vx = fabs(plat_data->vx);
+		if (plat_data->vx < (-1 * MAX_SPEED_END)) {
+			const char *game_stopped_message = "Too Fast";
+			draw_game_stopped(game_stopped_message);
 		} else {
 			plat_data->ax = 0;
-			plat_data->vx = 0;
-			plat_data->x = CANYON_START + PLATFORM_WIDTH / 2;
+			plat_data->vx = fabs(plat_data->vx);
 		}
 
 	} else if ((plat_data->x + (PLATFORM_WIDTH / 2)) > CANYON_END) {
-		if (plat_data->vx > MAX_SPEED) {
-			//			game_over("Too Fast");
-		} else if (1) {
-			plat_data->ax = 0;
-			plat_data->vx = -1 * fabs(plat_data->vx);
+		if (plat_data->vx > MAX_SPEED_END) {
+			const char *game_stopped_message = "Too Fast";
+			draw_game_stopped(game_stopped_message);
 		} else {
 			plat_data->ax = 0;
-			plat_data->vx = 0;
-			plat_data->x = CANYON_END - PLATFORM_WIDTH / 2;
+			plat_data->vx = -1 * fabs(plat_data->vx);
 		}
 	}
 }
-//
-//void updateSatchelCharges(struct SatchelData *Satchels) {
-//	Satchels->x += Satchels->vx * PHYSICS_DELTA;
-//	Satchels->y += Satchels->vy * PHYSICS_DELTA;
-//	Satchels->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
-//	if ((Satchels->x - SATCH_DIAMETER) < CANYON_START) {
-//		Satchels->vx = fabs(Satchels->vx);
-//	} else if ((Satchels->x + SATCH_DIAMETER) > CANYON_END) {
-//		Satchels->vx = -1 * fabs(Satchels->vx);
-//	}
-//}
+
+void updateSatchelCharges(struct SatchelData *Satchels) {
+
+	Satchels->x += Satchels->vx * PHYSICS_DELTA;
+	Satchels->y += Satchels->vy * PHYSICS_DELTA;
+	Satchels->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
+
+	if ((Satchels->x - SATCH_DIAMETER) < CANYON_START) {
+		Satchels->vx = fabs(Satchels->vx);
+	} else if ((Satchels->x + SATCH_DIAMETER) > CANYON_END) {
+		Satchels->vx = -1 * fabs(Satchels->vx);
+	}
+}
 //
 //// Check for collisions and endgame
-//
-//void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data, struct ShieldState shieldDat) {
+
+//void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data,
+//		struct ShieldState shieldDat) {
 //
 //	RTOS_ERR mutexErr;
+//
 //	if ((Satchels.y + GRAVITY_PIXELS) >= PLATFORM_Y && Satchels.vy > 0) { // If reached the platforms
 //		if (Satchels.x < (platform_data.x + (PLATFORM_WIDTH / 2))
 //				&& Satchels.x > (platform_data.x - (PLATFORM_WIDTH / 2))
@@ -187,6 +187,8 @@ void update_platform(struct PlatData *plat_data) {
 //		// }
 //	}
 //}
+
+
 //
 //// Update rail gun shots
 //// void updateRailGunShots(deltaTime)

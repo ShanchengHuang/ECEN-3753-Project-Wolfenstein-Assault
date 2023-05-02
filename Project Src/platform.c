@@ -49,7 +49,9 @@ void platform_task(void) {
 		OSTimeDlyHMSM(0, 0, 0, 150, OS_OPT_TIME_HMSM_STRICT, &err);
 
 		CAPSENSE_Sense();
+
 		int pressed = -1;
+
 		for (int i = 0; i < 4; i++) {
 			if (CAPSENSE_getPressed(i)) {
 				if (pressed == -1) {
@@ -60,6 +62,7 @@ void platform_task(void) {
 				}
 			}
 		}
+
 		OSMutexPend(&platform_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
 
 		if (mutexErr.Code)
@@ -98,24 +101,23 @@ void platform_task(void) {
 //		}
 
 		// Update platform velocity and position
-
 		platform_data.vx += platform_data.ax * delta_t;
 		platform_data.x += platform_data.vx * delta_t;
 
 		// Limit platform speed
-		if (platform_data.vx > MAX_SPEED) {
-			platform_data.vx = MAX_SPEED;
-		} else if (platform_data.vx < -MAX_SPEED) {
-			platform_data.vx = -MAX_SPEED;
-		}
+//		if (platform_data.vx > MAX_SPEED) {
+//			platform_data.vx = MAX_SPEED;
+//		} else if (platform_data.vx < -MAX_SPEED) {
+//			platform_data.vx = -MAX_SPEED;
+//		}
 
 		// Constrain platform to screen
 		if (platform_data.x < 0) {
 			platform_data.x = 0;
-			platform_data.vx = 0;
+//			platform_data.vx = 0;
 		} else if (platform_data.x > SCREEN_PIXELS - PLATFORM_WIDTH) {
 			platform_data.x = SCREEN_PIXELS - PLATFORM_WIDTH;
-			platform_data.vx = 0;
+//			platform_data.vx = 0;
 		}
 
 		OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
