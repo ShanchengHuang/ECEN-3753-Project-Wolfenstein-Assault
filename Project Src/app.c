@@ -34,7 +34,7 @@ void app_init(void) {
 	CAPSENSE_Init();
 
 	// Initialize game element:
-	railgun_task_create(); // it should has both Shild and Railgun task
+//	railgun_task_create(); // it should has both Shild and Railgun task
 	Physics_Task_Create();
 	platform_task_create();
 
@@ -46,7 +46,7 @@ void app_init(void) {
 	IdleTask_Create();
 
 	// Game_management:
-	Game_management_task_create();
+//	Game_management_task_create();
 }
 
 void game_over(char cause[]) {

@@ -19,22 +19,21 @@ static CPU_STK lcdSTK[STACK_SIZES];
 static GLIB_Context_t glibContext;
 
 extern uint8_t SS_COUNT;
-extern struct SatchelData satchels[];
+//extern struct SatchelData satchels;
 extern OS_MUTEX ss_mutex;
 extern OS_MUTEX platform_mutex;
+
 extern struct PlatformData platform_data;
 extern struct ShieldState shield_state;
-extern uint8_t railgun_charges;
-extern enum difficulty_e difficulty;
-extern enum game_state_e gameState;
+//extern uint8_t railgun_charges;
+
 extern int cursor_pos;
 extern int PLATFORM_BOUNCE_ENABLED;
 extern int score;
 extern int high_score;
 extern int lives;
-extern bool auto_railgun;
 extern int railgun_fired;
-extern char death_cause[];
+//extern char death_cause[];
 extern int shotX;
 extern int shotY;
 

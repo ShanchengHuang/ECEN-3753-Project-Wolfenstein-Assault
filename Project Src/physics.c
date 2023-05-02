@@ -24,19 +24,19 @@ void Physics_Task(void *p_arg) {
 
 		OSMutexPost(&platform_mutex, OS_OPT_POST_NONE, &mutexErr);
 
-		// Update satchel charges
-		OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
-		if (mutexErr.Code)
-			EFM_ASSERT(false);
-
-		// Update satchel charges
-		updateSatchelCharges(&Satchels);
-
-		checkCollisions(Satchels,platform_data,shield_state);
-
-		OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
-		if (mutexErr.Code)
-			EFM_ASSERT(false);
+//		// Update satchel charges
+//		OSMutexPend(&satchel_mutex, 0, OS_OPT_PEND_BLOCKING, NULL, &mutexErr);
+//		if (mutexErr.Code)
+//			EFM_ASSERT(false);
+//
+//		// Update satchel charges
+//		updateSatchelCharges(&Satchels);
+//
+//		checkCollisions(Satchels,platform_data,shield_state);
+//
+//		OSMutexPost(&satchel_mutex, OS_OPT_POST_NONE, &mutexErr);
+//		if (mutexErr.Code)
+//			EFM_ASSERT(false);
 
 		// Update rail gun shots
 		// updateRailGunShots(deltaTime);

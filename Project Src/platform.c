@@ -83,19 +83,19 @@ void platform_task(void) {
 			break;
 		}
 
-		if (railgun_fired > 0) {
-			// Apply railgun physics
-			float railgun_impact_force = 2000.0;
-			float railgun_distance = sqrt(
-					pow((platform_data.x - shotX), 2)
-							+ pow((128 - 5 - shotY), 2));
-			float railgun_force_on_platform = railgun_impact_force
-					/ pow(railgun_distance, 2);
-			platform_data.ax += railgun_force_on_platform
-					* ((platform_data.x - shotX) / railgun_distance);
-
-			railgun_fired--;
-		}
+//		if (railgun_fired > 0) {
+//			// Apply railgun physics
+//			float railgun_impact_force = 2000.0;
+//			float railgun_distance = sqrt(
+//					pow((platform_data.x - shotX), 2)
+//							+ pow((128 - 5 - shotY), 2));
+//			float railgun_force_on_platform = railgun_impact_force
+//					/ pow(railgun_distance, 2);
+//			platform_data.ax += railgun_force_on_platform
+//					* ((platform_data.x - shotX) / railgun_distance);
+//
+//			railgun_fired--;
+//		}
 
 		// Update platform velocity and position
 		platform_data.vx += platform_data.ax * delta_t;
