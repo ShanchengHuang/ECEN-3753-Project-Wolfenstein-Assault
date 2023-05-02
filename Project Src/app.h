@@ -42,10 +42,10 @@ void app_init(void);
 
 // From other header
 #include "physics.h"
-//#include "platform.h"
-//#include "railgun.h"
-//#include "satchel.h"
-//#include "timer.h"
+// #include "platform.h"
+// #include "railgun.h"
+// #include "satchel.h"
+// #include "timer.h"
 #include "display.h"
 #include "glib.h"
 
@@ -55,49 +55,47 @@ void app_init(void);
 
 //***********************************************************************************
 
-//static volatile bool slider0 = 0;
-//static volatile bool slider1 = 0;
-//static volatile bool btn0 = 0;
-//static volatile bool btn1 = 0;
+// static volatile bool slider0 = 0;
+// static volatile bool slider1 = 0;
+// static volatile bool btn0 = 0;
+// static volatile bool btn1 = 0;
 
-//static OS_TCB gameTCB;
-//static CPU_STK gameSTK[STACK_SIZES];
-
+// static OS_TCB gameTCB;
+// static CPU_STK gameSTK[STACK_SIZES];
 
 static OS_TCB IdleTaskTCB;
 static CPU_STK IdleTaskStk[STACK_SIZES];
 
-//struct PlatformData platform_data;
+// struct PlatformData platform_data;
 
 #define Dly_tick 2
 
 //// Semaphore, Flag, Mutex
-//static OS_SEM BTNsemaphore;
-//static OS_SEM BTNsemaphore;
+// static OS_SEM BTNsemaphore;
+// static OS_SEM BTNsemaphore;
 //
 //// Define the event flag group object
 //// static OS_FLAG_GRP UpdateFlag;
-//static OS_FLAG_GRP AlertFlag;
+// static OS_FLAG_GRP AlertFlag;
 //
 //// Define the Mutex
-//static OS_MUTEX BTNMutex;
-//static OS_MUTEX PhysicsMutex;
+// static OS_MUTEX BTNMutex;
+// static OS_MUTEX PhysicsMutex;
 
 // Game
-//extern OS_FLAG_GRP game_state;
+// extern OS_FLAG_GRP game_state;
 
-//enum game_state_e {
+// enum game_state_e {
 //	PREGAME = 0x1, IN_PROGRESS = 0x2, GAME_OVER = 0x4
-//};
+// };
 //
-//extern enum game_state_e gameState;
+// extern enum game_state_e gameState;
 
 extern int cursor_pos;
 extern char death_cause[32];
 extern int score;
 extern int high_score;
 extern int lives;
-
 
 //***********************************************************************************
 // function prototypes

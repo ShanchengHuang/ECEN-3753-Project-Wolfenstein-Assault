@@ -10,7 +10,7 @@
 #include "gpio.h"
 #include "capsense.h"
 #include "constant.h"
-//#include "platform.h"
+#include "platform.h"
 
 #include <string.h>
 #include <stdint.h>
@@ -34,10 +34,14 @@ struct ShieldState {
 };
 
 extern struct ShieldState shield_state;
+extern bool railgun_fired;
 
 static OS_TCB shieldTCB;
 static CPU_STK shieldSTK[STACK_SIZES];
 static OS_MUTEX shield_mutex;
+
+static OS_MUTEX railgun_mutex;
+
 
 // Task stack size and priority
 // #define Physics_Task_STK_SIZE 256u
@@ -48,6 +52,15 @@ static OS_MUTEX shield_mutex;
 
 // // Timer
 // static OS_TCB Physics_TaskTCB;
+
+struct BulletData {
+  double vx;
+  double vy;
+  double x;
+  double y;
+};
+
+extern struct BulletData Bullet;
 
 //***********************************************************************************
 // function prototypes

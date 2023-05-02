@@ -21,9 +21,9 @@
 
 #include "app.h"
 
-//GameConfig ConfigurationData;
+// GameConfig ConfigurationData;
 
-//enum game_state_e gameState = PREGAME;
+// enum game_state_e gameState = PREGAME;
 
 int cursor_pos = 0;
 char death_cause[32] = "";
@@ -33,7 +33,8 @@ int lives = 3;
 
 // Default Configuration Values
 
-void app_init(void) {
+void app_init(void)
+{
 	// Initialize GPIO
 	gpio_open();
 
@@ -41,51 +42,55 @@ void app_init(void) {
 	CAPSENSE_Init();
 
 	// Initialize game element:
-//	railgun_task_create(); // it should has both Shild and Railgun task
+	//	railgun_task_create(); // it should has both Shild and Railgun task
 	Physics_Task_Create();
 	platform_task_create();
 
 	// Display task:
 	LCD_init();
-//	LedOutput_Create();
+	//	LedOutput_Create();
 
-// Idle task:
-//	IdleTask_Create();
+	// Idle task:
+	//	IdleTask_Create();
 
 	start_game();
 
-// Game_management:
-//	Game_management_task_create();
+	// Game_management:
+	//	Game_management_task_create();
 }
 
-void game_over() {
+void game_over()
+{
 
-//	gameState = GAME_OVER;
+	//	gameState = GAME_OVER;
 
-//	if (score > high_score)
-//		high_score = score;
+	//	if (score > high_score)
+	//		high_score = score;
 
-//  Print the Endgame in LCD
-// Turn off led
+	//  Print the Endgame in LCD
+	// Turn off led
 	GPIO_PinOutClear(LED1_port, LED1_pin);
 	GPIO_PinOutClear(LED0_port, LED0_pin);
 
-	while (1) {
-//		inf loop
-	}
-
-}
-
-void decrement_life() {
-	lives--;
-	if (lives == 0) {
-		game_over("Satchel has exploded");
+	while (1)
+	{
+		//		inf loop
 	}
 }
 
-void start_game() {
-//	RTOS_ERR err;
-//	RTOS_ERR flgErr;
+// void decrement_life()
+// {
+// 	lives--;
+// 	if (lives == 0)
+// 	{
+// 		game_over("Satchel has exploded");
+// 	}
+// }
+
+void start_game()
+{
+	//	RTOS_ERR err;
+	//	RTOS_ERR flgErr;
 
 	platform_data.ax = 0;
 	platform_data.vx = 0;
@@ -96,11 +101,10 @@ void start_game() {
 
 	satchel_init();
 
-//	gameState = IN_PROGRESS;
-
+	//	gameState = IN_PROGRESS;
 }
 
-//void Game_management_task_create(void) {
+// void Game_management_task_create(void) {
 ////	RTOS_ERR tskErr;
 ////	RTOS_ERR flgErr;
 //	RTOS_ERR err;
@@ -127,11 +131,11 @@ void start_game() {
 //		EFM_ASSERT(false);
 //}
 
-//void update_difficulty(void) {
+// void update_difficulty(void) {
 //	// TODO, adding it when I have time
-//}
+// }
 
-//void game_management_task(void) {
+// void game_management_task(void) {
 //	RTOS_ERR flgErr;
 //	RTOS_ERR qErr;
 //
@@ -146,7 +150,7 @@ void start_game() {
 //			start_game();
 //		}
 //	}
-//}
+// }
 
 // //***********************************************************************************
 
@@ -154,37 +158,42 @@ void start_game() {
 
 // //***********************************************************************************
 
-void IdleTask(void *p_arg) {
+void IdleTask(void *p_arg)
+{
 	/* Use argument. */
-	(void) &p_arg;
+	(void)&p_arg;
 	RTOS_ERR err;
 
-	while (DEF_TRUE) {
+	while (DEF_TRUE)
+	{
 		EMU_EnterEM1();
 
-		if (err.Code != RTOS_ERR_NONE) {
+		if (err.Code != RTOS_ERR_NONE)
+		{
 		}
 	}
 }
 
-void IdleTask_Create() {
+void IdleTask_Create()
+{
 	RTOS_ERR err;
 
-	OSTaskCreate(&IdleTaskTCB, /* Pointer to the task's TCB.  */
-	"IdleTask", /* Name to help debugging.     */
-	&IdleTask, /* Pointer to the task's code. */
-	DEF_NULL, /* Pointer to task's argument. */
-	NORMAL_PRIORITY, /* Task's priority.            */
-	&IdleTaskStk[0], /* Pointer to base of stack.   */
-	(STACK_SIZES / 10u), /* Stack limit, from base.     */
-	STACK_SIZES, /* Stack size, in CPU_STK.     */
-	10u, /* Messages in task queue.     */
-	0u, /* Round-Robin time quanta.    */
-	DEF_NULL, /* External TCB data.          */
-	OS_OPT_TASK_STK_CHK, /* Task options.               */
-	&err);
+	OSTaskCreate(&IdleTaskTCB,		  /* Pointer to the task's TCB.  */
+				 "IdleTask",		  /* Name to help debugging.     */
+				 &IdleTask,			  /* Pointer to the task's code. */
+				 DEF_NULL,			  /* Pointer to task's argument. */
+				 NORMAL_PRIORITY,	  /* Task's priority.            */
+				 &IdleTaskStk[0],	  /* Pointer to base of stack.   */
+				 (STACK_SIZES / 10u), /* Stack limit, from base.     */
+				 STACK_SIZES,		  /* Stack size, in CPU_STK.     */
+				 10u,				  /* Messages in task queue.     */
+				 0u,				  /* Round-Robin time quanta.    */
+				 DEF_NULL,			  /* External TCB data.          */
+				 OS_OPT_TASK_STK_CHK, /* Task options.               */
+				 &err);
 
-	if (err.Code != RTOS_ERR_NONE) {
+	if (err.Code != RTOS_ERR_NONE)
+	{
 		/* Handle error on task creation. */
 	}
 }
