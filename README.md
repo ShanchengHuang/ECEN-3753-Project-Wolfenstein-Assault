@@ -43,9 +43,9 @@
 -  Demo on the class 
   - Demonstrate workish proeject on calss(DONE)
   - 3 test demostrations
-    - The LCD Test //TODO
-    - THe Mutex Test
-    - The Game Ending test
+    - The LCD 
+    - THe Mutex 
+    - The Game Ending 
   - Demon on full acceleration towards at the canyon wall is working well
 - Statement of where your project stands
   - I have completed 95% of the implementation plan, I have all the physics tasks, lcd tasks, and satchel tasks done. And they all performed nicely in the demo. However, even though I do implement some other tasks like shield, railgun, and capacitor charges, due to bugs in them, I have commented it out for the demo. And I have an LED task that does not implement due to the running out of time.
