@@ -38,6 +38,49 @@
     |
 11. End
 
+## Final Report
+
+-  Demo on the class 
+  - Demonstrate workish proeject on calss(DONE)
+  - 3 test demostrations
+    - The LCD Test //TODO
+    - THe Mutex Test
+    - The Game Ending test
+  - Demon on full acceleration towards at the canyon wall is working well
+- Statement of where your project stands
+  - I have completed 95% of the implementation plan, I have all the physics tasks, lcd tasks, and satchel tasks done. And they all performed nicely in the demo. However, even though I do implement some other tasks like shield, railgun, and capacitor charges, due to bugs in them, I have commented it out for the demo. And I have an LED task that does not implement due to the running out of time.
+  - I have used about 12 more hour in this week, even though I have used more time than the estimated working hour I still haven't managed to complete the entire project within six weeks.
+  
+|        | Est hr | %of the Est | Actural Effeort | Status |
+|--------|--------|-------------|-----------------|--------|
+| Week 1 | 6      | 10          | 5 hr            | 10%    |
+| Week 2 | 5      | 20%         | 5 hr            | 20%    |
+| Week 3 | 5      | 40%         | 6 hr            | 40%    |
+| Week 4 | 8      | 70%         | 5-6hr           | 55%    |
+| Week 5 | 10     | 100%        | 12hr            | 85%    |
+| Week 6 | 10     | 110%        | 12hr            | 95%    |
+
+| Task                 | stats                               |
+|----------------------|-------------------------------------|
+| LED task             | not implement                       |
+| LCD task             | implement and works                 |
+| rail gun task        | implement but not works             |
+| shield task          | implement but not works             |
+| physics taks         | implement and works                 |
+| platform task        | implement and works                 |
+| button task          | implement but not works             |
+| game managementtask  | plans to implement if had more time |
+
+
+
+- Analysis of your Solutions:
+  - RT task: Currently all my tasks have the same priority except physics which has a higher priority than all other tasks. and I have set up my idle task and the execution in the Segger system view looks fine and it's running on my schedule.
+  - ![Viewer](/screenshot/report/view%201.png)
+  - Code space: In the code space, I keep my functions organized and keep different tasks in different C files and header files, even though it becomes a big hassle later on and hard to define in different files' external variables, but it's very extensible
+  - Evaluation: My physical update task is not exactly what the docs say it is, but it's similar. I didn't simulate the weight of the object, but I did use G-Force and some acceleration, and velocity models for my object, but I didn't use the exact same variables provided in the lab manual instructions, I also used the pixels on the screen to track variables instead of using simulated physics.
+  - Scaling of variable spaces: In terms of variable space, I originally planned to do better in this part, but since I was short on time, the LCD display updates using fixed numbers instead of using variables. This could cause future scalability issues, but it's easy to modify.
+  - What would be the next steps: As far as future steps go, if I had two weeks, I would fix all the buggy features and add a game management task where I could reset the whole game in settings and choose the difficulty instead of pressing the hard reset button.
+
 
 ## Test Plan and results (Week5 updated)
 
