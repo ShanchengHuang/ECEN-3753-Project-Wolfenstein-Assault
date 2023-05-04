@@ -7,7 +7,6 @@
 #include "constant.h"
 
 #define SATCH_DIAMETER  4
-// #define SIDE_HIT_KINETIC_REDUCTION 0.75
 
 extern OS_MUTEX satchel_mutex;
 extern struct SatchelData Satchels;

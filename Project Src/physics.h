@@ -31,10 +31,10 @@
 #define Physics_Task_STK_SIZE 256u
 #define Physics_Task_PRIO 21u
 
-#define GRAVITY GRAVITY_PIXELS * SCREEN_MM / SCREEN_PIXELS
+#define GRAVITY GRAVITY_PIXELS * SCREEN_MM / SCREEN_PIXELS //How fast shoud it dorp
 #define GAME_OVER_SPEED 25
 #define PHYSICS_DELTA (1 / 10.0) // TODO change this match to  constant.h
-#define GRAVITY_PIXELS 20
+#define GRAVITY_PIXELS 20 // G
 
 // Task stack
 static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
@@ -43,14 +43,10 @@ static OS_TCB Physics_TaskTCB;
 //extern uint8_t railgun_shots;
 //extern OS_SEM railgun_semaphore;
 //extern int railgun_fired;
-//extern int shotX;
-//extern int shotY;
 
 static OS_TCB railgunTCB;
 static CPU_STK railgunSTK[STACK_SIZES];
 
-//extern uint8_t PLATFORM_COUNT;
-// extern struct PlatformData Platforms[];
 extern OS_MUTEX platform_mutex;
 //extern int score;
 
@@ -61,6 +57,7 @@ extern bool castle_hit;
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
+
 void Physics_Task(void *p_arg);
 void Physics_Task_Create();
 

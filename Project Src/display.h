@@ -43,6 +43,7 @@ extern CPU_STK LCDOutputStk[LCDOutput_SIZE]; /*   Stack.                */
 //***********************************************************************************
 // function prototypes
 //***********************************************************************************
+
 void Dispaly_Task(void *p_arg);
 void Dispaly_Task_Create();
 

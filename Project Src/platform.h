@@ -10,20 +10,13 @@
 #include "os.h"
 
 // TODO need to change to match with constant.h
+
 #define PLATFORM_Y 128 - 5
 #define PLATFORM_HEIGHT 5
 #define PLATFORM_WIDTH 20
 
-#define PLATFORM_MASS 10									 // kg
-#define MAX_PIXEL_FORCE 100									 // kg px/s^2
-#define MAX_FORCE MAX_PIXEL_FORCE *SCREEN_MM / SCREEN_PIXELS // kg * px/s^s
-#define MAX_PIXEL_ACCEL MAX_PIXEL_FORCE / PLATFORM_MASS
-
 #define PLATFORM_PERIOD 1
 
-// int PLATFORM_BOUNCE_ENABLED;
-
-// int MAX_SPEED = ConfigurationData.platform.max_platform_speed; // Update this line
 extern int MAX_SPEED; // Update this line
 
 struct PlatData

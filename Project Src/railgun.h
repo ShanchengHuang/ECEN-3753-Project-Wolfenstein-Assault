@@ -22,12 +22,6 @@
 // global variables
 //***********************************************************************************
 
-#define SHIELD_ACTIVE_100MS 5
-#define SHIELD_RECHARGE_100MS 15
-
-#define PASSIVE_KINETIC_REDUCTION -0.75
-#define ACTIVE_KINETIC_GAIN -1.25
-
 struct ShieldState {
 	bool active;
 	int recharging;
@@ -43,16 +37,6 @@ static CPU_STK shieldSTK[STACK_SIZES];
 extern  OS_MUTEX shield_mutex;
 extern  OS_MUTEX railgun_mutex;
 
-
-// Task stack size and priority
-// #define Physics_Task_STK_SIZE 256u
-// #define Physics_Task_PRIO 21u
-
-// // Task stack
-// static CPU_STK Physics_TaskStk[Physics_Task_STK_SIZE];
-
-// // Timer
-// static OS_TCB Physics_TaskTCB;
 
 struct BulletData {
   double vx;

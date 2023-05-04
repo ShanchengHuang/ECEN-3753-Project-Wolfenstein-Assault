@@ -6,8 +6,6 @@ OS_MUTEX satchel_mutex;
 struct SatchelData Satchels;
 
 void generate_satchel() {
-//	Satchels.x = (rand() % (CANYON_SIZE_PIXELS - (2 * SATCH_DIAMETER)))
-//			+ SATCH_DIAMETER + CANYON_START;
 
 	Satchels.x = 30;
 	Satchels.y = 28+15;

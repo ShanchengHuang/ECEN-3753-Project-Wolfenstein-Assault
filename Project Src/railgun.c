@@ -14,9 +14,6 @@ struct ShieldState shield_state;
 OS_MUTEX shield_mutex;
 OS_MUTEX railgun_mutex;
 
-// extern OS_MUTEX sc_mutex;
-//extern int score;
-
 void railgun_task_create(void)
 {
 
@@ -87,23 +84,6 @@ void railgun_task(void)
 	}
 }
 
-// bool shoot_railgun(int idx)
-// {
-// 	(void)&idx; // Put this into unuse, if I got time to add this.
-// 	if (railgun_charges > 0)
-// 	{
-// 		railgun_charges--;
-// 		score++;
-// 		railgun_fired += 1;
-
-// 		// RTOS_ERR mutexErr;
-
-// 		// if (mutexErr.Code)
-// 		//     EFM_ASSERT(false);
-// 		return true;
-// 	}
-// 	return false;
-// }
 
 void shield_task_create(void)
 {

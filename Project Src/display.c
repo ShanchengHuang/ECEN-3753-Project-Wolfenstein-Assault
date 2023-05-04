@@ -21,24 +21,15 @@ static GLIB_Context_t glibContext;
 OS_TCB LCDOutputTCB; /*   Task Control Block.   */
 CPU_STK LCDOutputStk[LCDOutput_SIZE]; /*   Stack.                */
 
-// extern uint8_t SS_COUNT;
-// extern struct SatchelData satchels;
-// extern OS_MUTEX ss_mutex;
 extern OS_MUTEX platform_mutex;
 
-// extern struct PlatformData platform_data;
-extern struct ShieldState shield_state;
-// extern uint8_t railgun_charges;
 
-extern int cursor_pos;
-extern int PLATFORM_BOUNCE_ENABLED;
-extern int score;
-extern int high_score;
-extern int lives;
+
+//extern int score;
+
 extern int railgun_fired;
-// extern char death_cause[];
-extern int shotX;
-extern int shotY;
+//extern int shotX;
+//extern int shotY;
 
 void lcd_timer_cb(void) {
 	RTOS_ERR semPostErr;
@@ -231,8 +222,7 @@ void draw_game_stopped(const char *x) {
 }
 
 void lcd_task() {
-	RTOS_ERR semErr;
-	//	RTOS_ERR tmrErr;
+	RTOS_ERR err;
 
 	GLIB_setFont(&glibContext, (GLIB_Font_t*) &GLIB_FontNormal8x8);
 
@@ -240,11 +230,11 @@ void lcd_task() {
 	//	if (tmrErr.Code != RTOS_ERR_NONE)
 	//		EFM_ASSERT(false);
 
-	// Delate for awakened periodically
 
 	while (1) {
 
-		OSTimeDlyHMSM(0, 0, 0, 15, OS_OPT_TIME_HMSM_STRICT, &semErr);
+		// Delate for awakened periodically
+		OSTimeDlyHMSM(0, 0, 0, 15, OS_OPT_TIME_HMSM_STRICT, &err);
 
 		GLIB_clear(&glibContext);
 
