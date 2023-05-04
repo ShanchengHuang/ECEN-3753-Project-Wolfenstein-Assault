@@ -10,7 +10,7 @@ void generate_satchel() {
 	Satchels.x = 30;
 	Satchels.y = 28+15;
 	Satchels.exploded = 0;
-	Satchels.vx = (rand() % (20 - 30 + 1)) + 30;
+	Satchels.vx = (rand() % (5 - 30 + 1)) + 30;
 	Satchels.vy = -((rand() % (20 - 30 + 1)) + 30);
 }
 

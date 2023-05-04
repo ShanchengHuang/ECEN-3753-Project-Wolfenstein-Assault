@@ -123,11 +123,26 @@ void updateSatchelCharges(struct SatchelData *Satchels) {
 		Satchels->vx = -1 * fabs(Satchels->vx);
 	}
 }
-//
+
+
+// Update rail gun shots
+void updateRailGunShots(struct BulletData *Bullet) {
+	Bullet->x += Bullet->vx * PHYSICS_DELTA;
+	Bullet->y += Bullet->vy * PHYSICS_DELTA;
+	Bullet->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
+
+	if ((Bullet->x - SATCH_DIAMETER) < CANYON_START) {
+		Bullet->vx = fabs(Bullet->vx);
+	} else if ((Bullet->x + SATCH_DIAMETER) > CANYON_END) {
+		Bullet->vx = -1 * fabs(Bullet->vx);
+	}
+}
+
+
 //// Check for collisions and endgame
 
 void checkCollisions(struct SatchelData Satchels, struct PlatData platform_data,
-		struct ShieldState shieldDat) {
+		struct ShieldState shield_state) {
 	RTOS_ERR mutexErr;
 
 	if ((Satchels.y) >= PLATFORM_Y) { // If reached the platforms
@@ -169,15 +184,3 @@ void checkBulletHit(struct BulletData Bullet) {
 	}
 }
 
-// Update rail gun shots
-void updateRailGunShots(struct BulletData *Bullet) {
-	Bullet->x += Bullet->vx * PHYSICS_DELTA;
-	Bullet->y += Bullet->vy * PHYSICS_DELTA;
-	Bullet->vy += GRAVITY_PIXELS * PHYSICS_DELTA;
-
-	if ((Bullet->x - SATCH_DIAMETER) < CANYON_START) {
-		Bullet->vx = fabs(Bullet->vx);
-	} else if ((Bullet->x + SATCH_DIAMETER) > CANYON_END) {
-		Bullet->vx = -1 * fabs(Bullet->vx);
-	}
-}

@@ -14001,18 +14001,19 @@ LOAD /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/g
  .text.updateSatchelCharges
                 0x00000000000008d8       0xd0 ./physics.o
                 0x00000000000008d8                updateSatchelCharges
- .text.checkCollisions
-                0x00000000000009a8       0xf0 ./physics.o
-                0x00000000000009a8                checkCollisions
- .text.checkBulletHit
-                0x0000000000000a98       0x68 ./physics.o
-                0x0000000000000a98                checkBulletHit
  .text.updateRailGunShots
-                0x0000000000000b00       0xd0 ./physics.o
-                0x0000000000000b00                updateRailGunShots
+                0x00000000000009a8       0xd0 ./physics.o
+                0x00000000000009a8                updateRailGunShots
+ .text.checkCollisions
+                0x0000000000000a78       0xec ./physics.o
+                0x0000000000000a78                checkCollisions
+ .text.checkBulletHit
+                0x0000000000000b64       0x68 ./physics.o
+                0x0000000000000b64                checkBulletHit
  .text.Physics_Task
-                0x0000000000000bd0      0x130 ./physics.o
-                0x0000000000000bd0                Physics_Task
+                0x0000000000000bcc      0x130 ./physics.o
+                0x0000000000000bcc                Physics_Task
+ *fill*         0x0000000000000cfc        0x4 
  .text.platform_task
                 0x0000000000000d00      0x154 ./platform.o
                 0x0000000000000d00                platform_task
@@ -17143,82 +17144,82 @@ LOAD linker stubs
  .debug_macro   0x0000000000043887      0x487 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
  .debug_macro   0x0000000000043d0e      0x4e7 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
 
-.debug_line     0x0000000000000000    0x52cb4
+.debug_line     0x0000000000000000    0x52cb1
  .debug_line    0x0000000000000000     0x1472 ./app.o
  .debug_line    0x0000000000001472     0x149d ./capsense.o
  .debug_line    0x000000000000290f     0x1531 ./display.o
  .debug_line    0x0000000000003e40      0xae0 ./gpio.o
  .debug_line    0x0000000000004920     0x146e ./main.o
- .debug_line    0x0000000000005d8e     0x13db ./physics.o
- .debug_line    0x0000000000007169     0x11cd ./platform.o
- .debug_line    0x0000000000008336     0x12df ./railgun.o
- .debug_line    0x0000000000009615      0xfff ./satchel.o
- .debug_line    0x000000000000a614      0x449 ./autogen/sl_board_default_init.o
- .debug_line    0x000000000000aa5d      0xbe3 ./autogen/sl_device_init_clocks.o
- .debug_line    0x000000000000b640     0x129f ./autogen/sl_event_handler.o
- .debug_line    0x000000000000c8df      0xbd2 ./autogen/sl_simple_led_instances.o
- .debug_line    0x000000000000d4b1      0xd36 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
- .debug_line    0x000000000000e1e7      0xc6b ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
- .debug_line    0x000000000000ee52      0xd67 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
- .debug_line    0x000000000000fbb9     0x122f ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
- .debug_line    0x0000000000010de8      0xd90 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
- .debug_line    0x0000000000011b78      0x9fb ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
- .debug_line    0x0000000000012573      0xb01 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
- .debug_line    0x0000000000013074      0x4ae ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
- .debug_line    0x0000000000013522      0x4f6 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
- .debug_line    0x0000000000013a18      0xea9 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
- .debug_line    0x00000000000148c1      0xf3b ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
- .debug_line    0x00000000000157fc      0x263 ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
- .debug_line    0x0000000000015a5f     0x2aab ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_line    0x000000000001850a     0x11f2 ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
- .debug_line    0x00000000000196fc     0x24cf ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
- .debug_line    0x000000000001bbcb     0x1076 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
- .debug_line    0x000000000001cc41      0xd6d ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
- .debug_line    0x000000000001d9ae     0x13f4 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
- .debug_line    0x000000000001eda2     0x2763 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
- .debug_line    0x0000000000021505     0x16d1 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
- .debug_line    0x0000000000022bd6     0x2d96 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
- .debug_line    0x000000000002596c      0xf9f ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
- .debug_line    0x000000000002690b     0x2f78 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
- .debug_line    0x0000000000029883     0x1110 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
- .debug_line    0x000000000002a993     0x18e8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
- .debug_line    0x000000000002c27b     0x2287 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
- .debug_line    0x000000000002e502     0x163a ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
- .debug_line    0x000000000002fb3c     0x20c3 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
- .debug_line    0x0000000000031bff     0x19a0 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
- .debug_line    0x000000000003359f     0x3514 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
- .debug_line    0x0000000000036ab3     0x1be5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
- .debug_line    0x0000000000038698     0x2501 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
- .debug_line    0x000000000003ab99      0xf64 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
- .debug_line    0x000000000003bafd      0xdbe ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
- .debug_line    0x000000000003c8bb       0xc7 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_cpu_a.o
- .debug_line    0x000000000003c982      0x137 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_a.o
- .debug_line    0x000000000003cab9     0x1794 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
- .debug_line    0x000000000003e24d     0x15e9 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
- .debug_line    0x000000000003f836      0xef9 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
- .debug_line    0x000000000004072f      0x7a2 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
- .debug_line    0x0000000000040ed1      0x548 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_narrow_6x8.o
- .debug_line    0x0000000000041419      0x548 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
- .debug_line    0x0000000000041961      0x936 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
- .debug_line    0x0000000000042297      0x77e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
- .debug_line    0x0000000000042a15      0x868 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
- .debug_line    0x000000000004327d      0xc50 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
- .debug_line    0x0000000000043ecd      0xc6b ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
- .debug_line    0x0000000000044b38      0xc99 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
- .debug_line    0x00000000000457d1      0xc81 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
- .debug_line    0x0000000000046452      0xbeb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
- .debug_line    0x000000000004703d     0x1841 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_line    0x000000000004887e     0x10ec ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
- .debug_line    0x000000000004996a      0x1d2 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
- .debug_line    0x0000000000049b3c      0x1c1 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
- .debug_line    0x0000000000049cfd      0x9fe ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
- .debug_line    0x000000000004a6fb       0xbe ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
- .debug_line    0x000000000004a7b9     0x1739 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
- .debug_line    0x000000000004bef2     0x4722 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_line    0x0000000000050614     0x11bb ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
- .debug_line    0x00000000000517cf     0x14e5 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
+ .debug_line    0x0000000000005d8e     0x13d8 ./physics.o
+ .debug_line    0x0000000000007166     0x11cd ./platform.o
+ .debug_line    0x0000000000008333     0x12df ./railgun.o
+ .debug_line    0x0000000000009612      0xfff ./satchel.o
+ .debug_line    0x000000000000a611      0x449 ./autogen/sl_board_default_init.o
+ .debug_line    0x000000000000aa5a      0xbe3 ./autogen/sl_device_init_clocks.o
+ .debug_line    0x000000000000b63d     0x129f ./autogen/sl_event_handler.o
+ .debug_line    0x000000000000c8dc      0xbd2 ./autogen/sl_simple_led_instances.o
+ .debug_line    0x000000000000d4ae      0xd36 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
+ .debug_line    0x000000000000e1e4      0xc6b ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
+ .debug_line    0x000000000000ee4f      0xd67 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
+ .debug_line    0x000000000000fbb6     0x122f ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
+ .debug_line    0x0000000000010de5      0xd90 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
+ .debug_line    0x0000000000011b75      0x9fb ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
+ .debug_line    0x0000000000012570      0xb01 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
+ .debug_line    0x0000000000013071      0x4ae ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
+ .debug_line    0x000000000001351f      0x4f6 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
+ .debug_line    0x0000000000013a15      0xea9 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
+ .debug_line    0x00000000000148be      0xf3b ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
+ .debug_line    0x00000000000157f9      0x263 ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
+ .debug_line    0x0000000000015a5c     0x2aab ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_line    0x0000000000018507     0x11f2 ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
+ .debug_line    0x00000000000196f9     0x24cf ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
+ .debug_line    0x000000000001bbc8     0x1076 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
+ .debug_line    0x000000000001cc3e      0xd6d ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
+ .debug_line    0x000000000001d9ab     0x13f4 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
+ .debug_line    0x000000000001ed9f     0x2763 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
+ .debug_line    0x0000000000021502     0x16d1 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
+ .debug_line    0x0000000000022bd3     0x2d96 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
+ .debug_line    0x0000000000025969      0xf9f ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
+ .debug_line    0x0000000000026908     0x2f78 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_line    0x0000000000029880     0x1110 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
+ .debug_line    0x000000000002a990     0x18e8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
+ .debug_line    0x000000000002c278     0x2287 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
+ .debug_line    0x000000000002e4ff     0x163a ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
+ .debug_line    0x000000000002fb39     0x20c3 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
+ .debug_line    0x0000000000031bfc     0x19a0 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
+ .debug_line    0x000000000003359c     0x3514 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
+ .debug_line    0x0000000000036ab0     0x1be5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
+ .debug_line    0x0000000000038695     0x2501 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
+ .debug_line    0x000000000003ab96      0xf64 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
+ .debug_line    0x000000000003bafa      0xdbe ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
+ .debug_line    0x000000000003c8b8       0xc7 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_cpu_a.o
+ .debug_line    0x000000000003c97f      0x137 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_a.o
+ .debug_line    0x000000000003cab6     0x1794 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
+ .debug_line    0x000000000003e24a     0x15e9 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
+ .debug_line    0x000000000003f833      0xef9 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
+ .debug_line    0x000000000004072c      0x7a2 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
+ .debug_line    0x0000000000040ece      0x548 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_narrow_6x8.o
+ .debug_line    0x0000000000041416      0x548 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
+ .debug_line    0x000000000004195e      0x936 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
+ .debug_line    0x0000000000042294      0x77e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
+ .debug_line    0x0000000000042a12      0x868 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
+ .debug_line    0x000000000004327a      0xc50 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
+ .debug_line    0x0000000000043eca      0xc6b ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
+ .debug_line    0x0000000000044b35      0xc99 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
+ .debug_line    0x00000000000457ce      0xc81 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
+ .debug_line    0x000000000004644f      0xbeb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
+ .debug_line    0x000000000004703a     0x1841 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_line    0x000000000004887b     0x10ec ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
+ .debug_line    0x0000000000049967      0x1d2 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
+ .debug_line    0x0000000000049b39      0x1c1 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
+ .debug_line    0x0000000000049cfa      0x9fe ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
+ .debug_line    0x000000000004a6f8       0xbe ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
+ .debug_line    0x000000000004a7b6     0x1739 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_line    0x000000000004beef     0x4722 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_line    0x0000000000050611     0x11bb ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
+ .debug_line    0x00000000000517cc     0x14e5 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
 
-.debug_str      0x0000000000000000   0x17f11a
+.debug_str      0x0000000000000000   0x17f110
  .debug_str     0x0000000000000000   0x1642c6 ./app.o
                                      0x165304 (size before relaxing)
  .debug_str     0x00000000001642c6     0x5120 ./capsense.o
@@ -17229,144 +17230,144 @@ LOAD linker stubs
                                      0x15077c (size before relaxing)
  .debug_str     0x0000000000169d91       0x56 ./main.o
                                      0x16427c (size before relaxing)
- .debug_str     0x0000000000169de7      0x18c ./physics.o
-                                     0x163f24 (size before relaxing)
- .debug_str     0x0000000000169f73       0x3a ./platform.o
+ .debug_str     0x0000000000169de7      0x182 ./physics.o
+                                     0x163f1a (size before relaxing)
+ .debug_str     0x0000000000169f69       0x3a ./platform.o
                                      0x162f15 (size before relaxing)
- .debug_str     0x0000000000169fad       0x72 ./railgun.o
+ .debug_str     0x0000000000169fa3       0x72 ./railgun.o
                                      0x163e5d (size before relaxing)
- .debug_str     0x000000000016a01f       0x12 ./satchel.o
+ .debug_str     0x000000000016a015       0x12 ./satchel.o
                                      0x1620f2 (size before relaxing)
- .debug_str     0x000000000016a031       0x39 ./autogen/sl_board_default_init.o
+ .debug_str     0x000000000016a027       0x39 ./autogen/sl_board_default_init.o
                                        0x78f1 (size before relaxing)
- .debug_str     0x000000000016a06a      0x144 ./autogen/sl_device_init_clocks.o
+ .debug_str     0x000000000016a060      0x144 ./autogen/sl_device_init_clocks.o
                                      0x154ea5 (size before relaxing)
- .debug_str     0x000000000016a1ae      0xa99 ./autogen/sl_event_handler.o
+ .debug_str     0x000000000016a1a4      0xa99 ./autogen/sl_event_handler.o
                                      0x15a16f (size before relaxing)
- .debug_str     0x000000000016ac47      0x147 ./autogen/sl_simple_led_instances.o
+ .debug_str     0x000000000016ac3d      0x147 ./autogen/sl_simple_led_instances.o
                                      0x153fa8 (size before relaxing)
- .debug_str     0x000000000016ad8e      0x383 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
+ .debug_str     0x000000000016ad84      0x383 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
                                      0x154327 (size before relaxing)
- .debug_str     0x000000000016b111       0x7c ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
+ .debug_str     0x000000000016b107       0x7c ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
                                      0x154fc1 (size before relaxing)
- .debug_str     0x000000000016b18d      0x9cb ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
+ .debug_str     0x000000000016b183      0x9cb ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
                                      0x15597f (size before relaxing)
- .debug_str     0x000000000016bb58      0x565 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
+ .debug_str     0x000000000016bb4e      0x565 ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
                                      0x158bb5 (size before relaxing)
- .debug_str     0x000000000016c0bd       0x9e ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
+ .debug_str     0x000000000016c0b3       0x9e ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
                                      0x1553c7 (size before relaxing)
- .debug_str     0x000000000016c15b      0x14e ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
+ .debug_str     0x000000000016c151      0x14e ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
                                      0x14ee5d (size before relaxing)
- .debug_str     0x000000000016c2a9      0x24e ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
+ .debug_str     0x000000000016c29f      0x24e ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
                                      0x14f263 (size before relaxing)
- .debug_str     0x000000000016c4f7      0x16b ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
+ .debug_str     0x000000000016c4ed      0x16b ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
                                        0x409b (size before relaxing)
- .debug_str     0x000000000016c662       0xc6 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
+ .debug_str     0x000000000016c658       0xc6 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
                                        0x79af (size before relaxing)
- .debug_str     0x000000000016c728      0x100 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
+ .debug_str     0x000000000016c71e      0x100 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
                                      0x1552b4 (size before relaxing)
- .debug_str     0x000000000016c828      0xa1d ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
+ .debug_str     0x000000000016c81e      0xa1d ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
                                      0x151d6e (size before relaxing)
- .debug_str     0x000000000016d245       0x7d ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
+ .debug_str     0x000000000016d23b       0x7d ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
                                        0x2eaa (size before relaxing)
- .debug_str     0x000000000016d2c2     0x153e ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_str     0x000000000016d2b8     0x153e ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
                                      0x154cec (size before relaxing)
- .debug_str     0x000000000016e800      0x37d ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
+ .debug_str     0x000000000016e7f6      0x37d ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
                                      0x15002e (size before relaxing)
- .debug_str     0x000000000016eb7d     0x1450 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
+ .debug_str     0x000000000016eb73     0x1450 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
                                      0x1551b3 (size before relaxing)
- .debug_str     0x000000000016ffcd      0x1e1 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
+ .debug_str     0x000000000016ffc3      0x1e1 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
                                      0x1508c1 (size before relaxing)
- .debug_str     0x00000000001701ae      0x82e ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
+ .debug_str     0x00000000001701a4      0x82e ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
                                      0x150451 (size before relaxing)
- .debug_str     0x00000000001709dc      0x743 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
+ .debug_str     0x00000000001709d2      0x743 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
                                      0x15212a (size before relaxing)
- .debug_str     0x000000000017111f     0x5d22 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
+ .debug_str     0x0000000000171115     0x5d22 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
                                      0x164e34 (size before relaxing)
- .debug_str     0x0000000000176e41      0x350 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
+ .debug_str     0x0000000000176e37      0x350 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
                                      0x16493f (size before relaxing)
- .debug_str     0x0000000000177191     0x1270 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
+ .debug_str     0x0000000000177187     0x1270 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
                                      0x168a1a (size before relaxing)
- .debug_str     0x0000000000178401      0x290 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
+ .debug_str     0x00000000001783f7      0x290 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
                                      0x15e588 (size before relaxing)
- .debug_str     0x0000000000178691      0xf47 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_str     0x0000000000178687      0xf47 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
                                      0x168c2b (size before relaxing)
- .debug_str     0x00000000001795d8      0x392 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
+ .debug_str     0x00000000001795ce      0x392 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
                                      0x15ebfd (size before relaxing)
- .debug_str     0x000000000017996a      0x13e ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
+ .debug_str     0x0000000000179960      0x13e ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
                                      0x167839 (size before relaxing)
- .debug_str     0x0000000000179aa8      0x165 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
+ .debug_str     0x0000000000179a9e      0x165 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
                                      0x167ee7 (size before relaxing)
- .debug_str     0x0000000000179c0d       0x8f ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
+ .debug_str     0x0000000000179c03       0x8f ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
                                      0x1668ed (size before relaxing)
- .debug_str     0x0000000000179c9c       0xe1 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
+ .debug_str     0x0000000000179c92       0xe1 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
                                      0x167dda (size before relaxing)
- .debug_str     0x0000000000179d7d      0x1d5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
+ .debug_str     0x0000000000179d73      0x1d5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
                                      0x167efb (size before relaxing)
- .debug_str     0x0000000000179f52      0x272 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
+ .debug_str     0x0000000000179f48      0x272 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
                                      0x1682ce (size before relaxing)
- .debug_str     0x000000000017a1c4      0x11a ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
+ .debug_str     0x000000000017a1ba      0x11a ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
                                      0x167ebb (size before relaxing)
- .debug_str     0x000000000017a2de      0x1f5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
+ .debug_str     0x000000000017a2d4      0x1f5 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
                                      0x167f42 (size before relaxing)
- .debug_str     0x000000000017a4d3       0xb1 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
+ .debug_str     0x000000000017a4c9       0xb1 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_var.o
                                      0x15eb9f (size before relaxing)
- .debug_str     0x000000000017a584      0x1c3 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
+ .debug_str     0x000000000017a57a      0x1c3 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
                                      0x1549a8 (size before relaxing)
- .debug_str     0x000000000017a747       0x9b ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_cpu_a.o
+ .debug_str     0x000000000017a73d       0x9b ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_cpu_a.o
                                         0x10d (size before relaxing)
- .debug_str     0x000000000017a7e2       0x90 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_a.o
+ .debug_str     0x000000000017a7d8       0x90 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_a.o
                                         0x110 (size before relaxing)
- .debug_str     0x000000000017a872      0x1dc ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
+ .debug_str     0x000000000017a868      0x1dc ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
                                      0x1670c6 (size before relaxing)
- .debug_str     0x000000000017aa4e      0x2fb ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
+ .debug_str     0x000000000017aa44      0x2fb ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
                                      0x158690 (size before relaxing)
- .debug_str     0x000000000017ad49      0x20c ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
+ .debug_str     0x000000000017ad3f      0x20c ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
                                      0x15303a (size before relaxing)
- .debug_str     0x000000000017af55      0x117 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
+ .debug_str     0x000000000017af4b      0x117 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
                                        0x7e45 (size before relaxing)
- .debug_str     0x000000000017b06c       0xa7 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_narrow_6x8.o
+ .debug_str     0x000000000017b062       0xa7 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_narrow_6x8.o
                                        0x7c86 (size before relaxing)
- .debug_str     0x000000000017b113       0xa7 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
+ .debug_str     0x000000000017b109       0xa7 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_font_normal_8x8.o
                                        0x7c86 (size before relaxing)
- .debug_str     0x000000000017b1ba      0x117 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
+ .debug_str     0x000000000017b1b0      0x117 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
                                        0x7ea9 (size before relaxing)
- .debug_str     0x000000000017b2d1       0xb6 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
+ .debug_str     0x000000000017b2c7       0xb6 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
                                        0x7e86 (size before relaxing)
- .debug_str     0x000000000017b387      0x12e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
+ .debug_str     0x000000000017b37d      0x12e ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
                                        0x7f04 (size before relaxing)
- .debug_str     0x000000000017b4b5       0xeb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
+ .debug_str     0x000000000017b4ab       0xeb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
                                      0x153c4a (size before relaxing)
- .debug_str     0x000000000017b5a0      0x1cb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
+ .debug_str     0x000000000017b596      0x1cb ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
                                      0x153c42 (size before relaxing)
- .debug_str     0x000000000017b76b      0x1b3 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
+ .debug_str     0x000000000017b761      0x1b3 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
                                      0x154e2b (size before relaxing)
- .debug_str     0x000000000017b91e      0x156 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
+ .debug_str     0x000000000017b914      0x156 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
                                      0x154cce (size before relaxing)
- .debug_str     0x000000000017ba74       0x90 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
+ .debug_str     0x000000000017ba6a       0x90 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
                                      0x15391e (size before relaxing)
- .debug_str     0x000000000017bb04      0xaf3 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_str     0x000000000017bafa      0xaf3 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
                                      0x15735f (size before relaxing)
- .debug_str     0x000000000017c5f7      0x20c ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
+ .debug_str     0x000000000017c5ed      0x20c ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
                                      0x1561dc (size before relaxing)
- .debug_str     0x000000000017c803       0x86 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
+ .debug_str     0x000000000017c7f9       0x86 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
                                        0x2e7c (size before relaxing)
- .debug_str     0x000000000017c889       0x88 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
+ .debug_str     0x000000000017c87f       0x88 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
                                        0x2e43 (size before relaxing)
- .debug_str     0x000000000017c911       0xba ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
+ .debug_str     0x000000000017c907       0xba ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
                                      0x14ed90 (size before relaxing)
- .debug_str     0x000000000017c9cb       0x8c ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
+ .debug_str     0x000000000017c9c1       0x8c ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
                                         0x10c (size before relaxing)
- .debug_str     0x000000000017ca57     0x104e ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_str     0x000000000017ca4d     0x104e ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
                                        0x6f15 (size before relaxing)
- .debug_str     0x000000000017daa5     0x135c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_str     0x000000000017da9b     0x135c ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
                                        0x9936 (size before relaxing)
- .debug_str     0x000000000017ee01      0x181 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
+ .debug_str     0x000000000017edf7      0x181 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
                                      0x16229a (size before relaxing)
- .debug_str     0x000000000017ef82      0x198 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
+ .debug_str     0x000000000017ef78      0x198 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
                                      0x16382d (size before relaxing)
 
-.debug_frame    0x0000000000000000     0x6364
+.debug_frame    0x0000000000000000     0x6360
  .debug_frame   0x0000000000000000       0x78 ./app.o
  .debug_frame   0x0000000000000078       0xb4 ./capsense.o
  .debug_frame   0x000000000000012c      0x114 ./display.o
@@ -17375,120 +17376,120 @@ LOAD linker stubs
  .debug_frame   0x0000000000000294      0x138 ./physics.o
  .debug_frame   0x00000000000003cc       0x64 ./platform.o
  .debug_frame   0x0000000000000430       0xec ./railgun.o
- .debug_frame   0x000000000000051c       0x44 ./satchel.o
- .debug_frame   0x0000000000000560       0x20 ./autogen/sl_board_default_init.o
- .debug_frame   0x0000000000000580       0x28 ./autogen/sl_device_init_clocks.o
- .debug_frame   0x00000000000005a8       0x80 ./autogen/sl_event_handler.o
- .debug_frame   0x0000000000000628       0x20 ./autogen/sl_simple_led_instances.o
- .debug_frame   0x0000000000000648       0xe0 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
- .debug_frame   0x0000000000000728       0x3c ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
- .debug_frame   0x0000000000000764       0x7c ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
- .debug_frame   0x00000000000007e0       0xdc ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
- .debug_frame   0x00000000000008bc       0x2c ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
- .debug_frame   0x00000000000008e8       0x38 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
- .debug_frame   0x0000000000000920       0xb8 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
- .debug_frame   0x00000000000009d8       0x40 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
- .debug_frame   0x0000000000000a18       0x60 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
- .debug_frame   0x0000000000000a78       0xb8 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
- .debug_frame   0x0000000000000b30      0x178 ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
- .debug_frame   0x0000000000000ca8       0x20 ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
- .debug_frame   0x0000000000000cc8      0x4a0 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
- .debug_frame   0x0000000000001168      0x244 ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
- .debug_frame   0x00000000000013ac      0x464 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
- .debug_frame   0x0000000000001810      0x138 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
- .debug_frame   0x0000000000001948       0x84 ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
- .debug_frame   0x00000000000019cc      0x1f0 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
- .debug_frame   0x0000000000001bbc      0x324 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
- .debug_frame   0x0000000000001ee0      0x130 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
- .debug_frame   0x0000000000002010      0x8b4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
- .debug_frame   0x00000000000028c4       0x20 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
- .debug_frame   0x00000000000028e4      0x48c ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
- .debug_frame   0x0000000000002d70       0x28 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
- .debug_frame   0x0000000000002d98       0xa8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
- .debug_frame   0x0000000000002e40      0x17c ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
- .debug_frame   0x0000000000002fbc       0x58 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
- .debug_frame   0x0000000000003014      0x134 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
- .debug_frame   0x0000000000003148       0xbc ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
- .debug_frame   0x0000000000003204      0x400 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
- .debug_frame   0x0000000000003604       0xc4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
- .debug_frame   0x00000000000036c8      0x1c4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
- .debug_frame   0x000000000000388c       0x58 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
- .debug_frame   0x00000000000038e4      0x11c ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
- .debug_frame   0x0000000000003a00      0x158 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
- .debug_frame   0x0000000000003b58      0x1ac ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
- .debug_frame   0x0000000000003d04       0xc8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
- .debug_frame   0x0000000000003dcc       0xc8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
- .debug_frame   0x0000000000003e94       0x74 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
- .debug_frame   0x0000000000003f08       0xb8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
- .debug_frame   0x0000000000003fc0       0x30 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
- .debug_frame   0x0000000000003ff0       0x2c ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
- .debug_frame   0x000000000000401c       0x34 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
- .debug_frame   0x0000000000004050       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
- .debug_frame   0x0000000000004078       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
- .debug_frame   0x00000000000040a0      0x300 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
- .debug_frame   0x00000000000043a0       0xd4 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
- .debug_frame   0x0000000000004474       0x2c ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
- .debug_frame   0x00000000000044a0       0x20 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
- .debug_frame   0x00000000000044c0       0x30 ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
- .debug_frame   0x00000000000044f0      0x448 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
- .debug_frame   0x0000000000004938      0x888 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
- .debug_frame   0x00000000000051c0       0x48 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
- .debug_frame   0x0000000000005208      0x200 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
- .debug_frame   0x0000000000005408       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_muldf3.o)
- .debug_frame   0x0000000000005438       0xac /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00000000000054e4       0xc4 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00000000000055a8       0x24 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00000000000055cc       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00000000000055f8       0x34 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000000000000562c       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-exit.o)
- .debug_frame   0x0000000000005654       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-init.o)
- .debug_frame   0x0000000000005680       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-malloc.o)
- .debug_frame   0x00000000000056b0       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x00000000000056d8       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
- .debug_frame   0x00000000000056f8       0x38 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x0000000000005730       0x4c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x000000000000577c       0x44 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-rand.o)
- .debug_frame   0x00000000000057c0       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00000000000057ec       0x6c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-sprintf.o)
- .debug_frame   0x0000000000005858       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-strcpy.o)
- .debug_frame   0x0000000000005878       0x40 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-assert.o)
- .debug_frame   0x00000000000058b8       0x64 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fprintf.o)
- .debug_frame   0x000000000000591c       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-mlock.o)
- .debug_frame   0x000000000000594c       0x90 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00000000000059dc       0xac /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-vfprintf.o)
- .debug_frame   0x0000000000005a88       0x60 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x0000000000005ae8       0x5c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-reent.o)
- .debug_frame   0x0000000000005b44       0x40 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-wbuf.o)
- .debug_frame   0x0000000000005b84       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-wsetup.o)
- .debug_frame   0x0000000000005bb0       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-abort.o)
- .debug_frame   0x0000000000005bd8       0x5c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fflush.o)
- .debug_frame   0x0000000000005c34      0x14c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-findfp.o)
- .debug_frame   0x0000000000005d80       0x54 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fwalk.o)
- .debug_frame   0x0000000000005dd4       0xb0 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-lock.o)
- .debug_frame   0x0000000000005e84       0x58 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-makebuf.o)
- .debug_frame   0x0000000000005edc       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memmove.o)
- .debug_frame   0x0000000000005f04       0x3c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x0000000000005f40       0xcc /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-signal.o)
- .debug_frame   0x000000000000600c       0x3c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-signalr.o)
- .debug_frame   0x0000000000006048       0x88 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-stdio.o)
- .debug_frame   0x00000000000060d0       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-writer.o)
- .debug_frame   0x00000000000060fc       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-closer.o)
- .debug_frame   0x0000000000006128       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fstatr.o)
- .debug_frame   0x0000000000006154       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-isattyr.o)
- .debug_frame   0x0000000000006180       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-lseekr.o)
- .debug_frame   0x00000000000061ac       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x00000000000061cc       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-readr.o)
- .debug_frame   0x00000000000061f8       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libm.a(lib_a-s_fabs.o)
- .debug_frame   0x0000000000006218       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libm.a(lib_a-s_round.o)
- .debug_frame   0x0000000000006244       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(close.o)
- .debug_frame   0x0000000000006264       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(fstat.o)
- .debug_frame   0x0000000000006284       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(getpid.o)
- .debug_frame   0x00000000000062a4       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(isatty.o)
- .debug_frame   0x00000000000062c4       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(kill.o)
- .debug_frame   0x00000000000062e4       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(lseek.o)
- .debug_frame   0x0000000000006304       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(read.o)
- .debug_frame   0x0000000000006324       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(write.o)
- .debug_frame   0x0000000000006344       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(_exit.o)
+ .debug_frame   0x000000000000051c       0x40 ./satchel.o
+ .debug_frame   0x000000000000055c       0x20 ./autogen/sl_board_default_init.o
+ .debug_frame   0x000000000000057c       0x28 ./autogen/sl_device_init_clocks.o
+ .debug_frame   0x00000000000005a4       0x80 ./autogen/sl_event_handler.o
+ .debug_frame   0x0000000000000624       0x20 ./autogen/sl_simple_led_instances.o
+ .debug_frame   0x0000000000000644       0xe0 ./gecko_sdk_3.2.3/hardware/board/src/sl_board_control_gpio.o
+ .debug_frame   0x0000000000000724       0x3c ./gecko_sdk_3.2.3/hardware/board/src/sl_board_init.o
+ .debug_frame   0x0000000000000760       0x7c ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/memlcd_usart/sl_memlcd_spi.o
+ .debug_frame   0x00000000000007dc       0xdc ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd.o
+ .debug_frame   0x00000000000008b8       0x2c ./gecko_sdk_3.2.3/hardware/driver/memlcd/src/sl_memlcd_display.o
+ .debug_frame   0x00000000000008e4       0x38 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/GCC/startup_efm32pg12b.o
+ .debug_frame   0x000000000000091c       0xb8 ./gecko_sdk_3.2.3/platform/Device/SiliconLabs/EFM32PG12B/Source/system_efm32pg12b.o
+ .debug_frame   0x00000000000009d4       0x40 ./gecko_sdk_3.2.3/platform/common/toolchain/src/sl_memory.o
+ .debug_frame   0x0000000000000a14       0x60 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_led.o
+ .debug_frame   0x0000000000000a74       0xb8 ./gecko_sdk_3.2.3/platform/driver/leddrv/src/sl_simple_led.o
+ .debug_frame   0x0000000000000b2c      0x178 ./gecko_sdk_3.2.3/platform/emlib/src/em_acmp.o
+ .debug_frame   0x0000000000000ca4       0x20 ./gecko_sdk_3.2.3/platform/emlib/src/em_assert.o
+ .debug_frame   0x0000000000000cc4      0x4a0 ./gecko_sdk_3.2.3/platform/emlib/src/em_cmu.o
+ .debug_frame   0x0000000000001164      0x244 ./gecko_sdk_3.2.3/platform/emlib/src/em_core.o
+ .debug_frame   0x00000000000013a8      0x464 ./gecko_sdk_3.2.3/platform/emlib/src/em_emu.o
+ .debug_frame   0x000000000000180c      0x138 ./gecko_sdk_3.2.3/platform/emlib/src/em_gpio.o
+ .debug_frame   0x0000000000001944       0x84 ./gecko_sdk_3.2.3/platform/emlib/src/em_rtcc.o
+ .debug_frame   0x00000000000019c8      0x1f0 ./gecko_sdk_3.2.3/platform/emlib/src/em_usart.o
+ .debug_frame   0x0000000000001bb8      0x324 ./gecko_sdk_3.2.3/platform/micrium_os/common/source/lib/lib_mem.o
+ .debug_frame   0x0000000000001edc      0x130 ./gecko_sdk_3.2.3/platform/micrium_os/cpu/source/cpu_core.o
+ .debug_frame   0x000000000000200c      0x8b4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/cmsis_os2.o
+ .debug_frame   0x00000000000028c0       0x20 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_cfg_app.o
+ .debug_frame   0x00000000000028e0      0x48c ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_core.o
+ .debug_frame   0x0000000000002d6c       0x28 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_dbg.o
+ .debug_frame   0x0000000000002d94       0xa8 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_msg.o
+ .debug_frame   0x0000000000002e3c      0x17c ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_mutex.o
+ .debug_frame   0x0000000000002fb8       0x58 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_prio.o
+ .debug_frame   0x0000000000003010      0x134 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_sem.o
+ .debug_frame   0x0000000000003144       0xbc ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_stat.o
+ .debug_frame   0x0000000000003200      0x400 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_task.o
+ .debug_frame   0x0000000000003600       0xc4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_time.o
+ .debug_frame   0x00000000000036c4      0x1c4 ./gecko_sdk_3.2.3/platform/micrium_os/kernel/source/os_tmr.o
+ .debug_frame   0x0000000000003888       0x58 ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/generic/arm_cpu_dwt_ts.o
+ .debug_frame   0x00000000000038e0      0x11c ./gecko_sdk_3.2.3/platform/micrium_os/ports/source/gnu/armv7m_os_cpu_c.o
+ .debug_frame   0x00000000000039fc      0x158 ./gecko_sdk_3.2.3/platform/middleware/glib/dmd/display/dmd_memlcd.o
+ .debug_frame   0x0000000000003b54      0x1ac ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib.o
+ .debug_frame   0x0000000000003d00       0xc8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_circle.o
+ .debug_frame   0x0000000000003dc8       0xc8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_line.o
+ .debug_frame   0x0000000000003e90       0x74 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_rectangle.o
+ .debug_frame   0x0000000000003f04       0xb8 ./gecko_sdk_3.2.3/platform/middleware/glib/glib/glib_string.o
+ .debug_frame   0x0000000000003fbc       0x30 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_dcdc_s1.o
+ .debug_frame   0x0000000000003fec       0x2c ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_emu_s1.o
+ .debug_frame   0x0000000000004018       0x34 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_hfxo_s1.o
+ .debug_frame   0x000000000000404c       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_lfxo_s1.o
+ .debug_frame   0x0000000000004074       0x28 ./gecko_sdk_3.2.3/platform/service/device_init/src/sl_device_init_nvic.o
+ .debug_frame   0x000000000000409c      0x300 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer.o
+ .debug_frame   0x000000000000439c       0xd4 ./gecko_sdk_3.2.3/platform/service/sleeptimer/src/sl_sleeptimer_hal_rtcc.o
+ .debug_frame   0x0000000000004470       0x2c ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_init.o
+ .debug_frame   0x000000000000449c       0x20 ./gecko_sdk_3.2.3/platform/service/system/src/sl_system_kernel.o
+ .debug_frame   0x00000000000044bc       0x30 ./gecko_sdk_3.2.3/platform/service/udelay/src/sl_udelay.o
+ .debug_frame   0x00000000000044ec      0x448 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_RTT.o
+ .debug_frame   0x0000000000004934      0x888 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/SEGGER/SEGGER_SYSVIEW.o
+ .debug_frame   0x00000000000051bc       0x48 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/Config/Cortex-M/SEGGER_SYSVIEW_Config_MicriumOSKernel.o
+ .debug_frame   0x0000000000005204      0x200 ./gecko_sdk_3.2.3/util/third_party/segger/systemview/Sample/MicriumOSKernel/SEGGER_SYSVIEW_MicriumOSKernel.o
+ .debug_frame   0x0000000000005404       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_muldf3.o)
+ .debug_frame   0x0000000000005434       0xac /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00000000000054e0       0xc4 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x00000000000055a4       0x24 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00000000000055c8       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00000000000055f4       0x34 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000000000005628       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-exit.o)
+ .debug_frame   0x0000000000005650       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-init.o)
+ .debug_frame   0x000000000000567c       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-malloc.o)
+ .debug_frame   0x00000000000056ac       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00000000000056d4       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000000000056f4       0x38 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x000000000000572c       0x4c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0000000000005778       0x44 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-rand.o)
+ .debug_frame   0x00000000000057bc       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000057e8       0x6c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-sprintf.o)
+ .debug_frame   0x0000000000005854       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-strcpy.o)
+ .debug_frame   0x0000000000005874       0x40 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-assert.o)
+ .debug_frame   0x00000000000058b4       0x64 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fprintf.o)
+ .debug_frame   0x0000000000005918       0x30 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-mlock.o)
+ .debug_frame   0x0000000000005948       0x90 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00000000000059d8       0xac /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-vfprintf.o)
+ .debug_frame   0x0000000000005a84       0x60 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x0000000000005ae4       0x5c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-reent.o)
+ .debug_frame   0x0000000000005b40       0x40 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-wbuf.o)
+ .debug_frame   0x0000000000005b80       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-wsetup.o)
+ .debug_frame   0x0000000000005bac       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-abort.o)
+ .debug_frame   0x0000000000005bd4       0x5c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fflush.o)
+ .debug_frame   0x0000000000005c30      0x14c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-findfp.o)
+ .debug_frame   0x0000000000005d7c       0x54 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fwalk.o)
+ .debug_frame   0x0000000000005dd0       0xb0 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-lock.o)
+ .debug_frame   0x0000000000005e80       0x58 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-makebuf.o)
+ .debug_frame   0x0000000000005ed8       0x28 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memmove.o)
+ .debug_frame   0x0000000000005f00       0x3c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x0000000000005f3c       0xcc /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-signal.o)
+ .debug_frame   0x0000000000006008       0x3c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-signalr.o)
+ .debug_frame   0x0000000000006044       0x88 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-stdio.o)
+ .debug_frame   0x00000000000060cc       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-writer.o)
+ .debug_frame   0x00000000000060f8       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-closer.o)
+ .debug_frame   0x0000000000006124       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-fstatr.o)
+ .debug_frame   0x0000000000006150       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-isattyr.o)
+ .debug_frame   0x000000000000617c       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-lseekr.o)
+ .debug_frame   0x00000000000061a8       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00000000000061c8       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-readr.o)
+ .debug_frame   0x00000000000061f4       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libm.a(lib_a-s_fabs.o)
+ .debug_frame   0x0000000000006214       0x2c /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libm.a(lib_a-s_round.o)
+ .debug_frame   0x0000000000006240       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(close.o)
+ .debug_frame   0x0000000000006260       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(fstat.o)
+ .debug_frame   0x0000000000006280       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(getpid.o)
+ .debug_frame   0x00000000000062a0       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(isatty.o)
+ .debug_frame   0x00000000000062c0       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(kill.o)
+ .debug_frame   0x00000000000062e0       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(lseek.o)
+ .debug_frame   0x0000000000006300       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(read.o)
+ .debug_frame   0x0000000000006320       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(write.o)
+ .debug_frame   0x0000000000006340       0x20 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(_exit.o)
 
 .stab           0x0000000000000000       0xcc
  .stab          0x0000000000000000       0x24 /Applications/Simplicity Studio.app/Contents/Eclipse/developer/toolchains/gnu_arm/10.3_2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libnosys.a(close.o)
